@@ -1,0 +1,32 @@
+<div class="col-md-12">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>桌号</td>
+        <td>桌子编码</td>
+        <td>开房时间</td>
+        <td>开房时长(分钟)</td>
+        <td>房间状态</td>
+        <td>房费类型</td>
+        <td>玩家列表</td>
+        <td>座位数</td>
+        <td>房费</td>
+      </tr>
+    </thead>
+    <tbody>
+     <% @tbl_rooms.each do |tbl_room| %>
+       <tr>
+        <td><%= tbl_room.table_id %></td>
+        <td><%= tbl_room.table_code %></td>
+        <td><%= tbl.room.time %></td>
+        <td><%= %></td>
+        <td><%=  %></td>
+        <td></td>
+        <td><%= tbl_room.players %></td>
+        <td><%= tbl_room.seat_cnt %></td>
+        <td><%= tbl_room.fee %></td>
+       </tr>
+     <% end %>
+    </tbody>
+  </table>
+</div>

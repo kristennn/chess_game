@@ -10,10 +10,28 @@
 
   <body>
     <div class="container-fluid">
-      <%= render "common/navbar"%>
-      <%= render "common/flashes"%>
-      <%= yield %>
+      <div class="row">
+        <%= render "common/navbar" %>
+        <%= render "common/flashes" %>
+      </div>
+      <div class="col-md-2">
+         <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+           <li>
+             <%= link_to("玩家用户列表", tbl_accounts_path) %>
+           </li>
+           <li>
+             <%= link_to("游戏开房房间列表", tbl_rooms_path) %>
+           </li>
+           <li>
+             <%= link_to("系统平台概况", '#') %>
+           </li>
+           <li>
+             <%= link_to("玩家钻石记录日志", '#') %>
+           </li>
+         </ul>
+       </div>
+        <%= yield %>
     </div>
-      <%= render "common/footer"%>
+    <%= render "common/footer"%>
   </body>
 </html>

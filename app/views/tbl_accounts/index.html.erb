@@ -1,0 +1,29 @@
+<div class="col-md-12">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>用户ID</td>
+        <td>用户账号</td>
+        <td>用户昵称</td>
+        <td>手机号</td>
+        <td>钻石</td>
+        <td>荣誉值</td>
+        <td>用户状态</td>
+        <td>注册时间</td>
+        <td>上次登录IP</td>
+        <td>上次登录时间</td>
+      </tr>
+    </thead>
+    <tbody>
+     <% @tbl_accounts.each do |tbl_account| %>
+       <tr>
+        <td><%= tbl_account.userid %></td>
+        <td><%=  %></td>
+        <td><%= tbl_account.account %></td>
+        <td><%=  %></td>
+        <td></td>
+       </tr>
+     <% end %>
+    </tbody>
+  </table>
+</div>
