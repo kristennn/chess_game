@@ -18,10 +18,15 @@
      <% @tbl_accounts.each do |tbl_account| %>
        <tr>
         <td><%= tbl_account.userid %></td>
-        <td><%=  %></td>
-        <td><%= tbl_account.account %></td>
-        <td><%=  %></td>
         <td></td>
+        <td><%= tbl_account.account %></td>
+        <td><%= tbl_account.phone_num %></td>
+        <td><%= tbl_account.saler%></td>
+        <td></td>
+        <td></td>
+        <td><%= tbl_account.create_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
+        <td><%= tbl_account.ip %></td>
+        <td><%= tbl_account.login_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
        </tr>
      <% end %>
     </tbody>
