@@ -20,7 +20,13 @@
         <td><%= tbl_room.table_code %></td>
         <td><%= tbl_room.time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
         <td><%= ((tbl_room.end_time - tbl_room.time)/60).round %></td>
-        <td></td>
+        <td>
+          <% if (Time.now - tbl_room.end_time) > 0 %>
+             已结束
+          <% else %>
+             正在游戏中
+          <% end %>
+        </td>
         <td></td>
         <td><%= tbl_room.players %></td>
         <td><%= tbl_room.seat_cnt %></td>
