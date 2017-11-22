@@ -27,7 +27,13 @@
              正在游戏中
           <% end %>
         </td>
-        <td></td>
+        <td>
+          <% if tbl_room.mode == 1 %>
+            房主支付
+          <% else %>
+            AA支付
+          <% end %>
+        </td>
         <td><%= tbl_room.players %></td>
         <td><%= tbl_room.seat_cnt %></td>
         <td><%= tbl_room.fee %></td>
