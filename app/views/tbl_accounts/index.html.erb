@@ -23,7 +23,15 @@
         <td><%= tbl_account.phone_num %></td>
         <td><%= tbl_account.saler%></td>
         <td></td>
-        <td></td>
+        <td>
+          <% if (tbl_account.lock - Time.now) > 0 %>
+             锁定
+          <% elsif (tbl_account.login_time - tbl_account.logout_time)/60/60 < 24%>
+             活跃
+          <% else %>
+             正常
+          <% end %>
+        </td>
         <td><%= tbl_account.create_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
         <td><%= tbl_account.ip %></td>
         <td><%= tbl_account.login_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
