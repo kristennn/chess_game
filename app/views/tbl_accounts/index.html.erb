@@ -21,7 +21,7 @@
         <td></td>
         <td><%= tbl_account.account %></td>
         <td><%= tbl_account.phone_num %></td>
-        <td><%= tbl_account.saler%></td>
+        <td><%= @tbl_playerinfo.find_by(:userid => "#{tbl_account.userid}").diamond %></td>
         <td></td>
         <td>
           <% if (tbl_account.lock - Time.now) > 0 %>
