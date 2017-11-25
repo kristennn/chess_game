@@ -4,4 +4,5 @@ class TblAccountsController < ApplicationController
     @tbl_accounts = TblAccount.all
     @tbl_playerinfo = TblPlayerinfo.all
   end
+
 end

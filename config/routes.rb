@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   resources :tbl_rooms
   resources :tbl_accounts
+  resources :tbl_systems
 end

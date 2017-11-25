@@ -1,0 +1,31 @@
+<div class="col-md-12">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>玩家总人数</td>
+        <td>冻结人数</td>
+        <td>当前在线人数</td>
+        <td>今日活跃人数</td>
+        <td>今日注册人数</td>
+        <td>今日最高在线</td>
+        <td>平台财富总和</td>
+        <td>冻结玩家财富</td>
+        <td>总充值</td>
+        <td>总税收</td>
+      </tr>
+    </thead>
+    <tbody>
+       <tr>
+         <td>0</td>
+         <td>0</td>
+         <% @tblaccounts.each do |u| %>
+           <% if u.login_time - Time.now > 0 && u.logout_time - Time.now > 0 %>
+             <% @online_count = @online_count + 1 %>
+           <% end %>
+
+         <% end %>
+        <td><%= @online_count %></td>
+       </tr>
+    </tbody>
+  </table>
+</div>
