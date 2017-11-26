@@ -8,6 +8,7 @@ class TblAccountsController < ApplicationController
     if params[:userid].present?
       @tbl_accounts = @tbl_accounts.where( :userid => params[:userid].split(",") )
     end
+
   end
 
 end
