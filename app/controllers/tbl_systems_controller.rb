@@ -1,9 +1,9 @@
 class TblSystemsController < ApplicationController
   layout 'admin'
   def index
-    @tblaccounts = TblAccount.all
-    @tblorders = TblOrder.all
-    @tblplayers = TblPlayerinfo.all
+    @tblaccounts = TblAccount.page(params[:page]).per(10)
+    @tblorders = TblOrder.page(params[:page]).per(10)
+    @tblplayers = TblPlayerinfo.page(params[:page]).per(10)
     @online_count = 0
     @active_count = 0
     @signin_count = 0
