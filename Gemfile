@@ -36,6 +36,7 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'kaminari' #分页
+gem 'faker'
 group :development, :test do
   gem 'pry'
   gem 'awesome_rails_console'
