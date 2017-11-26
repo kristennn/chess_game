@@ -1,4 +1,11 @@
 <div class="col-md-12">
+  <%= search_form_for @q, :url => tbl_accounts_path do |f| %>
+    <p><%= text_field_tag :userid, params[:userid], :placeholder => "用户ID", :class => "form-control" %></p>
+    <p><%= f.search_field :account_cont, :placeholder => "用户昵称", :class => "form-control" %></p>
+    <p class="text-right">
+      <%= submit_tag "送出筛选", :class => "btn btn-primary" %>
+    </p>
+  <% end %>
   <table class="table table-hover">
     <thead>
       <tr>

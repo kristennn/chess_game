@@ -37,6 +37,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'kaminari' #分页
 gem 'faker'
+gem 'ransack'
 group :development, :test do
   gem 'pry'
   gem 'awesome_rails_console'
