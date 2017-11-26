@@ -1,0 +1,2 @@
+class TblLogsController < ApplicationController
+end
