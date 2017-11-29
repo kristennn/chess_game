@@ -15,7 +15,7 @@
         <%= render "common/flashes" %>
       </div>
       <div class="col-md-2">
-         <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+         <ul class="nav nav-pills nav-stacked " style="max-width: 200px;">
            <li>
              <%= link_to("玩家用户列表", tbl_accounts_path) %>
            </li>
@@ -30,7 +30,9 @@
            </li>
          </ul>
        </div>
+       <div class= "col-md-8">
         <%= yield %>
+        </div>
     </div>
     <%= render "common/footer"%>
   </body>
