@@ -3,6 +3,18 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+    if current_user.permission == "manager"
+      @users = User.all
+    elsif current_user.permission == "salerone"
+      @users = User.where(:permission => "salerone") + User.where(:permission => "salertwo") + User.where(:permission => "salerthree")
+    elsif current_user.permission == "salertwo"
+      @users = User.where(:permission => "salertwo") + User.where(:permission => "salerthree")
+    elsif current_user.permission == "salertwo"
+      @users = User.where(:permission => "salerthree")
+    end
+  end
+
   def show
     @user = User.find(params[:id])
   end
