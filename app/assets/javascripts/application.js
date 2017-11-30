@@ -14,6 +14,7 @@
 //= require turbolinks
 //= require jquery
 //= require bootstrap/alert
+//= require bootstrap/dropdown
 //= require material-kit
 //= require material.min
 //= require nouislider.min
