@@ -5,3 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "这个文档会建立多个用户"
+
+
+User.create(:name => "管理员", :email => "lala@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "manager")
+
+10.times do |i|
+  User.create(:name => "一级代理商#{i}号", :email => "salerone#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "salerone")
+end
+
+10.times do |i|
+  User.create(:name => "二级代理商#{i}号", :email => "salertwo#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "salertwo")
+end
+
+10.times do |i|
+  User.create(:name => "三级代理商#{i}号", :email => "salerthree#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "salerthree")
+end
+
+puts "创建成功"
