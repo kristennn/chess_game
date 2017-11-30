@@ -1,0 +1,9 @@
+<h2>注册账号</h2>
+<%= simple_form_for @user, url: signup_path do |f| %>
+<%= render 'shared/error_messages' %>
+  <%= f.input :name, label: "请输入用户名" %>
+  <%= f.input :email, label: "请输入邮箱" %>
+  <%= f.input :password, label: "请输入密码" %>
+  <%= f.input :password_confirmation, label: "重复密码" %>
+  <%= f.submit :点击创建用户 %>
+<% end %>
