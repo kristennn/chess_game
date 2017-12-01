@@ -17,6 +17,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 //导航栏样式
 .navbar.navbar-default {
     background-color: rgb(55,106,211);
@@ -80,16 +81,24 @@ thead {
   font-weight: bold; //字体加粗
 }
 
-h3{
+h5{
   background-color: rgb(55,106,211);
-  font-family: inherit;
-  font-weight: 350;
+  font-family: Microsoft YaHei;
+  font-weight: 400;
   height: 20;
-  line-height: 1.8;
-  color: inherit;
+  line-height: 2.8;
+  color: #fff;
   margin-bottom: 1px;
+  padding: 0 0 0 15px;
 }
 // 按钮样式
 .btn {
-  background-color: rgb(55,106,211);
+  background-color: rgb(56,119,200);
+  font-size: 10px;
+}
+
+// 管理员选项样式
+.col-md-2{
+  background: rgb(248,248,248);
+  height:100%;
 }
