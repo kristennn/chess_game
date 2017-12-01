@@ -16,3 +16,47 @@
 @import "material-kit";
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+//导航栏样式
+.navbar.navbar-default {
+    background-color: rgb(55,106,211);
+
+}
+
+input {
+   -webkit-appearance: none;
+    background-color: white;
+    cursor: auto;
+    padding: 1px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+input, textarea, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 100 10px system-ui;
+}
+
+//表格样式
+table, td, th {
+  text-align: center;
+}
+thead {
+	background-color: rgb(55,106,211);
+	color: white;
+  font-weight: bold; //字体加粗
+}
+// 按钮样式
+.btn {
+  background-color: rgb(55,106,211);
+}
