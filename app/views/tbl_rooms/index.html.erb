@@ -51,6 +51,7 @@
     </tbody>
   </table>
   <div class="text-right">
-    <%= paginate @tbl_rooms %>
+    <%= page_entries_info @tbl_rooms %>
+    <%= paginate @tbl_rooms, window:2 %>
   </div>
 </div>
