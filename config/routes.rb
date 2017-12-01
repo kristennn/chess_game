@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :tbl_systems
   resources :tbl_logs
   resources :users
+  get '/saler_overview', to: 'users#saler_overview'
   get '/signup', to: 'users#new'
   post '/signup', to: 'user#create'
   get '/login', to: 'sessions#new'
