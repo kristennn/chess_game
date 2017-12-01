@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126050641) do
+ActiveRecord::Schema.define(version: 20171130152641) do
 
   create_table "phone_tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "token"
@@ -57,6 +57,12 @@ ActiveRecord::Schema.define(version: 20171126050641) do
     t.index ["userid"], name: "userid", comment: "用户ID"
   end
 
+  create_table "tbl_player_fee", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "userid", null: false
+    t.integer "table_id", null: false
+    t.integer "fee", null: false
+  end
+
   create_table "tbl_playerinfo", primary_key: "userid", id: :bigint, default: nil, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT", comment: "用户数据表" do |t|
     t.string "nickname", limit: 128, default: "", null: false, comment: "昵称"
     t.string "second_pwd", default: "", null: false, comment: "保险箱密码"
@@ -83,24 +89,12 @@ ActiveRecord::Schema.define(version: 20171126050641) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
     t.string "email"
-    t.string "crypted_password"
-    t.string "salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "remember_me_token"
-    t.datetime "remember_me_token_expires_at"
-    t.string "reset_password_token"
-    t.datetime "reset_password_token_expires_at"
-    t.datetime "reset_password_email_sent_at"
-    t.string "activation_state"
-    t.string "activation_token"
-    t.datetime "activation_token_expires_at"
-    t.string "phone"
-    t.index ["activation_token"], name: "index_users_on_activation_token"
-    t.index ["phone"], name: "index_users_on_phone"
-    t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
+    t.string "password_digest"
+    t.string "permission"
   end
 
 end
