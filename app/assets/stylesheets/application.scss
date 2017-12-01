@@ -20,9 +20,29 @@
 //导航栏样式
 .navbar.navbar-default {
     background-color: rgb(55,106,211);
-
+    position: relative;
+    border-radius: 2px;
+    max-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
 }
 
+.navbar-default .navbar-brand {
+    color: #fff;
+    padding: 1px 15px;
+    height: 50px;
+}
+.navbar-collapse {
+    color: #fff;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+    padding: 5px 15px;
+    font-weight: 400;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-radius: 3px;
+}
 input {
    -webkit-appearance: none;
     background-color: white;
@@ -51,10 +71,23 @@ input, textarea, select, button {
 table, td, th {
   text-align: center;
 }
+td{
+  vertical-align: middle;
+}
 thead {
 	background-color: rgb(55,106,211);
 	color: white;
   font-weight: bold; //字体加粗
+}
+
+h3{
+  background-color: rgb(55,106,211);
+  font-family: inherit;
+  font-weight: 350;
+  height: 20;
+  line-height: 1.8;
+  color: inherit;
+  margin-bottom: 1px;
 }
 // 按钮样式
 .btn {

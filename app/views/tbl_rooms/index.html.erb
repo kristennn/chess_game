@@ -1,5 +1,5 @@
-<h3>游戏开房房间列表</h3>
 <div class="col-md-12">
+  <h3>游戏开房房间列表</h3>
   <%= form_tag tbl_rooms_path, method: :get do  %>
     <p>
       时间段搜索开房时间：<%= date_field_tag :time, params[:time] %>到<%= date_field_tag :end_time, params[:end_time] %>
