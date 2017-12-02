@@ -1,11 +1,17 @@
-<h2>注册账号</h2>
+<h2>新增推广员</h2>
 <%= simple_form_for @user, url: signup_path do |f| %>
 <%= render 'shared/error_messages' %>
   <%= f.input :name, label: "请输入用户名" %>
   <%= f.input :email, label: "请输入邮箱" %>
   <%= f.input :salerid, label: "请输入上线代理商ID" %>
-  <%= f.input :permission, collection: ["manager", "salerone", "salertwo", "salerthree"] %>
+  <% if current_user.permission == "manager" %>
+    <%= f.input :permission, collection: ["salerone", "salertwo", "salerthree"] %>
+  <% elsif current_user.permission == "salerone" %>
+    <%= f.input :permission, collection: ["salertwo", "salerthree"] %>
+  <% elsif current_user.permission == "salertwo" %>
+    <%= f.input :permission, collection: ["salerthree"] %>
+  <% end %>
   <%= f.input :password, label: "请输入密码" %>
   <%= f.input :password_confirmation, label: "重复密码" %>
-  <%= f.submit :点击创建用户 %>
+  <%= f.submit :点击创建推广员 %>
 <% end %>
