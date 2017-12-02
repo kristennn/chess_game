@@ -32,12 +32,16 @@ class UsersController < ApplicationController
 
   def saler_info
     @usersone = User.where(:salerid => current_user.id)
-    result = []
-    @usersone.each do |i|
-      u = User.where(:salerid => i.id)
-      result += u
+    if current_user.permission == "salerone"
+      result = []
+      @usersone.each do |i|
+        u = User.where(:salerid => i.id)
+        result += u
+      end
+      @userstwo = result
+    else
+      @userstwo = User.where(:salerid => current_user.id)
     end
-    @userstwo = result
   end
 
   def player_info
