@@ -1,28 +1,84 @@
 <%= render "form" %>
   <div class="col-xs-3">
-   <%= link_to "下线推广员", saler_info_path %>
+    <%= link_to  saler_info_path do %>
+    <span class="fa-stack fa-3x">
+      <i class="fa fa-circle-thin fa-stack-2x"></i>
+      <i class="fa fa-user fa-stack-1x"></i>
+    </span><br>
+    <div class="text-info">
+       下线推广员
+    </div>
+    <% end %>
   </div>
 
   <div class="col-xs-3">
-    <%= link_to "下线玩家", player_info_path %>
+    <%= link_to  player_info_path  do %>
+    <span class="fa-stack fa-3x">
+      <i class="fa fa-circle-thin fa-stack-2x"></i>
+      <i class="fa fa-users fa-stack-1x"></i>
+    </span><br>
+    <div class= "text-info">
+      下线玩家
+    </div>
+    <% end %>
   </div>
 
   <div class="col-xs-3">
-    <%= link_to "提成明细", "#"%>
+    <%= link_to  "#" do %>
+    <span class="fa-stack fa-3x">
+      <i class="fa fa-circle-thin fa-stack-2x"></i>
+      <i class="fa fa-calculator fa-stack-1x"></i>
+    </span><br>
+    <div class="text-info">
+      提成明细
+    </div>
+    <% end %>
   </div>
 
   <div class="col-xs-3">
-    <%= link_to "支付宝设置", "#" %>
+    <%= link_to  "#" do %>
+    <span class="fa-stack fa-3x">
+      <i class="fa fa-circle-thin fa-stack-2x"></i>
+      <i class="fa fa-cog fa-stack-1x"></i>
+    </span><br>
+    <div class="text-info">
+      支付宝设置
+    </div>
+    <% end %>
   </div>
 
   <div class="col-xs-3">
-    <%= link_to "提现操作", "#" %>
+    <%= link_to  "#" do %>
+    <span class="fa-stack fa-3x">
+      <i class="fa fa-circle-thin fa-stack-2x"></i>
+      <i class="fa fa-jpy fa-stack-1x"></i>
+    </span><br>
+    <div class="text-info">
+      提现操作
+    </div>
+    <% end %>
   </div>
 
   <div class="col-xs-3">
-    <%= link_to "提现记录", "#" %>
+    <%= link_to  "#"  do %>
+    <span class="fa-stack fa-3x">
+      <i class="fa fa-circle-thin fa-stack-2x"></i>
+      <i class="fa fa-file-text fa-stack-1x"></i>
+    </span><br>
+    <div class="text-info">
+      提现记录
+    </div>
+    <% end %>
   </div>
 
   <div class="col-xs-3">
-    <%= link_to "修改密码", "#" %>
+    <%= link_to  "#" do %>
+    <span class="fa-stack fa-3x">
+      <i class="fa fa-circle-thin fa-stack-2x"></i>
+      <i class="fa fa-key fa-stack-1x"></i>
+    </span><br>
+    <div class="text-info">
+      修改密码
+    </div>
+    <% end %>
   </div>
