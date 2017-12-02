@@ -1,3 +1,154 @@
-// Place all the styles related to the sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "material-kit";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+//表格样式
+table, td, th {
+  text-align: center;
+  border:1px solid transparent;
+  border-top: 1px solid transparent;
+}
+
+.table > thead > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > th,
+.table > tbody > tr > td,
+.table > tfoot > tr > th,
+.table > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.428571429;
+  vertical-align: top;
+  border-top: 1px solid #fff;
+}
+
+//导航栏样式
+.navbar.navbar-default {
+    background-color: rgb(55,106,211);
+    position: relative;
+    border-radius: 2px;
+    max-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+    padding: 1px 15px;
+    height: 50px;
+}
+.navbar-collapse {
+    color: #fff;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+    padding: 5px 15px;
+    font-weight: 400;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-radius: 3px;
+}
+
+input {
+   -webkit-appearance: none;
+    background-color: white;
+    cursor: auto;
+    padding: 1px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+input, textarea, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 100 10px system-ui;
+}
+
+//表格样式
+table, td, th {
+  text-align: center;
+}
+
+td{
+  vertical-align: middle;
+}
+thead {
+	background-color: rgb(55,106,211);
+	color: white;
+  font-weight: bold; //字体加粗
+}
+
+h2{
+  color: rgb(55,106,211);
+}
+
+h5{
+  background-color: rgb(55,106,211);
+  font-family: Microsoft YaHei;
+  font-weight: 400;
+  height: 20;
+  line-height: 2.8;
+  color: #fff;
+  margin-bottom: 1px;
+  padding: 0 0 0 15px;
+}
+
+
+
+//登录样式
+.form-group label.control-label {
+    font-size: 0px;
+    line-height: 1.07143;
+    color: #fff;
+    font-weight: 400;
+    margin: 16px 0 0 0;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 100px;
+}
+.form-actions .button {
+    color: #fff;
+    background-color: rgb(55,106,211);
+    border-color: #ffffff;
+    border-radius: 100px;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+    width: 100%;
+}
+.form-actions{
+    border-radius: 100px;
+    width: 100%;
+    border-color: #ffffff;
+}
+.form-group .form-control {
+    border: 0;
+    background-image: linear-gradient(#376ad3, #376ad3), linear-gradient(#3877c8, #3877c8);
+    background-size: 0 2px, 100% 1px;
+    background-repeat: no-repeat;
+    background-position: center bottom, center calc(100% - 1px);
+    background-color: transparent;
+    float: none;
+    box-shadow: none;
+    border-radius: 0;
+    font-weight: 400;
+}
