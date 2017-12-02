@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20171202091323) do
     t.integer "userid", null: false
     t.integer "table_id", null: false
     t.integer "fee", null: false
+    t.datetime "last_update", default: -> { "CURRENT_TIMESTAMP" }, null: false, comment: "更新时间"
   end
 
   create_table "tbl_playerinfo", primary_key: "userid", id: :bigint, default: nil, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT", comment: "用户数据表" do |t|

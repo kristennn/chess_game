@@ -12,7 +12,7 @@
     <tbody>
       <% @playerfees.each do |playerfee| %>
         <tr>
-          <td></td>
+          <td><%= playerfee.last_update.strftime("%Y/%m/%d  %H:%M:%S") %></td>
           <td><%= playerfee.userid %></td>
           <td><%= playerfee.table_id %></td>
           <td></td>
