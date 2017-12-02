@@ -9,7 +9,7 @@
   </tr>
   <tr>
     <td>推广ID</td>
-    <td></td>
+    <td><%= current_user.id %></td>
   </tr>
   <tr>
     <td>比率</td>
@@ -17,7 +17,7 @@
   </tr>
   <tr>
     <td>下线玩家</td>
-    <td>位</td>
+    <td><%= TblAccount.where(:saler => current_user.id).count %></td>
   </tr>
 </table>
 

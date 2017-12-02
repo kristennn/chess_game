@@ -1,1 +1,17 @@
-<h2>这是下线玩家页面</h2>
+<h2>下线玩家</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>玩家ID</th>
+      <th>玩家昵称</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.account %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

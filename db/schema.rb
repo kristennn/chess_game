@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130152641) do
+ActiveRecord::Schema.define(version: 20171202074218) do
 
   create_table "phone_tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "token"
@@ -57,6 +57,12 @@ ActiveRecord::Schema.define(version: 20171130152641) do
     t.index ["userid"], name: "userid", comment: "用户ID"
   end
 
+  create_table "tbl_player_fee", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "userid", null: false
+    t.integer "table_id", null: false
+    t.integer "fee", null: false
+  end
+
   create_table "tbl_playerinfo", primary_key: "userid", id: :bigint, default: nil, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT", comment: "用户数据表" do |t|
     t.string "nickname", limit: 128, default: "", null: false, comment: "昵称"
     t.string "second_pwd", default: "", null: false, comment: "保险箱密码"
@@ -89,6 +95,7 @@ ActiveRecord::Schema.define(version: 20171130152641) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "permission"
+    t.integer "salerid"
   end
 
 end
