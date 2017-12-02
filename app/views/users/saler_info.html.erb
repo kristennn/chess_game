@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>推广员ID</th>
+      <th>推广员名称</th>
+      <th>推广比例</th>
+      <th>直属下线推广员</th>
+      <th>推广玩家个数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

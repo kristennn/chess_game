@@ -30,6 +30,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def saler_info
+    @users = User.all
+  end
+
   private
 
   def user_params

@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+  get '/saler_info', to: 'users#saler_info'
+  get 'player_info', to: 'users#player_info'
 end

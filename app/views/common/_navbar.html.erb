@@ -3,7 +3,7 @@
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
               <a class="navbar-brand" href="/">游戏后台</a>
-              <% unless current_user && current_user.permission == "salerthree" %>
+              <% unless current_user && current_user.permission == "salerthree" || !current_user %>
                 <a class="navbar-brand" href="users">用户管理</a>
               <% end %>
           </div>
@@ -12,7 +12,6 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
                 <% if !current_user %>
-                  <li><%= link_to "注册", signup_path %></li>
                   <li><%= link_to "登入", login_path %></li>
                 <% else %>
                   <li class="dropdown">
