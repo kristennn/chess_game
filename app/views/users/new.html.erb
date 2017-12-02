@@ -3,6 +3,8 @@
 <%= render 'shared/error_messages' %>
   <%= f.input :name, label: "请输入用户名" %>
   <%= f.input :email, label: "请输入邮箱" %>
+  <%= f.input :salerid, label: "请输入上线代理商ID" %>
+  <%= f.input :permission, collection: ["manager", "salerone", "salertwo", "salerthree"] %>
   <%= f.input :password, label: "请输入密码" %>
   <%= f.input :password_confirmation, label: "重复密码" %>
   <%= f.submit :点击创建用户 %>

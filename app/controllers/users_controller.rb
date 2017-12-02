@@ -31,12 +31,18 @@ class UsersController < ApplicationController
   end
 
   def saler_info
-    @users = User.all
+    @usersone = User.where(:salerid => current_user.id)
+    result = []
+    @usersone.each do |i|
+      u = User.where(:salerid => i.id)
+      result += u
+    end
+    @userstwo = result
+  end
+
+  def player_info
+    @users = TblAccount.where(:saler => current_user.id)
   end
 
   private
-
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
 end
