@@ -10,9 +10,15 @@
       </tr>
     </thead>
     <tbody>
-     <tr>
-       <td></td>
-     </tr>
+      <% @playerfees.each do |playerfee| %>
+        <tr>
+          <td></td>
+          <td><%= playerfee.userid %></td>
+          <td><%= playerfee.table_id %></td>
+          <td></td>
+          <td><%= playerfee.fee %></td>
+        </tr>
+     <% end %>
     </tbody>
   </table>
 </div>
