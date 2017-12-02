@@ -12,10 +12,12 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 @import "material-kit";
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 
 //导航栏样式

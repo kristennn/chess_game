@@ -39,6 +39,7 @@ gem 'kaminari' #分页
 gem 'faker'
 gem 'ransack'
 gem 'bcrypt'
+gem 'font-awesome-rails'
 group :development, :test do
   gem 'pry'
   gem 'awesome_rails_console'
