@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :tbl_rooms
   resources :tbl_accounts
   resources :tbl_systems
-  resources :tbl_logs
+  resources :tbl_player_fees
   resources :users
   get '/saler_overview', to: 'users#saler_overview'
   get '/signup', to: 'users#new'

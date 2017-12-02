@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
+
   before_action :logged_in_user, only: [:edit, :update]
   before_action :correct_user, only: [:edit, :update]
+
+  layout "session"
 
   def new
     @user = User.new
@@ -48,12 +51,16 @@ class UsersController < ApplicationController
 
   def saler_info
     @usersone = User.where(:salerid => current_user.id)
-    result = []
-    @usersone.each do |i|
-      u = User.where(:salerid => i.id)
-      result += u
+    if current_user.permission == "salerone"
+      result = []
+      @usersone.each do |i|
+        u = User.where(:salerid => i.id)
+        result += u
+      end
+      @userstwo = result
+    else
+      @userstwo = User.where(:salerid => current_user.id)
     end
-    @userstwo = result
   end
 
   def player_info

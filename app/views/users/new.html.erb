@@ -1,11 +1,19 @@
-<h2>注册账号</h2>
-<%= simple_form_for @user, url: signup_path do |f| %>
-<%= render 'shared/error_messages' %>
-  <%= f.input :name, label: "请输入用户名" %>
-  <%= f.input :email, label: "请输入邮箱" %>
-  <%= f.input :salerid, label: "请输入上线代理商ID" %>
-  <%= f.input :permission, collection: ["manager", "salerone", "salertwo", "salerthree"] %>
-  <%= f.input :password, label: "请输入密码" %>
-  <%= f.input :password_confirmation, label: "重复密码" %>
-  <%= f.submit :点击创建用户 %>
-<% end %>
+<div class="col-md-10 col-md-offset-1">
+  <h5>新增推广员</h5>
+  <%= simple_form_for @user, url: signup_path do |f| %>
+    <%= render 'shared/error_messages' %>
+      <%= f.input :name, :label => false, :error => false, placeholder: "请输入推广员名称", required: true %>
+      <%= f.input :email, :label => false, :error => false, placeholder: "请输入推广员邮箱", required: true %>
+      <%= f.input :salerid, :label => false, :error => false, placeholder: "请输入上线代理商ID", required: true %>
+      <% if current_user.permission == "manager" %>
+        <%= f.input :permission, collection: ["salerone", "salertwo", "salerthree"] %>
+      <% elsif current_user.permission == "salerone" %>
+        <%= f.input :permission, collection: ["salertwo", "salerthree"] %>
+      <% elsif current_user.permission == "salertwo" %>
+        <%= f.input :permission, collection: ["salerthree"] %>
+      <% end %>
+      <%= f.input :password, :label => false, :error => false, placeholder: "请设置推广员密码", required: true %>
+      <%= f.input :password_confirmation, :label => false, :error => false, placeholder: "请重复密码", required: true %>
+      <%= f.submit :点击创建推广员, class: "btn" %>
+  <% end %>
+</div>

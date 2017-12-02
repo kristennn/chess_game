@@ -1,54 +1,61 @@
-<h2>二级下线推广员</h2>
-<table class="table">
-  <thead>
-    <tr>
-      <th>推广员ID</th>
-      <th>推广员名称</th>
-      <th>推广比例</th>
-      <th>直属下线推广员</th>
-      <th>推广玩家个数</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @usersone.each do |user| %>
-
+<%= render "form" %>
+<div class="col-xs-12">
+  <%= link_to "新增推广员", signup_path %>
+  <% if current_user.permission == "salerone" %>
+  <h5>二级下线推广员</h5>
+  <table class="table table-striped table-bordered">
+    <thead>
       <tr>
-        <td><%= user.id %></td>
-        <td><%= user.name %></td>
-        <td></td>
-        <td><%= User.where(:salerid => user.id).count %></td>
-        <td><%= TblAccount.where(:saler => user.id).count %></td>
+        <th>推广员ID</th>
+        <th>推广员名称</th>
+        <th>推广比例</th>
+        <th>直属下线推广员</th>
+        <th>推广玩家个数</th>
       </tr>
+    </thead>
+    <tbody>
+      <% @usersone.each do |user| %>
 
-    <% end %>
-  </tbody>
-</table>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.name %></td>
+          <td></td>
+          <td><%= User.where(:salerid => user.id).count %></td>
+          <td><%= TblAccount.where(:saler => user.id).count %></td>
+        </tr>
 
-<h2>三级下线推广员</h2>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>推广员ID</th>
-      <th>推广员名称</th>
-      <th>上级推广员</th>
-      <th>推广比例</th>
-      <th>直属下线推广员</th>
-      <th>推广玩家个数</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @userstwo.each do |user| %>
+  <br/>
+  <% if current_user.permission == "salerone" %>
+    <h5>三级下线推广员</h5>
+  <% end %>
 
+  <table class="table table-striped table-bordered">
+    <thead>
       <tr>
-        <td><%= user.id %></td>
-        <td><%= user.name %></td>
-        <td><%= User.find_by(:id => user.salerid).name %></td>
-        <td></td>
-        <td><%= User.where(:salerid => user.id).count %></td>
-        <td><%= TblAccount.where(:saler => user.id).count %></td>
+        <th>推广员ID</th>
+        <th>推广员名称</th>
+        <th>上级推广员</th>
+        <th>推广比例</th>
+        <th>推广玩家个数</th>
       </tr>
+    </thead>
+    <tbody>
+      <% @userstwo.each do |user| %>
 
-    <% end %>
-  </tbody>
-</table>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.name %></td>
+          <td><%= User.find_by(:id => user.salerid).name %></td>
+          <td><%= User.where(:salerid => user.id).count %></td>
+          <td><%= TblAccount.where(:saler => user.id).count %></td>
+        </tr>
+
+      <% end %>
+    </tbody>
+  </table>
+</div>

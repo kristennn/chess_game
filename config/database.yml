@@ -18,6 +18,7 @@ default: &default
   socket: /tmp/mysql.sock
   host: 192.168.199.249
 
+
 development:
   <<: *default
   database: zdgame
