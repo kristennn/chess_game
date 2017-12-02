@@ -1,4 +1,5 @@
 class TblAccountsController < ApplicationController
+  before_action :logged_in_user, only: [:index]
   layout 'admin'
   def index
     @tbl_playerinfo = TblPlayerinfo.page(params[:page]).per(10)
@@ -29,6 +30,24 @@ class TblAccountsController < ApplicationController
       @tbl_accounts = @tbl_accounts.where( "logout_time >= ?", Date.parse(params[:logout_time]).beginning_of_day)
     end
 
+    if current_user && current_user.permission == "salerone"
+      redirect_to saler_overview_path
+    elsif current_user && current_user.permission == "salertwo"
+      redirect_to saler_overview_path
+    elsif current_user && current_user.permission == "salerthree"
+      redirect_to saler_overview_path
+    end
+    @tbl_accounts = TblAccount.page(params[:page]).per(10)
+    @tbl_playerinfo = TblPlayerinfo.page(params[:page]).per(10)
+  end
+
+  private
+
+  def logged_in_user
+    unless logged_in?
+      flash[:alert] = "请先登录"
+      redirect_to login_path
+    end
   end
 
 end

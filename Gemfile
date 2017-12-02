@@ -38,6 +38,7 @@ gem 'simple_form'
 gem 'kaminari' #分页
 gem 'faker'
 gem 'ransack'
+gem 'bcrypt'
 group :development, :test do
   gem 'pry'
   gem 'awesome_rails_console'

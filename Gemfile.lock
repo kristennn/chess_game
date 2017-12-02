@@ -48,6 +48,7 @@ GEM
       awesome_print
       pry-rails
       railties
+    bcrypt (3.1.11)
     bindex (0.5.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
@@ -215,6 +216,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_rails_console
+  bcrypt
   bootstrap-sass
   capybara (~> 2.13)
   coffee-rails (~> 4.2)

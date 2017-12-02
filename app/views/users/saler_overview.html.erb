@@ -1,0 +1,27 @@
+<table class="table">
+  <tr>
+    <td>用户</td>
+    <td><%= current_user.name %></td>
+  </tr>
+  <tr>
+    <td>账户余额</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>推广ID</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>比率</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>下线玩家</td>
+    <td>位</td>
+  </tr>
+</table>
+
+
+<%= link_to "下线代理商", saler_info_path %><br>
+<%= link_to "下线玩家", player_info_path %><br>
+<%= link_to "修改密码", "#" %>
