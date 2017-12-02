@@ -34,7 +34,13 @@ VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   #如果指定的令牌和摘要匹配，返回true
   def authenticated?(remember_token)
+    return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  #忘记用户
+  def forget
+    update_attribute(:remember_digest, nil)
   end
 
 end
