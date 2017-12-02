@@ -47,6 +47,19 @@
     border-radius: 3px;
 }
 
+.navbar-toggle {
+    position: relative;
+    float: right;
+    margin-right: 15px;
+    padding: 0 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
 input {
    -webkit-appearance: none;
     background-color: white;
@@ -183,6 +196,13 @@ h5{
     font-weight: 400;
 }
 // 推广员首页字体
+
+
+a{
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
 a:hover, a:focus {
   color: #376ad3;
   text-decoration: none;

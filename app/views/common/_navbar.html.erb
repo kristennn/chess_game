@@ -5,13 +5,22 @@
             <% if current_user && current_user.permission == "manager" %>
               <a class="navbar-brand" href="/">游戏后台</a>
             <% end %>
+            <% if !current_user %>
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <%= link_to "登录", login_path %>
+              </button>
+            <% else %>
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <%= link_to "退出", logout_path, method: :delete %>
+          		</button>
+            <% end %>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
                 <% if !current_user %>
-                  <li><%= link_to "登入", login_path %></li>
+                  <li><%= link_to "登录", login_path %></li>
                 <% else %>
                   <li><%= link_to "退出", logout_path, method: :delete %></li>
                 <% end %>
