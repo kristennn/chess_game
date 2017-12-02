@@ -1,7 +1,7 @@
 <div class="container-row">
   <table class="table" border:"1px solid white">
     <tr>
-      <td  class="text-left">用户 : <%= current_user.name %></td>
+      <td  class="text-left" style="width: 50%">用户 : <%= current_user.name %></td>
       <td  class="text-left">账户余额 : </td>
     </tr>
     <tr>
@@ -13,7 +13,7 @@
     </tr>
 
   </table>
-
+<h3>菜单选项</h3>
   <%= link_to "下线代理商", saler_info_path %><br>
   <%= link_to "下线玩家", player_info_path %><br>
   <%= link_to "修改密码", "#" %>
