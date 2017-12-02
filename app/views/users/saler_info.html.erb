@@ -1,8 +1,7 @@
 <%= render "form" %>
 <div class="col-xs-12">
-  <%= link_to "新增推广员", signup_path %>
   <% if current_user.permission == "salerone" %>
-  <h5>二级下线推广员</h5>
+  <h5>二级下线推广员<%= link_to "新增推广员", signup_path, :class => "btn btn-default-1"%></h5>
   <table class="table table-striped table-bordered">
     <thead>
       <tr>

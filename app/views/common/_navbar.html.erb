@@ -8,11 +8,15 @@
             <% end %>
             <% if !current_user %>
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <%= link_to "登录", login_path %>
+                <div class="logout-1">
+                 <%= link_to "登录", login_path %>
+                </div>
               </button>
             <% else %>
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <%= link_to "退出", logout_path, method: :delete %>
+                <div class="logout-1">
+                  <%= link_to "退出", logout_path, method: :delete %>
+                </div>
           		</button>
             <% end %>
           </div>

@@ -60,6 +60,14 @@
     border-radius: 4px;
 }
 
+// 导航栏退出按钮样式
+.logout-1{
+  a{
+    color: #fff;
+    font-weight: bold;
+  }
+}
+
 input {
    -webkit-appearance: none;
     background-color: white;
@@ -131,6 +139,19 @@ h5{
   text-align: center;
 }
 
+.btn-default-1{
+  background-color: rgb(50,108,208);
+  border-color: #fff;
+  border-radius: 10px;
+  color: #ffffff;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.btn.btn-default-1:hover {
+    background-color: #3877c8;
+    color: #fff;
+}
 // 管理员选项样式
 .col-md-2{
   background: rgb(248,248,248);
