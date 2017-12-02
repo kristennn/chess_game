@@ -3,16 +3,11 @@
   <tr>
     <th>用户名</th>
     <th>权限</th>
-    <th>管理</th>
   </tr>
   <% @users.each do |user| %>
     <tr>
       <td><%= user.name %></td>
       <td><%= user.permission %></td>
-      <td>
-        <%= link_to("编辑", "#") %>|
-        <%= link_to("删除", logout_path, method: :delete, data: "confirm: {你确定要删除#{user.name}吗？}") %>
-      </td>
     </tr>
   <% end %>
 </table>
