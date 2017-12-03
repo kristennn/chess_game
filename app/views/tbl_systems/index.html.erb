@@ -1,0 +1,75 @@
+<div class="col-md-12">
+  <h5>系统平台概况</h5>
+  <table class="table table-striped table-bordered" >
+      <tr>
+        <td class="text-right" style ="width: 45%" >玩家总人数:</td>
+        <td class="text-left"><%= @tblplayers.count %></td>
+      </tr>
+      <tr>
+        <td class="text-right">冻结人数:</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td class="text-right">当前在线人数:</td>
+        <% @tblaccounts.each do |u| %>
+          <% if u.login_time - Time.now > 0 && u.logout_time - Time.now > 0 %>
+            <% @online_count = @online_count + 1 %>
+          <% end %>
+        <% end %>
+        <td class="text-left"><%= @online_count %></td>
+      </tr>
+
+      <tr>
+        <td class="text-right">今日活跃人数:</td>
+        <% @tblaccounts.each do |u| %>
+          <% if (Time.now - u.logout_time)/60/60 < 24 %>
+            <% @active_count += 1 %>
+          <% end %>
+        <% end %>
+        <td class="text-left"><%= @active_count %></td>
+      </tr>
+
+      <tr>
+        <td class="text-right">今日注册人数:</td>
+        <% @tblaccounts.each do |u| %>
+          <% if (Time.now - u.create_time)/60/60 < 24 %>
+            <% @signin_count += 1 %>
+          <% end %>
+        <% end %>
+       <td class="text-left"><%= @signin_count %></td>
+      </tr>
+
+      <tr>
+        <td class="text-right">今日最高在线:</td>
+        <td class="text-left"></td>
+      </tr>
+
+      <tr>
+        <td class="text-right">平台财富总和:</td>
+        <% @tblplayers.each do |u| %>
+          <% @diamond_count += u.diamond %>
+        <% end %>
+       <td class="text-left"><%= @diamond_count %></td>
+      </tr>
+
+      <tr>
+        <td class="text-right">冻结玩家财富:</td>
+        <td class="text-left"></td>
+      </tr>
+
+      <tr>
+        <td class="text-right">总充值:</td>
+        <% @tblorders.each do |u| %>
+          <% @money_count += u.money %>
+        <% end %>
+       <td class="text-left"><%= @money_count %></td>
+      </tr>
+
+      <tr>
+        <td class="text-right">总税收:</td>
+        <td class="text-left"></td>
+      </tr>
+
+  </table>
+</div>

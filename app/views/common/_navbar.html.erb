@@ -2,13 +2,33 @@
       <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
+           <% if current_user && current_user.permission == "manager" %>
               <a class="navbar-brand" href="/">游戏后台</a>
+              <a class="navbar-brand" href="users">用户管理</a>
+            <% end %>
+            <% if !current_user %>
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <div class="logout-1">
+                 <%= link_to "登录", login_path %>
+                </div>
+              </button>
+            <% else %>
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <div class="logout-1">
+                  <%= link_to "退出", logout_path, method: :delete %>
+                </div>
+          		</button>
+            <% end %>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
-                  <li><%= link_to("登入", '#') %></li>
+                <% if !current_user %>
+                  <li><%= link_to "登录", login_path %></li>
+                <% else %>
+                  <li><%= link_to "退出", logout_path, method: :delete %></li>
+                <% end %>
               </ul>
           </div>
           <!-- /.navbar-collapse -->

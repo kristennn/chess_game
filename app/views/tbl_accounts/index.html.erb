@@ -1,0 +1,89 @@
+<div class="col-md-12">
+  <h5>玩家用户列表</h5>
+  <%= search_form_for @q, :url => tbl_accounts_path do |f| %>
+    <p>
+       用户ID：<%= text_field_tag :userid, params[:userid] %>
+       用户昵称：<%= f.search_field :account_cont %>
+       最后登录地址：<%= f.search_field :ip_cont %>
+       注册起始时间：<%= date_field_tag :create_time, params[:create_time]%>
+    </p>
+    <div class="dropdown clearfix pull-right">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+     全部
+       <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+       <li>
+         <%= link_to("正常", '#') %>
+       </li>
+       <li>
+           <%= link_to("活跃", '#') %>
+
+       </li>
+       <li>
+         <%= link_to("锁定", '#') %>
+
+       </li>
+   </ul>
+ </div>
+    <p>
+       注册结束时间：<%= date_field_tag :vip_invalid_time, params[:vip_invalid_time]%>
+       登录起始时间：<%= date_field_tag :login_time, params[:login_time]%>
+       登录结束时间：<%= date_field_tag :logout_time, params[:logout_time]%>
+     </p>
+
+    <p class="text-left">
+      <%= submit_tag "搜索用户", :class => "btn" %>
+    </p>
+  <% end %>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <td>用户ID</td>
+        <td>用户账号</td>
+        <td>用户昵称</td>
+        <td>手机号</td>
+        <td>钻石</td>
+        <td>荣誉值</td>
+        <td>用户状态</td>
+        <td>注册时间</td>
+        <td>上次登录IP</td>
+        <td>上次登录时间</td>
+      </tr>
+    </thead>
+    <tbody>
+     <% @tbl_accounts.each do |tbl_account| %>
+       <tr>
+        <td><%= tbl_account.userid %></td>
+        <td></td>
+        <td><%= tbl_account.account %></td>
+        <td><%= tbl_account.phone_num %></td>
+        <td>
+          <% if @tbl_playerinfo.find_by(:userid => "#{tbl_account.userid}").present? %>
+            <%= @tbl_playerinfo.find_by(:userid => "#{tbl_account.userid}").diamond %>
+          <% else %>
+            该用户不是玩家
+          <% end %>
+        </td>
+        <td></td>
+        <td>
+          <% if (tbl_account.lock - Time.now) > 0 %>
+             锁定
+          <% elsif (Time.now - tbl_account.logout_time)/60/60 < 24%>
+             活跃
+          <% else %>
+             正常
+          <% end %>
+        </td>
+        <td><%= tbl_account.create_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
+        <td><%= tbl_account.ip %></td>
+        <td><%= tbl_account.login_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
+       </tr>
+     <% end %>
+    </tbody>
+  </table>
+  <div class="text-right">
+    <!-- <%= page_entries_info @tbl_accounts %> -->
+    <%= paginate @tbl_accounts, window:2 %>
+  </div>
+</div>

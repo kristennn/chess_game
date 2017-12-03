@@ -1,0 +1,57 @@
+<div class="col-md-12">
+  <h5>游戏开房房间列表</h5>
+  <%= form_tag tbl_rooms_path, method: :get do  %>
+    <p>
+      时间段搜索开房时间：<%= date_field_tag :time, params[:time] %>到<%= date_field_tag :end_time, params[:end_time] %>
+    </p>
+    <p class="text-left search-button">
+      <%= submit_tag "搜索开房信息", :class => "btn" %>
+    </p>
+  <% end %>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <td>桌号</td>
+        <td>桌子编码</td>
+        <td>开房时间</td>
+        <td>开房时长(分钟)</td>
+        <td>房间状态</td>
+        <td>房费类型</td>
+        <td>玩家列表</td>
+        <td>座位数</td>
+        <td>房费</td>
+      </tr>
+    </thead>
+    <tbody>
+     <% @tbl_rooms.each do |tbl_room| %>
+       <tr>
+        <td><%= tbl_room.table_id %></td>
+        <td><%= tbl_room.table_code %></td>
+        <td><%= tbl_room.time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
+        <td><%= ((tbl_room.end_time - tbl_room.time)/60).round %></td>
+        <td>
+          <% if (Time.now - tbl_room.end_time) > 0 %>
+             已结束
+          <% else %>
+             正在游戏中
+          <% end %>
+        </td>
+        <td>
+          <% if tbl_room.mode == 1 %>
+            房主支付
+          <% else %>
+            AA支付
+          <% end %>
+        </td>
+        <td><%= tbl_room.players %></td>
+        <td><%= tbl_room.seat_cnt %></td>
+        <td><%= tbl_room.fee %></td>
+       </tr>
+     <% end %>
+    </tbody>
+  </table>
+  <div class="text-right">
+    <!-- <%= page_entries_info @tbl_rooms %> -->
+    <%= paginate @tbl_rooms, window:2 %>
+  </div>
+</div>
