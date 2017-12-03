@@ -55,8 +55,14 @@
      <% @tbl_accounts.each do |tbl_account| %>
        <tr>
         <td><%= tbl_account.userid %></td>
-        <td></td>
         <td><%= tbl_account.account %></td>
+        <td>
+          <% if @tbl_playerinfo.find_by(:userid => "#{tbl_account.userid}").present? %>
+            <%= @tbl_playerinfo.find_by(:userid => "#{tbl_account.userid}").nickname %>
+          <% else %>
+            该用户没有昵称
+          <% end %>
+        </td>
         <td><%= tbl_account.phone_num %></td>
         <td>
           <% if @tbl_playerinfo.find_by(:userid => "#{tbl_account.userid}").present? %>
