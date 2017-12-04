@@ -5,11 +5,11 @@
       <%= f.input :name, :label => false, :error => false, placeholder: "请输入推广员名称", required: true %>
       <%= f.input :email, :label => false, :error => false, placeholder: "请输入推广员邮箱", required: true %>
       <%= f.input :salerid, :label => false, :error => false, placeholder: "请输入上线代理商ID", required: true %>
-      <% if current_user.permission == "manager" %>
+      <% if current_user && current_user.permission == "manager" %>
         <%= f.input :permission, collection: ["salerone", "salertwo", "salerthree"] %>
-      <% elsif current_user.permission == "salerone" %>
+      <% elsif current_user && current_user.permission == "salerone" %>
         <%= f.input :permission, collection: ["salertwo", "salerthree"] %>
-      <% elsif current_user.permission == "salertwo" %>
+      <% elsif current_user && current_user.permission == "salertwo" %>
         <%= f.input :permission, collection: ["salerthree"] %>
       <% end %>
       <%= f.input :password, :label => false, :error => false, placeholder: "请设置推广员密码", required: true %>

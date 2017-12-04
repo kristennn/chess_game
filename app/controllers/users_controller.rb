@@ -28,7 +28,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path
+      if @user.permission == "manager"
+        redirect_to :tbl_accounts_path
+      else
+        redirect_to :saler_overview_path
+      end
       flash[:notice] = "注册成功"
     else
       render 'new'
