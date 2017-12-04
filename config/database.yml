@@ -50,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: chess_game_production
-  username: chess_game
-  password: <%= ENV['CHESS_GAME_DATABASE_PASSWORD'] %>
+  database: zdgame
+  username: xiaofei
+  password: 15540162996ZAG
