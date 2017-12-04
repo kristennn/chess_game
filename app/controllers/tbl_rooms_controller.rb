@@ -1,5 +1,7 @@
 class TblRoomsController < ApplicationController
+  before_action :logged_in_user
   layout 'admin'
+
   def index
     @tbl_rooms = TblRoom.page(params[:page]).per(10)
 
@@ -9,6 +11,15 @@ class TblRoomsController < ApplicationController
 
     if params[:end_time].present?
       @tbl_rooms = @tbl_rooms.where("end_time <= ?", Date.parse(params[:end_time]).end_of_day)
+    end
+  end
+
+  private
+
+  def logged_in_user
+    unless logged_in?
+      flash[:alert] = "请先登录"
+      redirect_to login_path
     end
   end
 end

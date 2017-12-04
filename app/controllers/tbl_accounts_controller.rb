@@ -1,6 +1,8 @@
 class TblAccountsController < ApplicationController
-  before_action :logged_in_user, only: [:index]
+  before_action :logged_in_user
   layout 'admin'
+  #include TblAccountHelper  
+
   def index
     @tbl_playerinfo = TblPlayerinfo.page(params[:page]).per(10)
     @q = TblAccount.ransack(params[:q])
@@ -37,7 +39,7 @@ class TblAccountsController < ApplicationController
     elsif current_user && current_user.permission == "salerthree"
       redirect_to saler_overview_path
     end
-    @tbl_accounts = TblAccount.page(params[:page]).per(10)
+    @tbl_accounts = TblAccount.all.page(params[:page]).per(10)
     @tbl_playerinfo = TblPlayerinfo.page(params[:page]).per(10)
   end
 
