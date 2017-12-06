@@ -54,4 +54,4 @@ production:
   database: zdgame
   username: xiaofei
   password: 15540162996ZAG
-  host: rm-uf61x721sjyq31492.mysql.rds.aliyuncs.com
+  host: 172.19.109.77
