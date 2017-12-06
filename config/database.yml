@@ -54,4 +54,4 @@ production:
   username: xiaofei
   database: zdgame
   password: 15540162996ZAG
-  host: 172.19.109.75
+  host: 172.19.109.77
