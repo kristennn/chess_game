@@ -56,4 +56,4 @@ production:
   password: 15540162996ZAG
   socket: /var/run/mysqld/mysqld.sock
   reconnect: false
-  host: 106.14.190.181
+  host: 172.19.109.77
