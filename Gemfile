@@ -40,9 +40,9 @@ gem 'faker'
 gem 'ransack'
 gem 'bcrypt'
 gem 'font-awesome-rails'
+gem 'awesome_rails_console'
 group :development, :test do
   gem 'pry'
-  gem 'awesome_rails_console'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
