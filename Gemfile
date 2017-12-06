@@ -1,5 +1,5 @@
-source 'https://gems.ruby-China.org'
-
+#source 'https://gems.ruby-China.org'
+source 'https://rubygems.org'
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -40,6 +40,7 @@ gem 'faker'
 gem 'ransack'
 gem 'bcrypt'
 gem 'font-awesome-rails'
+gem 'activerecord-jdbcmysql-adapter'
 group :development, :test do
   gem 'pry'
   gem 'awesome_rails_console'
