@@ -55,4 +55,5 @@ production:
   username: xiaofei
   password: 15540162996ZAG
   socket: /var/run/mysqld/mysqld.sock
+  reconnect: false
   host: rm-uf61x721sjyq31492.mysql.rds.aliyuncs.com
