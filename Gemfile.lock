@@ -238,7 +238,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-jdbcmysql-adapter
   awesome_rails_console
   bcrypt
   bootstrap-sass
