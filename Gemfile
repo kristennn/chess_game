@@ -40,7 +40,8 @@ gem 'faker'
 gem 'ransack'
 gem 'bcrypt'
 gem 'font-awesome-rails'
-gem 'activerecord-jdbcmysql-adapter'
+gem 'activerecord', '~> 5.0.6'
+gem 'activerecord-jdbcmysql-adapter', :platform => :jruby
 group :development, :test do
   gem 'pry'
   gem 'awesome_rails_console'

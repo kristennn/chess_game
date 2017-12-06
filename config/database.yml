@@ -49,9 +49,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  adapter: mysql2
+  adapter: mysql
   encoding: utf8
   database: zdgame
   username: xiaofei
   password: 15540162996ZAG
-  host: 172.19.109.75
+  url: "jdbc:mysql://rm-uf61x721sjyq31492.mysql.rds.aliyuncs.com:3306/zdgame?profileSQL=true"
