@@ -11,12 +11,12 @@ class UsersController < ApplicationController
 
   def index
     if current_user.permission == "manager"
-      @users = User.all.order("id DESC")
+      @users = User.all.order("id DESC").page(params[:page]).per(15)
     elsif current_user.permission == "salerone"
-      @users = User.where(:permission => "salerone") + User.where(:permission => "salertwo") + User.where(:permission => "salerthree")
+      @users = User.where(:permission => "salerone") + User.where(:permission => "salertwo").page(params[:page]).per(10) + User.where(:permission => "salerthree")
     elsif current_user.permission == "salertwo"
-      @users = User.where(:permission => "salertwo") + User.where(:permission => "salerthree")
-    elsif current_user.permission == "salertwo"
+      @users = User.where(:permission => "salertwo") + User.where(:permission => "salerthree").page(params[:page]).per(10)
+    elsif current_user.permission == "salerthree"
       @users = User.where(:permission => "salerthree")
     end
   end
