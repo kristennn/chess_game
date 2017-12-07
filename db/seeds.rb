@@ -9,7 +9,7 @@
 puts "这个文档会建立多个用户"
 
 
-User.create(:name => "管理员", :email => "lala@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "manager")
+User.create(:name => "管理员3", :email => "test3@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "manager")
 
 10.times do |i|
   User.create(:name => "一级代理商#{i}号", :email => "salerone#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "salerone")
