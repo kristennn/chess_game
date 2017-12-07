@@ -68,7 +68,7 @@
           <% if @tbl_playerinfo.find_by(:userid => "#{tbl_account.userid}").present? %>
             <%= @tbl_playerinfo.find_by(:userid => "#{tbl_account.userid}").diamond %>
           <% else %>
-            该用户不是玩家
+             0
           <% end %>
         </td>
         <td></td>
