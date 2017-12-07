@@ -4,7 +4,11 @@
     <%= render 'shared/error_messages' %>
       <%= f.input :name, :label => false, :error => false, placeholder: "请输入推广员名称", required: true %>
       <%= f.input :email, :label => false, :error => false, placeholder: "请输入推广员邮箱", required: true %>
-      <%= f.input :salerid, :label => false, :error => false, placeholder: "请输入上线代理商ID", required: true %>
+      <% if current_user && current_user.permission == "salerone" ||  current_user.permission == "salertwo"%>
+        <%= f.input :salerid,:label => false, :error => false, placeholder: "请输入上线代理商ID 即 #{current_user.id}", required: true %>
+      <% elsif current_user && current_user.permission == "manager" %>
+        <%= f.input :salerid,:label => false, :error => false, placeholder: "请输入上线代理商ID", required: true %>
+      <% end %>
       <% if current_user && current_user.permission == "manager" %>
         <%= f.input :permission, collection: ["salerone", "salertwo", "salerthree"] %>
       <% elsif current_user && current_user.permission == "salerone" %>
