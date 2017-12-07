@@ -27,8 +27,17 @@
        <tr>
         <td><%= tbl_room.table_id %></td>
         <td><%= tbl_room.table_code %></td>
-        <td><%= tbl_room.time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
-        <td><%= ((tbl_room.end_time - tbl_room.time)/60).round %></td>
+        <% if tbl_room.time.present? %>
+          <td><%= tbl_room.time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
+        <% else %>
+          <td>无</td>
+        <% end %>
+        <% if tbl_room.time.present? %>
+          <td><%= ((tbl_room.end_time - tbl_room.time)/60).round %></td>
+        <% else %>
+          <td>无</td>
+        <% end %>
+
         <td>
           <% if (Time.now - tbl_room.end_time) > 0 %>
              已结束
