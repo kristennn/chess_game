@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def index
     if current_user.permission == "manager"
-      @users = User.all
+      @users = User.all.order("id DESC")
     elsif current_user.permission == "salerone"
       @users = User.where(:permission => "salerone") + User.where(:permission => "salertwo") + User.where(:permission => "salerthree")
     elsif current_user.permission == "salertwo"
