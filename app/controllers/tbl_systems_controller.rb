@@ -13,12 +13,4 @@ class TblSystemsController < ApplicationController
     @money_count = 0
   end
 
-  private
-
-  def logged_in_user
-    unless logged_in?
-      flash[:alert] = "请先登录"
-      redirect_to login_path
-    end
-  end
 end
