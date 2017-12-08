@@ -6,19 +6,19 @@
       <tr>
         <th width="20%">用户名</th>
         <th>级别</th>
+        <th>提成比例</th>
         <th>代理商ID</th>
       </tr>
     </thead>
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.name %></td>
-          <td><%= user.permission %></td>
-          <% if user.permission == "manager" %>
-            <td>管理员无推广ID</td>
-          <% else %>
-            <td><%= user.id %></td>
-          <% end %>
+         <% unless user.permission == "manager" %>
+           <td><%= user.name %></td>
+           <td><%= user.permission %></td>
+           <td>未设置</td>
+           <td><%= user.id %></td>
+         <% end %>
         </tr>
       <% end %>
    </tbpdy>
