@@ -12,12 +12,12 @@ class UsersController < ApplicationController
   def index
     if current_user.permission == "manager"
       @users = User.all.order("id DESC").page(params[:page]).per(15)
-    elsif current_user.permission == "salerone"
-      @users = User.where(:permission => "salerone") + User.where(:permission => "salertwo").page(params[:page]).per(10) + User.where(:permission => "salerthree")
-    elsif current_user.permission == "salertwo"
-      @users = User.where(:permission => "salertwo") + User.where(:permission => "salerthree").page(params[:page]).per(10)
-    elsif current_user.permission == "salerthree"
-      @users = User.where(:permission => "salerthree")
+    elsif current_user.permission == "一级代理"
+      @users = User.where(:permission => "一级代理") + User.where(:permission => "二级代理").page(params[:page]).per(10) + User.where(:permission => "三级代理")
+    elsif current_user.permission == "二级代理"
+      @users = User.where(:permission => "二级代理") + User.where(:permission => "三级代理").page(params[:page]).per(10)
+    elsif current_user.permission == "三级代理"
+      @users = User.where(:permission => "三级代理")
     end
   end
 
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
   def saler_info
     @usersone = User.where(:salerid => current_user.id)
-    if current_user.permission == "salerone"
+    if current_user.permission == "一级代理"
       result = []
       @usersone.each do |i|
         u = User.where(:salerid => i.id)

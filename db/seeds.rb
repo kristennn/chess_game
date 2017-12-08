@@ -10,16 +10,16 @@ puts "这个文档会建立多个用户"
 
 User.create(:name => "管理员", :email => "lala@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "manager")
 
-10.times do |i|
-  User.create(:name => "一级代理商#{i}号", :email => "salerone#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "salerone")
+5.times do |i|
+  User.create(:name => "一级代理商#{i}号", :email => "salerone#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "一级代理")
 end
 
-10.times do |i|
-  User.create(:name => "二级代理商#{i}号", :email => "salertwo#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "salertwo", :salerid => "80")
+5.times do |i|
+  User.create(:name => "二级代理商#{i}号", :email => "salertwo#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "二级代理", :salerid => "80")
 end
 
-10.times do |i|
-  User.create(:name => "三级代理商#{i}号", :email => "salerthree#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "salerthree", :salerid => "90")
+5.times do |i|
+  User.create(:name => "三级代理商#{i}号", :email => "salerthree#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "三级代理", :salerid => "90")
 end
 
 5.times do |i|

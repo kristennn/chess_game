@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20171202091323) do
     t.index ["phone", "token"], name: "index_phone_tokens_on_phone_and_token"
   end
 
-  create_table "tbl_account", primary_key: "userid", id: :bigint, comment: "用户名", unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", comment: "用户账号表" do |t|
+  create_table "tbl_account", primary_key: "userid", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", comment: "用户账号表" do |t|
     t.string "account", default: "", null: false, comment: "昵称"
     t.string "pwd", default: "", null: false, comment: "密码"
     t.string "channel", limit: 10, default: "", null: false, comment: "渠道"
