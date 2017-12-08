@@ -10,7 +10,7 @@
         <td>金额</td>
       </tr>
     </thead>
-    <tbody>
+    <!-- <tbody>
       <% @playerfees.each do |playerfee| %>
         <tr>
           <% if playerfee.fee > 0 && @tblorders.find_by(:userid => "#{playerfee.userid}").pay_time.present?%>
@@ -28,6 +28,6 @@
           <% end %>
         </tr>
      <% end %>
-    </tbody>
+    </tbody> -->
   </table>
 </div>
