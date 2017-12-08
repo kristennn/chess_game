@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       end
       flash[:notice] = "恭喜您，#{@user.name}创建成功"
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -47,9 +47,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "更新成功"
-      redirect_to root_path
+      redirect_to saler_overview_path
     else
-      render 'edit'
+      render :edit
     end
   end
 
