@@ -4,10 +4,8 @@
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
-        <th width="20%">用户名</th>
-        <th>级别</th>
-        <th>提成比例</th>
-        <th>代理商ID</th>
+        <th width="20%">代理名称</th>
+        <th>代理ID</th>
       </tr>
     </thead>
     <tbody>
@@ -15,8 +13,6 @@
         <tr>
          <% unless user.permission == "manager" %>
            <td><%= user.name %></td>
-           <td><%= user.permission %></td>
-           <td>未设置</td>
            <td><%= user.id %></td>
          <% end %>
         </tr>
