@@ -52,7 +52,14 @@
             AA支付
           <% end %>
         </td>
-        <td><%= tbl_room.players %></td>
+        <td>
+          <% tbl_room.players.split(",").each do |p| %>
+            <% @tbl_playerinfos.where(:userid => p.to_i).each do |u| %>
+              <%= u.nickname %>
+            <% end %>
+          <% end %>
+        </td>
+
         <td><%= tbl_room.seat_cnt %></td>
         <td><%= tbl_room.fee %></td>
        </tr>
