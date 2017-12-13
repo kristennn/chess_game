@@ -10,10 +10,16 @@ Rails.application.routes.draw do
   get '/saler_info', to: 'users#saler_info'
   get 'player_info', to: 'users#player_info'
 
+
   resources :tbl_rooms
   resources :tbl_accounts
   resources :tbl_systems
   resources :tbl_player_fees
-  resources :users
+  resources :users do
+    member do
+      post :add_diamond_user_path
+    end
+  end
+  resources :tbl_playerinfos
 
 end

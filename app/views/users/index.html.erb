@@ -6,14 +6,21 @@
       <tr>
         <th width="20%">代理名称</th>
         <th>代理ID</th>
+        <th>增加钻石</th>
       </tr>
     </thead>
     <tbody>
       <% @users.each do |user| %>
         <tr>
          <% unless user.permission == "manager" %>
-           <td><%= user.name %></td>
+           <td><%= link_to user.name, user_path(user) %></td>
            <td><%= user.id %></td>
+           <td>
+             <%= form_for user do |f| %>
+               <%= f.select :count, 1..10 %>
+               <%= f.submit "增加钻石", data: { disable_with: "Submiting..."} %>
+             <% end %>
+           </td>
          <% end %>
         </tr>
       <% end %>

@@ -71,6 +71,13 @@ class UsersController < ApplicationController
     @users = TblAccount.where(:saler => current_user.id)
   end
 
+  def add_diamond_to_user
+    @user = User.find(params[:id])
+    @user.diamond.create
+    @user.save
+    redirect_to back
+  end
+
   private
 
   def user_params
