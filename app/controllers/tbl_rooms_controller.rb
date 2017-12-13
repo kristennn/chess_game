@@ -5,7 +5,6 @@ class TblRoomsController < ApplicationController
   def index
     @tbl_rooms = TblRoom.page(params[:page]).per(10)
     @tbl_playerinfos = TblPlayerinfo.all
-    @tbl_account = TblAccount.find(params[:id])
 
     if params[:time].present?
       @tbl_rooms = @tbl_rooms.where("time >= ?", Date.parse(params[:time]).beginning_of_day)
