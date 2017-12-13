@@ -6,7 +6,8 @@
       <tr>
         <th width="20%">代理名称</th>
         <th>代理ID</th>
-        <th>增加钻石</th>
+        <th>钻石数量</th>
+        <th>房卡</th>
       </tr>
     </thead>
     <tbody>
@@ -15,10 +16,11 @@
          <% unless user.permission == "manager" %>
            <td><%= link_to user.name, user_path(user) %></td>
            <td><%= user.id %></td>
+           <td><%= user.diamond %></td>
            <td>
              <%= form_for user do |f| %>
-               <%= f.select :count, 1..10 %>
-               <%= f.submit "增加钻石", data: { disable_with: "Submiting..."} %>
+               <%= f.select :count, [10,50,100,200] %>
+               <%= f.submit "点击充值", data: { disable_with: "Submiting..."} %>
              <% end %>
            </td>
          <% end %>
