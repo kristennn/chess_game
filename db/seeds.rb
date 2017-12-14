@@ -15,19 +15,15 @@ User.create(:name => "管理员", :email => "lala@gmail.com", :password => "1234
 end
 
 5.times do |i|
-  User.create(:name => "二级代理商#{i}号", :email => "salertwo#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "二级代理", :salerid => "80")
+  User.create(:name => "二级代理商#{i}号", :email => "salertwo#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "二级代理", :salerid => "5")
 end
 
 5.times do |i|
-  User.create(:name => "三级代理商#{i}号", :email => "salerthree#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "三级代理", :salerid => "90")
+  User.create(:name => "三级代理商#{i}号", :email => "salerthree#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "三级代理", :salerid => "10")
 end
 
 5.times do |i|
-  TblAccount.create(:account => "玩家#{i+50}号", :saler => "80")
-end
-
-5.times do |i|
-  TblAccount.create(:account => "玩家#{i+60}号", :saler => "90")
+  TblAccount.create(:account => "玩家#{i+50}号", :saler => "5")
 end
 
 puts "创建成功"

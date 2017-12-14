@@ -81,10 +81,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     $a = params[:user].values.first.to_i
     b = $a + @user.diamond
+    c = current_user.diamond - $a
     if @user.update(:diamond => b )
-      flash[:notice] = "充值成功"
+      current_user.update(:diamond => c)
     end
+    if current_user.permission == "manager"
+      flash[:notice] = "钻石充值成功"
       redirect_to users_path
+    else
+      flash[:notice] = "转账成功"
+      redirect_to saler_info_path
+    end
   end
 
 
