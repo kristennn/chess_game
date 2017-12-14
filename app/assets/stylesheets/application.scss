@@ -72,6 +72,23 @@
     font-size: 15px;
   }
 }
+.container-row{
+  a{
+    color: #fff;
+    font-size: 15px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    height: 20;
+    line-height: 2.8;
+  }
+}
+.container-row{
+  a:hover{
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+  }
+}
 input {
    -webkit-appearance: none;
     background-color: white;

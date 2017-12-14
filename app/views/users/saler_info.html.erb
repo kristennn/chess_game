@@ -1,4 +1,8 @@
 <%= render "form" %>
+<div class="container-row">
+  <h5><a href="/saler_overview">菜单选项</a> >> 下线推广员</h5>
+</div>
+
 <div class="col-xs-12">
   <% if current_user.permission == "一级代理" %>
   <h5>二级下线推广员<%= link_to "新增推广员", signup_path, :class => "btn btn-default-1"%></h5>
