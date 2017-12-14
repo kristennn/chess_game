@@ -18,11 +18,12 @@ Rails.application.routes.draw do
   resources :users do
     member do
       patch :add_diamond
+      patch :add_diamond_info
     end
   end
   resources :tbl_playerinfos do
     member do
-      patch :add_diamond
+      patch :diamond
     end
   end
 

@@ -78,22 +78,37 @@ class UsersController < ApplicationController
     @tbl_playerinfo = TblPlayerinfo.all
   end
 
+  def add_diamond_info
+    @playerinfo = TblPlayerinfo.find(params[:id])
+    a= params[:tbl_playerinfo].values.first.to_i
+    b= @playerinfo.diamond + a
+    c= current_user.diamond - a
+
+    if @playerinfo.update(:diamond => b)
+      current_user.update(:diamond => c)
+      flash[:notice] = "为玩家#{@playerinfo.nickname}充值成功"
+      redirect_to player_info_path
+    end
+  end
+
   def add_diamond
     @user = User.find(params[:id])
     $a = params[:user].values.first.to_i
     b = $a + @user.diamond
-    c = current_user.diamond - $a
-    if @user.update(:diamond => b )
-      current_user.update(:diamond => c)
-    end
     if current_user.permission == "manager"
+      @user.update(:diamond => b)
       flash[:notice] = "钻石充值成功"
       redirect_to users_path
     else
+      c = current_user.diamond - $a
+      @user.update(:diamond => b )
+      current_user.update(:diamond => c)
       flash[:notice] = "转账成功"
       redirect_to saler_info_path
     end
   end
+
+
 
 
 
