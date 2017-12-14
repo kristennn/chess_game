@@ -77,12 +77,17 @@ class UsersController < ApplicationController
     @users = TblAccount.where(:saler => current_user.id)
   end
 
-  def add_diamond_to_user
+  def add_diamond
     @user = User.find(params[:id])
-    @user.diamond.create
-    @user.save
-    redirect_to back
+    $a = params[:user].values.first.to_i
+    b = $a + @user.diamond
+    if @user.update(:diamond => b )
+      flash[:notice] = "充值成功"
+    end
+      redirect_to users_path
   end
+
+
 
   private
 

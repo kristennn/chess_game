@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :tbl_player_fees
   resources :users do
     member do
-      post :add_diamond_user_path
+      patch :add_diamond
     end
   end
   resources :tbl_playerinfos
