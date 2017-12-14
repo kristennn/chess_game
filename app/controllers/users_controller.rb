@@ -46,8 +46,14 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "更新成功"
-      redirect_to saler_overview_path
+      if current_user.permission == "manager"
+        flash[:notice] = "更新成功"
+        redirect_to tbl_accounts_path
+      else
+        flash[:notice] = "更新成功"
+        redirect_to saler_overview_path
+      end
+
     else
       render :edit
     end
@@ -81,7 +87,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :permission, :salerid, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :permission, :salerid, :password, :password_confirmation, :diamond, :count)
   end
 
   def correct_user
