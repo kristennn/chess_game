@@ -7,6 +7,7 @@
     <tr>
       <th>玩家ID</th>
       <th>玩家昵称</th>
+      <th>钻石余额</th>
       <th>钻石转账</th>
     </tr>
   </thead>
@@ -15,7 +16,14 @@
       <tr>
         <td><%= user.id %></td>
         <td><%= user.account %></td>
-        <td></td>
+        <% if @tbl_playerinfo.find_by(:userid => user.id).present? %>
+          <td><%= @tbl_playerinfo.find_by(:userid => user.id).diamond %></td>
+        <% else %>
+          <td>0</td>
+        <% end %>
+        <td>
+        
+        </td>
       </tr>
     <% end %>
   </tbody>

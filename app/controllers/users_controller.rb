@@ -75,6 +75,7 @@ class UsersController < ApplicationController
 
   def player_info
     @users = TblAccount.where(:saler => current_user.id)
+    @tbl_playerinfo = TblPlayerinfo.all
   end
 
   def add_diamond

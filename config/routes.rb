@@ -20,6 +20,10 @@ Rails.application.routes.draw do
       patch :add_diamond
     end
   end
-  resources :tbl_playerinfos
+  resources :tbl_playerinfos do
+    member do
+      patch :add_diamond
+    end
+  end
 
 end

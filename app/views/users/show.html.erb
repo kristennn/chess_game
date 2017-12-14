@@ -1,6 +1,12 @@
-<h1>
-  <%= @user.name %>
-</h1>
-<h4>
-钻石数量: <%= @user.diamond %>
-</h4>
+<div class="container">
+  <h3>
+    <%= @user.name %>
+  </h3>
+  <h4>
+  钻石数量: <%= @user.diamond %>
+  </h4>
+  <%= form_for @user, url: add_diamond_user_path(@user) do |f| %>
+    <%= f.select :count, [10,50,100,200] %>
+    <%= f.submit "点击充值", :class => "btn", data: { disable_with: "充值中..."} %>
+  <% end %>
+</div>
