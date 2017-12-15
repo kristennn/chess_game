@@ -20,7 +20,7 @@
               <td>充值</td>
               <td><%= playerfee.fee %></td>
             <% elsif playerfee.fee > 0 && TblOrder.find_by(:userid => "#{playerfee.userid}").pay_time.blank? %>
-               <td><%= TblPlayerinfo.find_by(:userid => "#{playerfee.userid}").strftime("%Y/%m/%d  %H:%M:%S")%></td>
+               <td><%= TblPlayerinfo.find_by(:userid => "#{playerfee.userid}").last_update.strftime("%Y/%m/%d  %H:%M:%S")%></td>
                <td><%= playerfee.userid %></td>
                <td><%= playerfee.table_id %></td>
                <td>系统赠送</td>
