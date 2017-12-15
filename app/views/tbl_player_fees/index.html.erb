@@ -13,7 +13,7 @@
     <tbody>
         <% @playerfees.each do |playerfee| %>
           <tr>
-            <% if playerfee.fee > 0 && TblOrder.find_by(:userid => "#{playerfee.userid}").pay_time.blank? %>
+            <% if playerfee.fee > 0 && TblPlayerinfo.find_by(:userid => "#{playerfee.userid}").last_update.present? %>
                <td><%= TblPlayerinfo.find_by(:userid => "#{playerfee.userid}").last_update.strftime("%Y/%m/%d  %H:%M:%S")%></td>
                <td><%= playerfee.userid %></td>
                <td><%= playerfee.table_id %></td>
