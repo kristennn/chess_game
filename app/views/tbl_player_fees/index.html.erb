@@ -13,7 +13,7 @@
     <tbody>
         <% @playerfees.each do |playerfee| %>
           <tr>
-            <% if playerfee.fee > 0 TblOrder.find_by(:userid => "#{playerfee.userid}").pay_time.present? %>
+            <% if playerfee.fee > 0 && TblOrder.find_by(:userid => "#{playerfee.userid}").pay_time.present? %>
               <td><%= TblOrder.find_by(:userid => "#{playerfee.userid}").pay_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
               <td><%= playerfee.userid %></td>
               <td>0</td>
