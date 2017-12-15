@@ -19,6 +19,12 @@
               <td>0</td>
               <td>充值</td>
               <td><%= playerfee.fee %></td>
+            <% elsif playerfee.fee > 0 && TblOrder.find_by(:userid => "#{playerfee.userid}").pay_time.blank? %>
+               <td><%= TblPlayerinfo.find_by(:userid => "#{playerfee.userid}").strftime("%Y/%m/%d  %H:%M:%S")%></td>
+               <td><%= playerfee.userid %></td>
+               <td><%= playerfee.table_id %></td>
+               <td>系统赠送</td>
+               <td><%= playerfee.fee %></td>
             <% elsif playerfee.fee < 0 && TblRoom.find_by(:table_id => "#{playerfee.table_id}").end_time.present? %>
               <td><%= TblRoom.find_by(:table_id => "#{playerfee.table_id}").end_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
               <td><%= playerfee.userid %></td>
