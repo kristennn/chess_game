@@ -4,7 +4,7 @@ class TblAccountsController < ApplicationController
   #include TblAccountHelper
 
   def index
-    @tbl_playerinfo = TblPlayerinfo.order("userid DESC").page(params[:page]).per(10)
+    @tbl_playerinfo = TblPlayerinfo.order("userid DESC")
     @q = TblAccount.order("userid DESC").ransack(params[:q])
     @tbl_accounts = @q.result.order("userid DESC").page(params[:page]).per(10)
 
