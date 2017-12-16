@@ -12,21 +12,23 @@
     </thead>
     <tbody>
         <% @playerfees.each do |playerfee| %>
+        <% @tbl_orders.each do |tbl_order| %>
           <tr>
-            <% if playerfee.fee > 0 && TblOrder.find_by(:userid => "#{playerfee.userid}").pay_time.present? %>
-              <td><%= TblOrder.find_by(:userid => "#{playerfee.userid}").pay_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
-              <td><%= playerfee.userid %></td>
-              <td>0</td>
-              <td>充值</td>
-              <td><%= playerfee.fee %></td>
-            <% elsif playerfee.fee < 0 && TblRoom.find_by(:table_id => "#{playerfee.table_id}").end_time.present? %>
-              <td><%= TblRoom.find_by(:table_id => "#{playerfee.table_id}").end_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
-              <td><%= playerfee.userid %></td>
-              <td><%= playerfee.table_id %></td>
-              <td>房费消耗</td>
-              <td><%= playerfee.fee %></td>
+            <% if playerfee.present? %>
+            <td><%= TblRoom.find_by(:table_id => "playerfee.table_id").end_time %></td>
+            <td><%= playerfee.userid %></td>
+            <td><%= playerfee.table_id %></td>
+            <td>房费消耗</td>
+            <td><%= playerfee.fee %></td>
+            <% else %>
+            <td><%= tbl_order.pay_time %></td>
+            <td><%= tbl_order.userid %></td>
+            <td>0</td>
+            <td>充值</td>
+            <td><%= tbl_order.money %></td>
             <% end %>
           </tr>
+       <% end %>
        <% end %>
       </tbody>
   </table>
