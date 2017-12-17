@@ -16,8 +16,8 @@
               <td><%= @tbl_room.find_by(:table_id => "#{playerfee.table_id}").end_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
               <td><%= playerfee.userid %></td>
               <td><%= playerfee.table_id %></td>
-              <td>房费消耗</td>
-              <td><%= playerfee.fee %></td>
+              <td style = "color:red">房费消耗</td>
+              <td style ="font-weight:bold;color:red">-<%= playerfee.fee%></td>
           </tr>
        <% end %>
       </tbody>
