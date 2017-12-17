@@ -16,3 +16,4 @@ class TblRoomsController < ApplicationController
   end
 
 end
+ 

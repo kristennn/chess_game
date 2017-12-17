@@ -1,0 +1,74 @@
+<div class="col-md-12">
+  <h5>玩家信息</h5>
+  <table class="table table-striped table-bordered" >
+      <tr>
+        <td class="text-right" style ="width: 45%" >用户ID:</td>
+        <td class="text-left"><%= @tbl_account.userid %></td>
+      </tr>
+      <tr>
+        <td class="text-right">用户账号:</td>
+        <td class="text-left"><%= @tbl_account.account %></td>
+      </tr>
+
+      <tr>
+        <td class="text-right">用户昵称:</td>
+
+        <td class="text-left">
+          <% if TblPlayerinfo.find_by(:userid => "#{@tbl_account.userid}").present? %>
+            <%= TblPlayerinfo.find_by(:userid => "#{@tbl_account.userid}").nickname %>
+          <% else %>
+            该用户没有昵称
+          <% end %>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="text-right">手机号:</td>
+
+        <td class="text-left"><%= @tbl_account.phone_num %></td>
+      </tr>
+
+      <tr>
+        <td class="text-right">钻石:</td>
+
+       <td class="text-left">
+         <% if TblPlayerinfo.find_by(:userid => "#{@tbl_account.userid}").present? %>
+           <%= TblPlayerinfo.find_by(:userid => "#{@tbl_account.userid}").diamond %>
+         <% else %>
+            0
+         <% end %>
+       </td>
+      </tr>
+
+      <tr>
+        <td class="text-right">用户状态:</td>
+        <td class="text-left">
+          <% if (@tbl_account.lock - Time.now) > 0 %>
+             锁定
+          <% elsif (Time.now - @tbl_account.logout_time)/60/60 < 24%>
+             活跃
+          <% else %>
+             正常
+          <% end %>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="text-right">注册时间:</td>
+
+       <td class="text-left"><%= @tbl_account.create_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
+      </tr>
+
+      <tr>
+        <td class="text-right">上次登录IP:</td>
+        <td class="text-left"><%= @tbl_account.ip %></td>
+      </tr>
+
+      <tr>
+        <td class="text-right">上次登录时间:</td>
+
+       <td class="text-left"><%= @tbl_account.login_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
+      </tr>
+
+  </table>
+</div>

@@ -42,5 +42,9 @@ class TblAccountsController < ApplicationController
 
   end
 
+  def show
+    @tbl_account = TblAccount.find(params[:id])
+  end
+
 
 end

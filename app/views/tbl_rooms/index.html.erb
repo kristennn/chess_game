@@ -55,7 +55,8 @@
         <td>
           <% tbl_room.players.split(",").each do |p| %>
             <% @tbl_playerinfos.where(:userid => p.to_i).each do |u| %>
-              <%= u.nickname %>
+              <% r = TblAccount.find_by(:userid => u.userid) %>
+              <%= link_to u.nickname, tbl_account_path(r) %>
             <% end %>
           <% end %>
         </td>
