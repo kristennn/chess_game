@@ -9,6 +9,6 @@ Bundler.require(*Rails.groups)
 module ChessGame
   class Application < Rails::Application
     config.load_defaults 5.1
-    config.time_zone = "Beijing"
+    #config.time_zone = "Beijing"
   end
 end
