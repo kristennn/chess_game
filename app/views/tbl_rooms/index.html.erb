@@ -56,7 +56,7 @@
           <% tbl_room.players.split(",").each do |p| %>
             <% @tbl_playerinfos.where(:userid => p.to_i).each do |u| %>
               <% r = TblAccount.find_by(:userid => u.userid) %>
-              <%= link_to u.nickname, tbl_account_path(r) %>
+              <%= link_to u.nickname, tbl_account_path(r), "data-toggle" => "modal", "data-target" => "#myModal" %>
             <% end %>
           <% end %>
         </td>
@@ -71,4 +71,11 @@
     <!-- <%= page_entries_info @tbl_rooms %> -->
     <%= paginate @tbl_rooms, window:2 %>
   </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
 </div>
