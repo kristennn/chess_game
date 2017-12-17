@@ -1,16 +1,20 @@
 <div class="container-row">
   <table class="table" border:"1px solid white">
     <tr>
-      <td  class="text-left" style="width: 50%">用户 : <%= current_user.name %></td>
-      <td  class="text-left">账户余额 : </td>
+      <td class="text-left" style="width: 50%">用户 : <%= current_user.name %></td>
+      <td class="text-left">推广ID :<%= current_user.id %></td>
     </tr>
     <tr>
-      <td  class="text-left">推广ID :<%= current_user.id %></td>
-      <td  class="text-left">比率 :</td>
+      <td class="text-left">比率 :<%= current_user.rate %></td>
+      <td class="text-left">提成总额 :<%= render_salertwo_order(current_user) %></td>
+    </tr>
+
+    <tr>
+      <td class="text-left">下线玩家 : <%= current_user.tbl_accounts.count %> 位</td>
+      <td class="text-left">钻石余量 : <%= current_user.diamond%></td>
     </tr>
     <tr>
-      <td  class="text-left">下线玩家 : <%= current_user.tbl_accounts.count %> 位</td>
-      <td  class="text-left">钻石余量 : <%= current_user.diamond%></td>
+      <td class="text-left">账户余额 : </td>
     </tr>
   </table>
 </div>

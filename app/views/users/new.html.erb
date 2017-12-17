@@ -17,6 +17,7 @@
       <% elsif current_user && current_user.permission == "二级代理" %>
         <%= f.input :permission, collection: ["三级代理"] %>
       <% end %>
+      <%= f.input :rate, :label => false, :error => false, placeholder: "请设置推广员提成比例", required: true %>
       <%= f.input :password, :label => false, :error => false, placeholder: "请设置推广员密码", required: true %>
       <%= f.input :password_confirmation, :label => false, :error => false, placeholder: "请重复密码", required: true %>
       <%= f.submit :点击创建推广员, class: "btn" %>

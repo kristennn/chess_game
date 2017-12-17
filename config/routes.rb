@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   get '/saler_info', to: 'users#saler_info'
   get 'player_info', to: 'users#player_info'
+  get 'money_info', to: 'users#money_info'
 
 
   resources :tbl_rooms

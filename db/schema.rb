@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213144755) do
+ActiveRecord::Schema.define(version: 20171217035306) do
 
   create_table "phone_tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "token"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20171213144755) do
     t.string "remember_digest"
     t.integer "diamond", default: 2000
     t.integer "count"
+    t.float "rate", limit: 24
   end
 
 end
