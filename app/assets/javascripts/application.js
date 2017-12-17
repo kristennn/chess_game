@@ -18,4 +18,5 @@
 //= require material-kit
 //= require material.min
 //= require nouislider.min
+//= require bootstrap/modal
 //= require_tree .
