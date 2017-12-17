@@ -11,13 +11,31 @@
       </tr>
     </thead>
     <tbody>
-     <tr>
-       <td></td>
-       <td></td>
-       <td></td>
-       <td></td>
-       <td></td>
-     </tr>
-    </tbody>
+        <% @playerfees.each do |playerfee| %>
+          <tr>
+              <td><%= @tbl_room.find_by(:table_id => "#{playerfee.table_id}").end_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
+              <td><%= playerfee.userid %></td>
+              <td><%= playerfee.table_id %></td>
+              <td style ="font-weight:bold;color:red">房费消耗</td>
+              <td>-<%= playerfee.fee%></td>
+          </tr>
+       <% end %>
+
+        <% @tbl_orders.each do |tbl_order|%>
+          <tr>
+            <tr>
+              <td><%= tbl_order.complete_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
+              <td><%= tbl_order.userid %></td>
+              <td>0</td>
+              <td style = "font-weight:bold;color:green">充值</td>
+              <td><%= tbl_order.money %></td>
+            </tr>
+          </tr>
+        <% end %>
+
+      </tbody>
   </table>
+  <div class="text-right">
+    <%= paginate @tbl_orders %>
+  </div>
 </div>

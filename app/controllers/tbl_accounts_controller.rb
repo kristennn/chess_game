@@ -1,10 +1,12 @@
 class TblAccountsController < ApplicationController
-  before_action :logged_in_user, only: [:index]
+  before_action :logged_in_user
   layout 'admin'
+  #include TblAccountHelper
+
   def index
-    @tbl_playerinfo = TblPlayerinfo.page(params[:page]).per(10)
-    @q = TblAccount.ransack(params[:q])
-    @tbl_accounts = @q.result.page(params[:page]).per(10)
+    @tbl_playerinfo = TblPlayerinfo.order("userid DESC")
+    @q = TblAccount.order("userid DESC").ransack(params[:q])
+    @tbl_accounts = @q.result.order("userid DESC").page(params[:page]).per(10)
 
     if params[:userid].present?
       @tbl_accounts = @tbl_accounts.where( :userid => params[:userid].split(",") )
@@ -30,24 +32,19 @@ class TblAccountsController < ApplicationController
       @tbl_accounts = @tbl_accounts.where( "logout_time >= ?", Date.parse(params[:logout_time]).beginning_of_day)
     end
 
-    if current_user && current_user.permission == "salerone"
+    if current_user && current_user.permission == "一级代理"
       redirect_to saler_overview_path
-    elsif current_user && current_user.permission == "salertwo"
+    elsif current_user && current_user.permission == "二级代理"
       redirect_to saler_overview_path
-    elsif current_user && current_user.permission == "salerthree"
+    elsif current_user && current_user.permission == "三级代理"
       redirect_to saler_overview_path
     end
-    @tbl_accounts = TblAccount.page(params[:page]).per(10)
-    @tbl_playerinfo = TblPlayerinfo.page(params[:page]).per(10)
+
   end
 
-  private
-
-  def logged_in_user
-    unless logged_in?
-      flash[:alert] = "请先登录"
-      redirect_to login_path
-    end
+  def show
+    @tbl_account = TblAccount.find(params[:id])
   end
+
 
 end

@@ -1,5 +1,5 @@
+#source 'https://gems.ruby-China.org'
 source 'https://rubygems.org'
-
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.3.18', '< 0.5'
+gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -40,12 +40,14 @@ gem 'faker'
 gem 'ransack'
 gem 'bcrypt'
 gem 'font-awesome-rails'
+gem 'awesome_rails_console'
 group :development, :test do
   gem 'pry'
-  gem 'awesome_rails_console'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
 end
 
 group :development do

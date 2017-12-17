@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171202091323) do
+ActiveRecord::Schema.define(version: 20171213144755) do
 
   create_table "phone_tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "token"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20171202091323) do
     t.index ["phone", "token"], name: "index_phone_tokens_on_phone_and_token"
   end
 
-  create_table "tbl_account", primary_key: "userid", id: :bigint, comment: "用户名", unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", comment: "用户账号表" do |t|
+  create_table "tbl_account", primary_key: "userid", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", comment: "用户账号表" do |t|
     t.string "account", default: "", null: false, comment: "昵称"
     t.string "pwd", default: "", null: false, comment: "密码"
     t.string "channel", limit: 10, default: "", null: false, comment: "渠道"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20171202091323) do
     t.integer "userid", null: false
     t.integer "table_id", null: false
     t.integer "fee", null: false
+    t.datetime "last_update", default: -> { "CURRENT_TIMESTAMP" }, null: false, comment: "更新时间"
   end
 
   create_table "tbl_playerinfo", primary_key: "userid", id: :bigint, default: nil, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT", comment: "用户数据表" do |t|
@@ -97,6 +98,8 @@ ActiveRecord::Schema.define(version: 20171202091323) do
     t.string "permission"
     t.integer "salerid"
     t.string "remember_digest"
+    t.integer "diamond", default: 2000
+    t.integer "count"
   end
 
 end

@@ -27,8 +27,17 @@
        <tr>
         <td><%= tbl_room.table_id %></td>
         <td><%= tbl_room.table_code %></td>
-        <td><%= tbl_room.time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
-        <td><%= ((tbl_room.end_time - tbl_room.time)/60).round %></td>
+        <% if tbl_room.time.present? %>
+          <td><%= tbl_room.time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
+        <% else %>
+          <td>无</td>
+        <% end %>
+        <% if tbl_room.time.present? %>
+          <td><%= ((tbl_room.end_time - tbl_room.time)/60).round %></td>
+        <% else %>
+          <td>无</td>
+        <% end %>
+
         <td>
           <% if (Time.now - tbl_room.end_time) > 0 %>
              已结束
@@ -43,7 +52,15 @@
             AA支付
           <% end %>
         </td>
-        <td><%= tbl_room.players %></td>
+        <td>
+          <% tbl_room.players.split(",").each do |p| %>
+            <% @tbl_playerinfos.where(:userid => p.to_i).each do |u| %>
+              <% r = TblAccount.find_by(:userid => u.userid) %>
+              <%= link_to u.nickname, tbl_account_path(r) %>
+            <% end %>
+          <% end %>
+        </td>
+
         <td><%= tbl_room.seat_cnt %></td>
         <td><%= tbl_room.fee %></td>
        </tr>

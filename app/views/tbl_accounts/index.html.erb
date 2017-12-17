@@ -3,7 +3,7 @@
   <%= search_form_for @q, :url => tbl_accounts_path do |f| %>
     <p>
        用户ID：<%= text_field_tag :userid, params[:userid] %>
-       用户昵称：<%= f.search_field :account_cont %>
+       用户账号：<%= f.search_field :account_cont %>
        最后登录地址：<%= f.search_field :ip_cont %>
        注册起始时间：<%= date_field_tag :create_time, params[:create_time]%>
     </p>
@@ -14,14 +14,14 @@
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
        <li>
-         <%= link_to("正常", '#') %>
+         <%= link_to("正常", "#") %>
        </li>
        <li>
-           <%= link_to("活跃", '#') %>
+           <%= link_to("活跃", "#") %>
 
        </li>
        <li>
-         <%= link_to("锁定", '#') %>
+         <%= link_to("锁定", "#") %>
 
        </li>
    </ul>
@@ -55,14 +55,20 @@
      <% @tbl_accounts.each do |tbl_account| %>
        <tr>
         <td><%= tbl_account.userid %></td>
-        <td></td>
         <td><%= tbl_account.account %></td>
+        <td>
+          <% if @tbl_playerinfo.find_by(:userid => "#{tbl_account.userid}").present? %>
+            <%= @tbl_playerinfo.find_by(:userid => "#{tbl_account.userid}").nickname %>
+          <% else %>
+            该用户没有昵称
+          <% end %>
+        </td>
         <td><%= tbl_account.phone_num %></td>
         <td>
           <% if @tbl_playerinfo.find_by(:userid => "#{tbl_account.userid}").present? %>
             <%= @tbl_playerinfo.find_by(:userid => "#{tbl_account.userid}").diamond %>
           <% else %>
-            该用户不是玩家
+             0
           <% end %>
         </td>
         <td></td>
@@ -83,7 +89,6 @@
     </tbody>
   </table>
   <div class="text-right">
-    <!-- <%= page_entries_info @tbl_accounts %> -->
     <%= paginate @tbl_accounts, window:2 %>
   </div>
 </div>

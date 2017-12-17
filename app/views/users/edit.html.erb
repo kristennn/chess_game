@@ -1,0 +1,20 @@
+<div class="col-md-10 col-md-offset-1">
+  <%= link_to "返回", :back, :class => "btn btn-default-2" %>
+  <h5>修改账号</h5>
+  <%= simple_form_for @user do |f| %>
+    <%= render 'shared/error_messages' %>
+    <% if current_user.permission == "manager" %>
+      <%= f.input :name, :label => false, :error => false, placeholder: "请输入管理员名称", required: true %>
+      <%= f.input :email, :label => false, :error => false, placeholder: "请输入管理员邮箱", required: true %>
+      <%= f.input :password, :label => false, :error => false, placeholder: "请输入管理员密码", required: true %>
+      <%= f.input :password_confirmation, :label => false, :error => false, placeholder: "请重复密码", required: true %>
+      <%= f.submit :点击修改管理员, class: "btn" %>
+    <% else %>
+      <%= f.input :name, :label => false, :error => false, placeholder: "请输入推广员名称", required: true %>
+      <%= f.input :email, :label => false, :error => false, placeholder: "请输入推广员邮箱", required: true %>
+      <%= f.input :password, :label => false, :error => false, placeholder: "请设置推广员密码", required: true %>
+      <%= f.input :password_confirmation, :label => false, :error => false, placeholder: "请重复密码", required: true %>
+      <%= f.submit :点击修改推广员, class: "btn" %>
+    <% end %>
+  <% end %>
+</div>

@@ -1,16 +1,21 @@
 <div class="col-md-10 col-md-offset-1">
+  <%= link_to "返回", :back, :class => "btn btn-default-2" %>
   <h5>新增推广员</h5>
   <%= simple_form_for @user, url: signup_path do |f| %>
     <%= render 'shared/error_messages' %>
       <%= f.input :name, :label => false, :error => false, placeholder: "请输入推广员名称", required: true %>
       <%= f.input :email, :label => false, :error => false, placeholder: "请输入推广员邮箱", required: true %>
-      <%= f.input :salerid, :label => false, :error => false, placeholder: "请输入上线代理商ID", required: true %>
-      <% if current_user.permission == "manager" %>
-        <%= f.input :permission, collection: ["salerone", "salertwo", "salerthree"] %>
-      <% elsif current_user.permission == "salerone" %>
-        <%= f.input :permission, collection: ["salertwo", "salerthree"] %>
-      <% elsif current_user.permission == "salertwo" %>
-        <%= f.input :permission, collection: ["salerthree"] %>
+      <% if current_user && current_user.permission == "一级代理" ||  current_user.permission == "二级代理"%>
+        <%= f.input :salerid,:label => false, :error => false, placeholder: "请输入上线代理商ID 即 #{current_user.id}", required: true %>
+      <% elsif current_user && current_user.permission == "manager" %>
+        <%= f.input :salerid,:label => false, :error => false, placeholder: "请输入上线代理商ID", required: true %>
+      <% end %>
+      <% if current_user && current_user.permission == "manager" %>
+        <%= f.input :permission, collection: ["一级代理", "二级代理", "三级代理"] %>
+      <% elsif current_user && current_user.permission == "一级代理" %>
+        <%= f.input :permission, collection: ["二级代理", "三级代理"] %>
+      <% elsif current_user && current_user.permission == "二级代理" %>
+        <%= f.input :permission, collection: ["三级代理"] %>
       <% end %>
       <%= f.input :password, :label => false, :error => false, placeholder: "请设置推广员密码", required: true %>
       <%= f.input :password_confirmation, :label => false, :error => false, placeholder: "请重复密码", required: true %>

@@ -1,4 +1,9 @@
 <%= render "form" %>
+<div class="container-row">
+  <%= link_to saler_overview_path do %>
+    <h5>菜单选项</h5>
+  <% end %>
+</div>
   <div class="col-xs-3 col-md-3">
     <%= link_to  saler_info_path do %>
     <span class="fa-stack fa-3x">
@@ -72,7 +77,7 @@
   </div>
 
   <div class="col-xs-3 col-md-3">
-    <%= link_to  "#" do %>
+    <%= link_to edit_user_path(current_user) do %>
     <span class="fa-stack fa-3x">
       <i class="fa fa-circle-thin fa-stack-2x"></i>
       <i class="fa fa-key fa-stack-1x"></i>

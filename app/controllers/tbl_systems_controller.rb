@@ -1,5 +1,7 @@
 class TblSystemsController < ApplicationController
+  before_action :logged_in_user
   layout 'admin'
+
   def index
     @tblaccounts = TblAccount.all
     @tblorders = TblOrder.all
@@ -10,4 +12,5 @@ class TblSystemsController < ApplicationController
     @diamond_count = 0
     @money_count = 0
   end
+
 end
