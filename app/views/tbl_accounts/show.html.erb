@@ -1,18 +1,18 @@
-<div class="col-md-12">
+<div class="col-md-6 col-md-offset-1">
   <%= link_to "返回", :back, :class => "btn btn-default-2" %>
   <h5>玩家信息</h5>
-  <table class="table table-striped table-bordered" >
+  <table class="table table-striped table-bordered">
       <tr>
-        <td class="text-right" style ="width: 45%" >用户ID:</td>
+        <td style ="font-weight:bold;width: 45%" >用户ID:</td>
         <td class="text-left"><%= @tbl_account.userid %></td>
       </tr>
       <tr>
-        <td class="text-right">用户账号:</td>
+        <td style = "font-weight:bold">用户账号:</td>
         <td class="text-left"><%= @tbl_account.account %></td>
       </tr>
 
       <tr>
-        <td class="text-right">用户昵称:</td>
+        <td style = "font-weight:bold">用户昵称:</td>
 
         <td class="text-left">
           <% if TblPlayerinfo.find_by(:userid => "#{@tbl_account.userid}").present? %>
@@ -24,13 +24,13 @@
       </tr>
 
       <tr>
-        <td class="text-right">手机号:</td>
+        <td style = "font-weight:bold">手机号:</td>
 
         <td class="text-left"><%= @tbl_account.phone_num %></td>
       </tr>
 
       <tr>
-        <td class="text-right">钻石:</td>
+        <td style = "font-weight:bold">钻石:</td>
 
        <td class="text-left">
          <% if TblPlayerinfo.find_by(:userid => "#{@tbl_account.userid}").present? %>
@@ -42,7 +42,7 @@
       </tr>
 
       <tr>
-        <td class="text-right">用户状态:</td>
+        <td style = "font-weight:bold">用户状态:</td>
         <td class="text-left">
           <% if (@tbl_account.lock - Time.now) > 0 %>
              锁定
@@ -55,18 +55,18 @@
       </tr>
 
       <tr>
-        <td class="text-right">注册时间:</td>
+        <td style = "font-weight:bold">注册时间:</td>
 
        <td class="text-left"><%= @tbl_account.create_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
       </tr>
 
       <tr>
-        <td class="text-right">上次登录IP:</td>
+        <td style = "font-weight:bold">上次登录IP:</td>
         <td class="text-left"><%= @tbl_account.ip %></td>
       </tr>
 
       <tr>
-        <td class="text-right">上次登录时间:</td>
+        <td style = "font-weight:bold">上次登录时间:</td>
 
        <td class="text-left"><%= @tbl_account.login_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
       </tr>
