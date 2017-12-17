@@ -3,7 +3,7 @@ class TblRoomsController < ApplicationController
   layout 'admin'
 
   def index
-    @tbl_rooms = TblRoom.page(params[:page]).per(10)
+    @tbl_rooms = TblRoom.order("table_id DESC").page(params[:page]).per(10)
     @tbl_playerinfos = TblPlayerinfo.all
 
     if params[:time].present?
