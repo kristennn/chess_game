@@ -204,6 +204,20 @@ h5{
     color: #555555;
     transition: all .3s;
 }
+
+.nav-pills > li > a:hover {
+    line-height: 24px;
+    background-color: #376ad3;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 500;
+    min-width: 100px;
+    text-align: left;
+    color: #fff;
+    transition: all .3s;
+}
+
+
 //登录样式
 .form-group label.control-label {
     font-size: 0px;
