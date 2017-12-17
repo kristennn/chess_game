@@ -13,11 +13,7 @@
     <tbody>
         <% @playerfees.each do |playerfee| %>
           <tr>
-              <% if TblRoom.find_by(:table_id => "playerfee.table_id").present? %>
-                <td><%= TblRoom.find_by(:table_id => "playerfee.table_id").end_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
-              <% else %>
-                <td>无</td>
-              <% end %>
+              <td><%= TblRoom.find_by(:table_id => "playerfee.table_id").end_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
               <td><%= playerfee.userid %></td>
               <td><%= playerfee.table_id %></td>
               <td>房费消耗</td>
