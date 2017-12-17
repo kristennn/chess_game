@@ -5,7 +5,7 @@
       <td class="text-left">推广ID :<%= current_user.id %></td>
     </tr>
     <tr>
-      <td class="text-left">比率 :<%= current_user.rate %></td>
+      <td class="text-left">比率 :<%= (current_user.rate*100).round %>%</td>
       <td class="text-left">提成总额 :<%= render_order(current_user) %></td>
     </tr>
 
