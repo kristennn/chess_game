@@ -84,6 +84,7 @@
         <td><%= tbl_account.create_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
         <td><%= tbl_account.ip %></td>
         <td><%= tbl_account.login_time.strftime("%Y/%m/%d  %H:%M:%S") %></td>
+        <td><%= Time.now.at_end_of_day - tbl_account.create_time  + 28800 %></td>
        </tr>
      <% end %>
     </tbody>
