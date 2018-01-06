@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171217035306) do
+ActiveRecord::Schema.define(version: 20171230081333) do
 
   create_table "phone_tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "token"
@@ -89,6 +89,20 @@ ActiveRecord::Schema.define(version: 20171217035306) do
     t.datetime "end_time", null: false
   end
 
+  create_table "user_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.string "avatar", comment: "头像"
+    t.string "name", comment: "姓名"
+    t.string "phone", comment: "手机"
+    t.string "email", comment: "邮箱"
+    t.string "province", comment: "省份"
+    t.string "city", comment: "城市"
+    t.string "address", comment: "地址"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "email"
@@ -101,6 +115,9 @@ ActiveRecord::Schema.define(version: 20171217035306) do
     t.integer "diamond", default: 2000
     t.integer "count"
     t.float "rate", limit: 24
+    t.string "wechat_unionid", comment: "微信用户的UnionID"
+    t.index ["wechat_unionid"], name: "index_users_on_wechat_unionid", unique: true
   end
 
+  add_foreign_key "user_profiles", "users"
 end
