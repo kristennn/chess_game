@@ -33,7 +33,7 @@ Rails.application.routes.draw do
       post "/users/:setUserBind" => "users#bind_user"
       get "/users/:getUserBindInfo" => "users#get_bind"
       patch "/users/:shareActivity" => "users#share_activity"
-      
+
     end
   end
 

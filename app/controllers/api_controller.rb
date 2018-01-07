@@ -1,4 +1,2 @@
-class ApiController < ApplicationController
-  protect_from_forgery :except => :index
-
+class ApiController < ActionController::Base
 end

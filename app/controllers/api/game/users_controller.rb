@@ -7,7 +7,8 @@ class Api::Game::UsersController < ApiController
       a = params[:invitation_code]
       @tbl_account.update(:saler => a )
       render :json => {
-        :message => "绑定成功"
+        :message => "绑定成功",
+        :data => @tbl_account.saler
       }
     end
   end
@@ -15,7 +16,8 @@ class Api::Game::UsersController < ApiController
   def get_bind
     @tbl_account = TblAccount.find_by_userid!(params[:uid])
     render :json => {
-      :message => "ok"
+      :message => "ok",
+      :data => @tbl_account.saler
     }
   end
 
@@ -24,9 +26,8 @@ class Api::Game::UsersController < ApiController
     b = @tbl_playerinfo.diamond + 10
     @tbl_playerinfo.update(:diamond => b )
     render :json => {
-      :message => "ok"
-      
-      }
+      :message => "ok",
+      :data => @tbl_playerinfo.diamond
     }
   end
 
