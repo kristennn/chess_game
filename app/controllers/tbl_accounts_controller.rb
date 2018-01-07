@@ -44,6 +44,7 @@ class TblAccountsController < ApplicationController
 
   def show
     @tbl_account = TblAccount.find(params[:id])
+    render layout: 'show'
   end
 
 

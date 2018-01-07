@@ -33,7 +33,7 @@
       <tr>
         <td class="text-right">今日注册人数:</td>
         <% @tblaccounts.each do |u| %>
-          <% if (Time.now - u.create_time)/60/60 < 24 %>
+          <% if u.create_time - Time.now.at_end_of_day - 28800 < 0 && Time.now.at_beginning_of_day + 28800- u.create_time < 0 %>
             <% @signin_count += 1 %>
           <% end %>
         <% end %>

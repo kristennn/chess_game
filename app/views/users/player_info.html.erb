@@ -22,9 +22,13 @@
           <td>0</td>
         <% end %>
         <td>
-          <%= form_for TblPlayerinfo.find_by(:userid => user.id), url: add_diamond_info_user_path(user) do |f| %>
-            <%= f.select :diamond, [10,50,100,200] %>
-            <%= f.submit "点击转账", :class => "btn", data: { disable_with: "充值中..."} %>
+          <% if @tbl_playerinfo.find_by(:userid => user.id).present? %>
+            <%= form_for TblPlayerinfo.find_by(:userid => user.id), url: add_diamond_info_user_path(user) do |f| %>
+              <%= f.select :diamond, [10,50,100,200] %>
+              <%= f.submit "点击转账", :class => "btn", data: { disable_with: "充值中..."} %>
+            <% end %>
+          <% else %>
+            无法获取
           <% end %>
         </td>
       </tr>
