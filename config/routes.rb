@@ -28,4 +28,11 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api, :default => { :format => :json} do
+    namespace :game do
+      post "/users/:setUserBind" => "users#update", as: :bind_user
+      get "/users/:getUserBindInfo" => "users#show", as: :getBind_user
+    end
+  end
+
 end
