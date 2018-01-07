@@ -1,5 +1,5 @@
 class Api::Game::UsersController < ApiController
-  def update
+  def bind_user
     @tbl_account = TblAccount.find_by_userid!(params[:uid])
     if @tbl_account.saler.present?
       render :json => { :message => "绑定失败，该用户已绑定"}
@@ -12,10 +12,21 @@ class Api::Game::UsersController < ApiController
     end
   end
 
-  def show
+  def get_bind
     @tbl_account = TblAccount.find_by_userid!(params[:uid])
     render :json => {
       :message => "ok"
+    }
+  end
+
+  def share_activity
+    @tbl_playerinfo = TblPlayerinfo.find_by_userid!(params[:uid])
+    b = @tbl_playerinfo.diamond + 10
+    @tbl_playerinfo.update(:diamond => b )
+    render :json => {
+      :message => "ok"
+      
+      }
     }
   end
 
