@@ -1,4 +1,5 @@
 class CallboardsController < ApplicationController
+  before_action :find_callboard, only: [:show, :destroy]
 
   def index
     @callboards = Callboard.all
@@ -18,13 +19,15 @@ class CallboardsController < ApplicationController
   end
 
   def show
-    @callboard = Callboard.find(params[:id])
   end
 
   def destroy
-    @callboard = Callboard.find(params[:id])
     @callboard.destroy
     redirect_to callboards_path
+  end
+
+  def find_callboard
+    @callboard = Callboard.find(params[:id])
   end
 
 

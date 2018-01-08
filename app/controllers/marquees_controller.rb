@@ -1,4 +1,5 @@
 class MarqueesController < ApplicationController
+  before_action :find_marquee, only: [:edit, :update, :show]
 
   def index
     @marquees = Marquee.all
@@ -19,11 +20,9 @@ class MarqueesController < ApplicationController
   end
 
   def edit
-    @marquee = Marquee.find(params[:id])
   end
 
   def update
-    @marquee = Marquee.find(params[:id])
     if @marquee.update(marquee_params)
       redirect_to root_path
       flash[:notice] = "更新成功"
@@ -33,10 +32,13 @@ class MarqueesController < ApplicationController
   end
 
   def show
-    @marquee = Marquee.find(params[:id])
   end
 
   private
+
+    def find_marquee
+      @marquee = Marquee.find(params[:id])
+    end
 
     def marquee_params
       params.require(:marquee).permit(:post)
