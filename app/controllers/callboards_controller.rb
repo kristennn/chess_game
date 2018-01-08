@@ -21,6 +21,12 @@ class CallboardsController < ApplicationController
     @callboard = Callboard.find(params[:id])
   end
 
+  def destroy
+    @callboard = Callboard.find(params[:id])
+    @callboard.destroy
+    redirect_to callboards_path
+  end
+
 
 
   private
