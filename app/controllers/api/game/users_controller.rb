@@ -31,4 +31,6 @@ class Api::Game::UsersController < ApiController
     }
   end
 
+  
+
 end

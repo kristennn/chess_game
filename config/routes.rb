@@ -35,7 +35,8 @@ Rails.application.routes.draw do
       post "/users/:setUserBind" => "users#bind_user"
       get "/users/:getUserBindInfo" => "users#get_bind"
       patch "/users/:shareActivity" => "users#share_activity"
-
+      post "/callboards/:getOneSystemNews" => "callboards#get_news"
+      post "/marquees/:getPaomatiao" => "marquees#get_paomatiao"
     end
   end
 
