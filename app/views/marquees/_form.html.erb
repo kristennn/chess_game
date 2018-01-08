@@ -1,0 +1,6 @@
+<%= simple_form_for @marquee do |f| %>
+  <div class="form-group">
+    <%= f.input :post, placeholder: "内容",input_html: { class: "form-control"} %>
+  </div>
+  <%= f.submit "点击发布", class: "btn btn-primary", data: { disable_with: "Submiting..." } %>
+<% end %>

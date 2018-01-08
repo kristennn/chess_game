@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :tbl_systems
   resources :tbl_player_fees
   resources :callboards
+  resources :marquees
   resources :users do
     member do
       patch :add_diamond

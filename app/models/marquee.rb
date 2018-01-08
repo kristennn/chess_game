@@ -1,0 +1,2 @@
+class Marquee < ApplicationRecord
+end
