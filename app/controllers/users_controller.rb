@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :logged_in_user, only: [:edit, :update]
   before_action :correct_user, only: [:edit, :update]
+  before_action :find_user, only: [:show, :edit, :update, :add_diamond]
 
   layout "session"
 
@@ -22,7 +23,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def create
@@ -40,11 +40,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       if current_user.permission == "manager"
         flash[:notice] = "更新成功"
@@ -92,7 +90,6 @@ class UsersController < ApplicationController
   end
 
   def add_diamond
-    @user = User.find(params[:id])
     $a = params[:user].values.first.to_i
     b = $a + @user.diamond
     if current_user.permission == "manager"
@@ -108,18 +105,18 @@ class UsersController < ApplicationController
     end
   end
 
-
-
-
-
   private
 
-  def user_params
-    params.require(:user).permit(:name, :email, :permission, :salerid, :password, :password_confirmation, :diamond, :count, :rate)
-  end
+    def user_params
+      params.require(:user).permit(:name, :email, :permission, :salerid, :password, :password_confirmation, :diamond, :count, :rate)
+    end
 
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_path) unless current_user?(@user)
-  end
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
+    end
+
+    def find_user
+      @user = User.find(params[:id])
+    end
 end
