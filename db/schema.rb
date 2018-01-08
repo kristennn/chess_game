@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180108082828) do
+ActiveRecord::Schema.define(version: 20180108095355) do
 
   create_table "callboards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "post"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
+    t.string "friendly_id"
+    t.index ["friendly_id"], name: "index_callboards_on_friendly_id", unique: true
   end
 
   create_table "marquees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

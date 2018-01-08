@@ -27,7 +27,7 @@ class CallboardsController < ApplicationController
   end
 
   def find_callboard
-    @callboard = Callboard.find(params[:id])
+    @callboard = Callboard.find_by_friendly_id!(params[:id])
   end
 
 
