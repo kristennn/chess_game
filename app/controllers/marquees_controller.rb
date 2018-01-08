@@ -37,7 +37,7 @@ class MarqueesController < ApplicationController
   private
 
     def find_marquee
-      @marquee = Marquee.find(params[:id])
+      @marquee = Marquee.find_by_friendly_id!(params[:id])
     end
 
     def marquee_params
