@@ -17,16 +17,12 @@ ActiveRecord::Schema.define(version: 20180108110420) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
-    t.string "friendly_id"
-    t.index ["friendly_id"], name: "index_callboards_on_friendly_id", unique: true
   end
 
   create_table "marquees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "post"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "friendly_id"
-    t.index ["friendly_id"], name: "index_marquees_on_friendly_id", unique: true
   end
 
   create_table "phone_tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
