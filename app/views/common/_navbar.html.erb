@@ -36,6 +36,7 @@
                   <ul class="dropdown-menu">
                     <% if current_user.permission == "manager" %>
                       <li><%= link_to("跑马灯", marquees_path ) %></li>
+                      <li><%= link_to("物品系统",manager_info_user_path(current_user)) %></li>
                     <% end %>
                     <li><%= link_to("修改密码", edit_user_path(current_user)) %></li>
                     <li> <%= link_to("退出", logout_path(current_user), method: :delete) %> </li>

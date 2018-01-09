@@ -4,7 +4,7 @@
 </div>
 
 <div class="col-xs-12">
-  <% if current_user.permission == "一级代理" %>
+  <% if current_user.permission == "县级代理" %>
   <h5>二级下线推广员<%= link_to "新增推广员", signup_path, :class => "btn btn-default-1"%></h5>
   <table class="table table-striped table-bordered">
     <thead>
@@ -40,7 +40,7 @@
   <% end %>
 
   <br/>
-  <% if current_user.permission == "一级代理" %>
+  <% if current_user.permission == "县级代理" %>
     <h5>三级下线推广员<%= link_to "新增推广员", signup_path, :class => "btn btn-default-1"%></h5>
   <% end %>
 

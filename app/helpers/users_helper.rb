@@ -33,7 +33,7 @@ module UsersHelper
 # 最终的提成总额
   def render_order(user)
     sum = 0
-    if user.permission == "三级代理"
+    if user.permission == "普通代理"
       sum = (render_total_order(user) * user.rate)
     else
       $u = User.where(:salerid => user.id)

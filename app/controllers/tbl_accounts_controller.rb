@@ -32,11 +32,11 @@ class TblAccountsController < ApplicationController
       @tbl_accounts = @tbl_accounts.where( "logout_time >= ?", Date.parse(params[:logout_time]).beginning_of_day)
     end
 
-    if current_user && current_user.permission == "一级代理"
+    if current_user && current_user.permission == "县级代理"
       redirect_to saler_overview_path
-    elsif current_user && current_user.permission == "二级代理"
+    elsif current_user && current_user.permission == "城市合伙人"
       redirect_to saler_overview_path
-    elsif current_user && current_user.permission == "三级代理"
+    elsif current_user && current_user.permission == "普通代理"
       redirect_to saler_overview_path
     end
 

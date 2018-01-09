@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ChessGame</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+     <div class="container-fluid">
+      <div class="row">
+        <%= render "common/navbar" %>
+        <%= render "common/flashes" %>
+      </div>
+        <div class="col-md-2">
+           <ul class="nav nav-pills nav-stacked " style="max-width: 200px;">
+             <li>
+               <%= link_to("发红包", hongbao_user_path(current_user)) %>
+             </li>
+             <li>
+               <%= link_to("物品信息", manager_info_user_path(current_user)) %>
+             </li>
+
+           </ul>
+         </div>
+
+       <div class= "col-md-10">
+         <%= yield %>
+       </div>
+       </div>
+    <%= render "common/footer"%>
+  </body>
+</html>

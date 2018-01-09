@@ -5,6 +5,7 @@
       <tr>
         <th width="20%">代理名称</th>
         <th>代理ID</th>
+        <th>代理权限</th>
         <th>钻石数量</th>
         <th>房卡操作</th>
 
@@ -16,6 +17,7 @@
          <% unless user.permission == "manager" %>
            <td><%= link_to user.name, user_path(user) %></td>
            <td><%= user.id %></td>
+           <td><%= user.permission %></td>
            <td><%= user.diamond%></td>
            <td>
              <%= form_for user, url: add_diamond_user_path(user) do |f| %>

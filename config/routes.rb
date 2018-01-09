@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     member do
       patch :add_diamond
       patch :add_diamond_info
+      get :manager_info
+      get :hongbao
     end
   end
   resources :tbl_playerinfos do

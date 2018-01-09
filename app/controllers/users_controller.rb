@@ -13,12 +13,12 @@ class UsersController < ApplicationController
   def index
     if current_user.permission == "manager"
       @users = User.all.order("id DESC").page(params[:page]).per(15)
-    elsif current_user.permission == "一级代理"
-      @users = User.where(:permission => "一级代理") + User.where(:permission => "二级代理").page(params[:page]).per(10) + User.where(:permission => "三级代理")
-    elsif current_user.permission == "二级代理"
-      @users = User.where(:permission => "二级代理") + User.where(:permission => "三级代理").page(params[:page]).per(10)
-    elsif current_user.permission == "三级代理"
-      @users = User.where(:permission => "三级代理")
+    elsif current_user.permission == "县级代理"
+      @users = User.where(:permission => "县级代理") + User.where(:permission => "城市合伙人").page(params[:page]).per(10) + User.where(:permission => "普通代理")
+    elsif current_user.permission == "城市合伙人"
+      @users = User.where(:permission => "城市合伙人") + User.where(:permission => "普通代理").page(params[:page]).per(10)
+    elsif current_user.permission == "普通代理"
+      @users = User.where(:permission => "普通代理")
     end
   end
 
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
 
   def saler_info
     @usersone = User.where(:salerid => current_user.id)
-    if current_user.permission == "一级代理"
+    if current_user.permission == "县级代理"
       result = []
       @usersone.each do |i|
         u = User.where(:salerid => i.id)
@@ -103,6 +103,14 @@ class UsersController < ApplicationController
       flash[:notice] = "转账成功"
       redirect_to saler_info_path
     end
+  end
+
+  def manager_info
+    render layout: 'manager_sidebar'
+  end
+
+  def hongbao
+    render layout: 'manager_sidebar'
   end
 
   private

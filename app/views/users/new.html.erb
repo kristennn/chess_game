@@ -5,17 +5,17 @@
     <%= render 'shared/error_messages' %>
       <%= f.input :name, :label => false, :error => false, placeholder: "请输入推广员名称", required: true %>
       <%= f.input :email, :label => false, :error => false, placeholder: "请输入推广员邮箱", required: true %>
-      <% if current_user && current_user.permission == "一级代理" ||  current_user.permission == "二级代理"%>
+      <% if current_user && current_user.permission == "县级代理" ||  current_user.permission == "城市合伙人"%>
         <%= f.input :salerid,:label => false, :error => false, placeholder: "请输入上线代理商ID 即 #{current_user.id}", required: true %>
       <% elsif current_user && current_user.permission == "manager" %>
         <%= f.input :salerid,:label => false, :error => false, placeholder: "请输入上线代理商ID", required: true %>
       <% end %>
       <% if current_user && current_user.permission == "manager" %>
-        <%= f.input :permission, collection: ["一级代理", "二级代理", "三级代理"] %>
-      <% elsif current_user && current_user.permission == "一级代理" %>
-        <%= f.input :permission, collection: ["二级代理", "三级代理"] %>
-      <% elsif current_user && current_user.permission == "二级代理" %>
-        <%= f.input :permission, collection: ["三级代理"] %>
+        <%= f.input :permission, collection: ["县级代理", "城市合伙人", "普通代理"] %>
+      <% elsif current_user && current_user.permission == "县级代理" %>
+        <%= f.input :permission, collection: ["城市合伙人", "普通代理"] %>
+      <% elsif current_user && current_user.permission == "城市合伙人" %>
+        <%= f.input :permission, collection: ["普通代理"] %>
       <% end %>
       <%= f.input :rate, :label => false, :error => false, placeholder: "请设置推广员提成比例（请输入小数，如70% 请输入 0.7）", required: true %>
       <%= f.input :password, :label => false, :error => false, placeholder: "请设置推广员密码", required: true %>

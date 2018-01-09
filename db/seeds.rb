@@ -11,15 +11,15 @@ puts "这个文档会建立多个用户"
 User.create(:name => "管理员", :email => "lala@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "manager")
 
 5.times do |i|
-  User.create(:name => "一级代理商#{i}号", :email => "salerone#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "一级代理")
+  User.create(:name => "县级代理商#{i}号", :email => "salerone#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "县级代理", :rate => "0.8")
 end
 
 5.times do |i|
-  User.create(:name => "二级代理商#{i}号", :email => "salertwo#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "二级代理", :salerid => "5")
+  User.create(:name => "城市合伙人商#{i}号", :email => "salertwo#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "城市合伙人", :salerid => "5", :rate => "0.6")
 end
 
 5.times do |i|
-  User.create(:name => "三级代理商#{i}号", :email => "salerthree#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "三级代理", :salerid => "10")
+  User.create(:name => "普通代理商#{i}号", :email => "salerthree#{i}@gmail.com", :password => "123456", :password_confirmation => "123456", :permission => "普通代理", :salerid => "10", :rate => "0.2")
 end
 
 5.times do |i|
