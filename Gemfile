@@ -41,13 +41,13 @@ gem 'ransack'
 gem 'bcrypt'
 gem 'font-awesome-rails'
 gem 'awesome_rails_console'
+gem 'capistrano-rails'
+gem 'capistrano-passenger'
 group :development, :test do
   gem 'pry'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'capistrano-rails'
-  gem 'capistrano-passenger'
 end
 
 group :development do
