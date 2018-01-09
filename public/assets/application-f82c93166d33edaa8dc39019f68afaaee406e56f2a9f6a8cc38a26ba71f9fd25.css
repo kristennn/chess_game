@@ -73,7 +73,7 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
 
 /* line 49, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 a, a:hover, a:focus {
-  color: #376ad3;
+  color: #1d7584;
 }
 
 /* line 52, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
@@ -296,7 +296,7 @@ a .material-icons, a:hover .material-icons, a:focus .material-icons {
 .navbar .navbar-nav > li > a.btn.btn-primary.dropdown-toggle, .open >
 .navbar .navbar-nav > li > a.btn.btn-primary.dropdown-toggle:focus, .open >
 .navbar .navbar-nav > li > a.btn.btn-primary.dropdown-toggle:hover {
-  background-color: #376ad3;
+  background-color: #1d7584;
   color: #FFFFFF;
 }
 
@@ -341,7 +341,7 @@ a .material-icons, a:hover .material-icons, a:focus .material-icons {
 .btn.btn-primary.btn-simple,
 .navbar .navbar-nav > li > a.btn.btn-primary.btn-simple {
   background-color: transparent;
-  color: #376ad3;
+  color: #1d7584;
   box-shadow: none;
 }
 
@@ -351,7 +351,7 @@ a .material-icons, a:hover .material-icons, a:focus .material-icons {
 .navbar .navbar-nav > li > a.btn.btn-primary.btn-simple:focus,
 .navbar .navbar-nav > li > a.btn.btn-primary.btn-simple:active {
   background-color: transparent;
-  color: #376ad3;
+  color: #1d7584;
 }
 
 /* line 291, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
@@ -950,7 +950,7 @@ a .material-icons, a:hover .material-icons, a:focus .material-icons {
 /* line 772, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .btn-group.open > .dropdown-toggle.btn.btn-primary,
 .btn-group-vertical.open > .dropdown-toggle.btn.btn-primary {
-  background-color: #376ad3;
+  background-color: #1d7584;
 }
 
 /* line 776, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
@@ -1123,7 +1123,7 @@ fieldset[disabled] .form-group.is-focused .checkbox label {
 
 /* line 906, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .checkbox input[type=checkbox]:checked + .checkbox-material .check {
-  background: #376ad3;
+  background: #1d7584;
 }
 
 /* line 909, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
@@ -1321,7 +1321,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 
 /* line 1059, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .togglebutton label input[type=checkbox]:checked + .toggle:after {
-  border-color: #376ad3;
+  border-color: #1d7584;
 }
 
 /* line 1062, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
@@ -1374,7 +1374,7 @@ fieldset[disabled] .form-group.is-focused .radio label {
   height: 15px;
   width: 15px;
   border-radius: 100%;
-  background-color: #376ad3;
+  background-color: #1d7584;
   -webkit-transform: scale3d(0, 0, 0);
   -moz-transform: scale3d(0, 0, 0);
   -o-transform: scale3d(0, 0, 0);
@@ -1436,12 +1436,12 @@ fieldset[disabled] .form-group.is-focused .radio label {
 
 /* line 1147, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .radio input[type=radio]:checked ~ .check {
-  background-color: #376ad3;
+  background-color: #1d7584;
 }
 
 /* line 1150, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .radio input[type=radio]:checked ~ .circle {
-  border-color: #376ad3;
+  border-color: #1d7584;
 }
 
 /* line 1153, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
@@ -1830,7 +1830,7 @@ output {
 
 /* line 1360, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .label.label-primary {
-  background-color: #376ad3;
+  background-color: #1d7584;
 }
 
 /* line 1363, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
@@ -1857,7 +1857,7 @@ output {
 .form-control,
 .form-group .form-control {
   border: 0;
-  background-image: linear-gradient(#376ad3, #376ad3), linear-gradient(#D2D2D2, #D2D2D2);
+  background-image: linear-gradient(#1d7584, #1d7584), linear-gradient(#D2D2D2, #D2D2D2);
   background-size: 0 2px, 100% 1px;
   background-repeat: no-repeat;
   background-position: center bottom, center calc(100% - 1px);
@@ -1937,7 +1937,7 @@ output {
 /* line 1436, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .form-group.is-focused .form-control {
   outline: none;
-  background-image: linear-gradient(#376ad3, #376ad3), linear-gradient(#D2D2D2, #D2D2D2);
+  background-image: linear-gradient(#1d7584, #1d7584), linear-gradient(#D2D2D2, #D2D2D2);
   background-size: 100% 2px, 100% 1px;
   box-shadow: none;
   transition-duration: 0.3s;
@@ -1945,13 +1945,13 @@ output {
 
 /* line 1443, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .form-group.is-focused .form-control .material-input:after {
-  background-color: #376ad3;
+  background-color: #1d7584;
 }
 
 /* line 1446, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .form-group.is-focused label,
 .form-group.is-focused label.control-label {
-  color: #376ad3;
+  color: #1d7584;
 }
 
 /* line 1450, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
@@ -2463,8 +2463,8 @@ select.form-control[multiple], .form-group.is-focused select.form-control[multip
 .pagination > .active > span,
 .pagination > .active > span:focus,
 .pagination > .active > span:hover {
-  background-color: #376ad3;
-  border-color: #376ad3;
+  background-color: #1d7584;
+  border-color: #1d7584;
   color: #FFFFFF;
   box-shadow: 0 4px 5px 0 rgba(156, 39, 176, 0.14), 0 1px 10px 0 rgba(156, 39, 176, 0.12), 0 2px 4px -1px rgba(156, 39, 176, 0.2);
 }
@@ -2548,7 +2548,7 @@ select.form-control[multiple], .form-group.is-focused select.form-control[multip
 
 /* line 1892, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
-  background-color: #376ad3;
+  background-color: #1d7584;
   color: #FFFFFF;
   box-shadow: 0 16px 26px -10px rgba(156, 39, 176, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(156, 39, 176, 0.2);
 }
@@ -2863,7 +2863,7 @@ legend {
 
 /* line 2112, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .navbar, .navbar.navbar-default {
-  background-color: #376ad3;
+  background-color: #1d7584;
   color: #ffffff;
 }
 
@@ -2896,12 +2896,12 @@ legend {
 /* line 2134, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .navbar .dropdown-menu li > a:hover, .navbar .dropdown-menu li > a:focus, .navbar.navbar-default .dropdown-menu li > a:hover, .navbar.navbar-default .dropdown-menu li > a:focus {
   color: #FFFFFF;
-  background-color: #376ad3;
+  background-color: #1d7584;
 }
 
 /* line 2138, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .navbar .dropdown-menu .active > a, .navbar.navbar-default .dropdown-menu .active > a {
-  background-color: #376ad3;
+  background-color: #1d7584;
   color: #ffffff;
 }
 
@@ -2958,7 +2958,7 @@ legend {
 
 /* line 2175, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .navbar.navbar-primary {
-  background-color: #376ad3;
+  background-color: #1d7584;
   color: #ffffff;
 }
 
@@ -2988,12 +2988,12 @@ legend {
 /* line 2194, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .navbar.navbar-primary .dropdown-menu li > a:hover, .navbar.navbar-primary .dropdown-menu li > a:focus {
   color: #FFFFFF;
-  background-color: #376ad3;
+  background-color: #1d7584;
 }
 
 /* line 2198, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .navbar.navbar-primary .dropdown-menu .active > a {
-  background-color: #376ad3;
+  background-color: #1d7584;
   color: #ffffff;
 }
 
@@ -3281,7 +3281,7 @@ legend {
 .dropdown-menu li a:hover,
 .dropdown-menu li a:focus,
 .dropdown-menu li a:active {
-  background-color: #376ad3;
+  background-color: #1d7584;
   color: #FFFFFF;
 }
 
@@ -3341,7 +3341,7 @@ legend {
 
 /* line 2439, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .icon.icon-primary {
-  color: #376ad3;
+  color: #1d7584;
 }
 
 /* line 2442, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
@@ -3495,7 +3495,7 @@ legend {
 
 /* line 2541, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .progress .progress-bar, .progress .progress-bar.progress-bar-default {
-  background-color: #376ad3;
+  background-color: #1d7584;
 }
 
 /* line 2544, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
@@ -3505,7 +3505,7 @@ legend {
 
 /* line 2547, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .progress .progress-bar.progress-bar-primary {
-  background-color: #376ad3;
+  background-color: #1d7584;
 }
 
 /* line 2550, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
@@ -3639,7 +3639,7 @@ h2.title {
 
 /* line 2650, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .text-primary {
-  color: #376ad3;
+  color: #1d7584;
 }
 
 /* line 2654, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
@@ -3659,7 +3659,7 @@ h2.title {
 
 /* line 2666, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .nav-tabs {
-  background: #376ad3;
+  background: #1d7584;
   border: 0;
   border-radius: 3px;
   padding: 0 15px;
@@ -4156,7 +4156,7 @@ h2.title {
 
 /* line 3024, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .panel.panel-primary > .panel-heading {
-  background-color: #376ad3;
+  background-color: #1d7584;
 }
 
 /* line 3027, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
@@ -4449,12 +4449,12 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 
 /* line 3260, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .slider.noUi-connect {
-  background-color: #376ad3;
+  background-color: #1d7584;
 }
 
 /* line 3263, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .slider .noUi-handle {
-  border-color: #376ad3;
+  border-color: #1d7584;
 }
 
 /* line 3266, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
@@ -4617,13 +4617,13 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 .datepicker td.active:hover p {
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
   color: #ffffff;
-  background-color: #376ad3;
+  background-color: #1d7584;
 }
 
 /* line 3385, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .datepicker td.primary p,
 .datepicker td.primary:hover p {
-  background-color: #376ad3;
+  background-color: #1d7584;
 }
 
 /* line 3389, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
@@ -4671,7 +4671,7 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 
 /* line 3420, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .datepicker span.active, .datepicker span.active:focus, .datepicker span.active:hover, .datepicker span.active:active {
-  background-color: #376ad3;
+  background-color: #1d7584;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
 }
 
@@ -4688,7 +4688,7 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 /* line 3430, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
 .datepicker span.primary,
 .datepicker span.primary:hover {
-  background-color: #376ad3;
+  background-color: #1d7584;
 }
 
 /* line 3434, /Users/jonathan/xiaoxin/chess_game/vendor/assets/stylesheets/material-kit.css */
@@ -17641,7 +17641,7 @@ button.close {
 
 /* line 25, /Users/jonathan/xiaoxin/chess_game/app/assets/stylesheets/application.scss */
 .navbar.navbar-default {
-  background-color: #376ad3;
+  background-color: #1d7584;
   position: relative;
   border-radius: 2px;
   max-height: 50px;
@@ -17744,19 +17744,19 @@ td {
 
 /* line 116, /Users/jonathan/xiaoxin/chess_game/app/assets/stylesheets/application.scss */
 thead {
-  background-color: #376ad3;
+  background-color: #1d7584;
   color: white;
   font-weight: bold;
 }
 
 /* line 122, /Users/jonathan/xiaoxin/chess_game/app/assets/stylesheets/application.scss */
 h2 {
-  color: #376ad3;
+  color: #1d7584;
 }
 
 /* line 126, /Users/jonathan/xiaoxin/chess_game/app/assets/stylesheets/application.scss */
 h5 {
-  background-color: #376ad3;
+  background-color: #1d7584;
   font-family: Microsoft YaHei;
   font-weight: 400;
   height: 20;
@@ -17768,7 +17768,7 @@ h5 {
 
 /* line 137, /Users/jonathan/xiaoxin/chess_game/app/assets/stylesheets/application.scss */
 .btn {
-  background-color: #3877c8;
+  background-color: #1f7584;
   font-size: 10px;
   text-align: center;
 }
@@ -17786,19 +17786,19 @@ h5 {
 /* line 152, /Users/jonathan/xiaoxin/chess_game/app/assets/stylesheets/application.scss */
 .btn-default-2 {
   background-color: #fff;
-  border-color: #376ad3;
-  color: #376ad3;
+  border-color: #1d7584;
+  color: #1d7584;
 }
 
 /* line 158, /Users/jonathan/xiaoxin/chess_game/app/assets/stylesheets/application.scss */
 .btn-default-2:hover {
-  background-color: #376ad3;
+  background-color: #1d7584;
   color: #fff;
 }
 
 /* line 163, /Users/jonathan/xiaoxin/chess_game/app/assets/stylesheets/application.scss */
 .btn.btn-default-1:hover {
-  background-color: #3877c8;
+  background-color: #1f7584;
   color: #fff;
 }
 
@@ -17847,7 +17847,7 @@ h5 {
 /* line 204, /Users/jonathan/xiaoxin/chess_game/app/assets/stylesheets/application.scss */
 .form-actions .button {
   color: #fff;
-  background-color: #376ad3;
+  background-color: #1d7584;
   border-color: #ffffff;
   border-radius: 100px;
   font-size: 20px;
@@ -17866,7 +17866,7 @@ h5 {
 /* line 219, /Users/jonathan/xiaoxin/chess_game/app/assets/stylesheets/application.scss */
 .form-group .form-control {
   border: 0;
-  background-image: linear-gradient(#376ad3, #376ad3), linear-gradient(#3877c8, #3877c8);
+  background-image: linear-gradient(#1d7584, #1d7584), linear-gradient(#1f7584, #1f7584);
   background-size: 0 2px, 100% 1px;
   background-repeat: no-repeat;
   background-position: center bottom, center calc(100% - 1px);
@@ -17879,7 +17879,7 @@ h5 {
 
 /* line 235, /Users/jonathan/xiaoxin/chess_game/app/assets/stylesheets/application.scss */
 a:hover, a:focus {
-  color: #376ad3;
+  color: #1d7584;
   text-decoration: none;
 }
 
