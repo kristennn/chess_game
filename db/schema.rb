@@ -134,8 +134,6 @@ ActiveRecord::Schema.define(version: 20180108110420) do
     t.float "rate", limit: 24
     t.string "wechat_unionid", comment: "微信用户的UnionID"
     t.integer "share_diamond"
-    t.string "friendly_id"
-    t.index ["friendly_id"], name: "index_users_on_friendly_id", unique: true
     t.index ["wechat_unionid"], name: "index_users_on_wechat_unionid", unique: true
   end
 
