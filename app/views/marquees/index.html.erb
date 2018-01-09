@@ -1,0 +1,26 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("添加", new_marquee_path, class: "btn btn-primary pull-right") %>
+  </div>
+  <br>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>序号</td>
+        <td>发布时间</td>
+        <td>发布者 </td>
+        <td>操作选项</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @marquees.each do |marquee| %>
+        <tr>
+         <td><%= marquee.id%></td>
+         <td><%= marquee.created_at %></td>
+         <td>管理员</td>
+         <td><%= link_to("更新", edit_marquee_path(marquee), class: "btn" )%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

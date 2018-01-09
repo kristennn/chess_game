@@ -5,6 +5,7 @@
            <% if current_user && current_user.permission == "manager" %>
               <a class="navbar-brand" href="/">游戏后台</a>
               <a class="navbar-brand" href="/users">代理管理</a>
+              <a class="navbar-brand" href="/callboards">公告</a>
             <% end %>
             <% if !current_user %>
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -33,6 +34,7 @@
                     <b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu">
+                    <li><%= link_to("跑马灯", marquees_path ) %></li>
                     <li><%= link_to("修改密码", edit_user_path(current_user)) %></li>
                     <li> <%= link_to("退出", logout_path(current_user), method: :delete) %> </li>
                   </ul>

@@ -1,0 +1,28 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("添加公告", new_callboard_path, class: "btn btn-primary pull-right") %>
+  </div>
+  <br>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>序号</td>
+        <td>标题</td>
+        <td>发布时间</td>
+        <td>发布者 </td>
+        <td>操作选项</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @callboards.each do |callboard| %>
+        <tr>
+         <td><%= callboard.id%></td>
+         <td><%= link_to(callboard.title,callboard_path(callboard))%></td>
+         <td><%= callboard.created_at %></td>
+         <td>管理员</td>
+         <td><%= link_to("删除", callboard_path(callboard), class: "btn", method: :delete, data: { confirm: "确定要删除此公告么？"})%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

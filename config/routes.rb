@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :tbl_accounts
   resources :tbl_systems
   resources :tbl_player_fees
+  resources :callboards
+  resources :marquees
   resources :users do
     member do
       patch :add_diamond
@@ -25,6 +27,16 @@ Rails.application.routes.draw do
   resources :tbl_playerinfos do
     member do
       patch :diamond
+    end
+  end
+
+  namespace :api, :default => { :format => :json} do
+    namespace :game do
+      post "/users/:setUserBind" => "users#bind_user"
+      get "/users/:getUserBindInfo" => "users#get_bind"
+      patch "/users/:shareActivity" => "users#share_activity"
+      post "/callboards/:getOneSystemNews" => "callboards#get_news"
+      post "/marquees/:getPaomatiao" => "marquees#get_paomatiao"
     end
   end
 
