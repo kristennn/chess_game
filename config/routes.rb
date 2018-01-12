@@ -39,6 +39,14 @@ Rails.application.routes.draw do
       patch "/users/:shareActivity" => "users#share_activity"
       post "/callboards/:getOneSystemNews" => "callboards#get_news"
       post "/marquees/:getPaomatiao" => "marquees#get_paomatiao"
+
+      get "/playerinfos/:searchPlayer" => "playerinfos#search_player"
+      delete "/playerinfos/:destroyPlayer" => "playerinfos#destroy_player"
+      post "/playerinfos/:addPlayer" => "playerinfos#add_player"
+      get "/:searchRequest" => "playerinfos#search_request"
+      post "/:dealwithRequest" => "playerinfos#deal_request"
+      post "players/:addTargetPlayer" => "playerinfos#add_target_player"
+      get "players/:getPhoneList" => "playerinfos#get_phone_list"
     end
   end
 
