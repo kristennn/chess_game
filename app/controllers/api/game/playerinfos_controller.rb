@@ -6,10 +6,10 @@ class Api::Game::PlayerinfosController < ApiController
         :uid => 1,
         :name => "啦啦啦",
         :gold => 288,
-        :online => true
-        :sex => 1
-        :viptype => 1
-        :headimgurl => "http://llalalall.com"
+        :online => true,
+        :sex => 1,
+        :viptype => 1,
+        :headimgurl => "http://llalalall.com",
         :score => 1234
       },
       :msg => "已搜索到好友",
@@ -37,13 +37,13 @@ class Api::Game::PlayerinfosController < ApiController
         :uid => 1,
         :name => "啦啦啦",
         :gold => 288,
-        :online => true
-        :sex => 1
-        :viptype => 1
-        :headimgurl => "http://llalalall.com"
+        :online => true,
+        :sex => 1,
+        :viptype => 1,
+        :headimgurl => "http://llalalall.com",
         :score => 1234
       },
-      :msg => "已搜索到请求列表"
+      :msg => "已搜索到请求列表",
       :code => 3
     }
   end
@@ -74,14 +74,14 @@ class Api::Game::PlayerinfosController < ApiController
 
   def get_phone_list
     render :json => {
-      :playerMsg => {
+      :players => {
         :uid => 1,
         :name => "啦啦啦",
         :gold => 288,
-        :online => true
-        :sex => 1
-        :viptype => 1
-        :headimgurl => "http://llalalall.com"
+        :online => true,
+        :sex => 1,
+        :viptype => 1,
+        :headimgurl => "http://llalalall.com",
         :score => 1234
       },
       :msg => "已搜索到通讯录好友",
@@ -155,15 +155,15 @@ class Api::Game::PlayerinfosController < ApiController
   def get_group_player
     render :json => {
       :msg => "已查询到本圈子成员",
-      :code => 12
+      :code => 12,
       :players => {
         :uid => 1,
         :name => "啦啦啦",
         :gold => 288,
-        :online => true
-        :sex => 1
-        :viptype => 1
-        :headimgurl => "http://llalalall.com"
+        :online => true,
+        :sex => 1,
+        :viptype => 1,
+        :headimgurl => "http://llalalall.com",
         :score => 1234
       }
     }
@@ -198,27 +198,27 @@ class Api::Game::PlayerinfosController < ApiController
         :uid => 1,
         :name => "啦啦啦",
         :gold => 288,
-        :online => true
-        :sex => 1
-        :viptype => 1
-        :headimgurl => "http://llalalall.com"
+        :online => true,
+        :sex => 1,
+        :viptype => 1,
+        :headimgurl => "http://llalalall.com",
         :score => 1234
-      }
+      },
     }
   end
 
   def search_quit_request
     render :json => {
       :message => "已查询到圈子的退圈记录",
-      :code => 17
+      :code => 17,
       :players => {
         :uid => 1,
         :name => "啦啦啦",
         :gold => 288,
-        :online => true
-        :sex => 1
-        :viptype => 1
-        :headimgurl => "http://llalalall.com"
+        :online => true,
+        :sex => 1,
+        :viptype => 1,
+        :headimgurl => "http://llalalall.com",
         :score => 1234
       }
     }
