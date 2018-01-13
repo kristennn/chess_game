@@ -41,12 +41,23 @@ Rails.application.routes.draw do
       post "/marquees/:getPaomatiao" => "marquees#get_paomatiao"
 
       get "/playerinfos/:searchPlayer" => "playerinfos#search_player"
-      delete "/playerinfos/:destroyPlayer" => "playerinfos#destroy_player"
+      delete "/playerinfos/:deletePlayer" => "playerinfos#destroy_player"
       post "/playerinfos/:addPlayer" => "playerinfos#add_player"
       get "/:searchRequest" => "playerinfos#search_request"
       post "/:dealwithRequest" => "playerinfos#deal_request"
       post "players/:addTargetPlayer" => "playerinfos#add_target_player"
       get "players/:getPhoneList" => "playerinfos#get_phone_list"
+      post "/groups/:createGroup" => "playerinfos#create_group"
+      get "groups/:searchGroup" => "playerinfos#search_group"
+      get "grouplists/:search_grouplist" => "playerinfos#search_grouplist"
+      patch "groups/:joinGroup" => "playerinfos#join_group"
+      get "groupinfos/:getGroupinfo" => "playerinfos#get_groupinfo"
+      get "groupPlayers/:getGroupPlayer" => "playerinfos#get_group_player"
+      delete "groupPlayers/:deleteGroupPlayer" => "playerinfos#delete_group_player"
+      delete "group/:quitGroup" => "playerinfos#quit_group"
+      delete "groups/:disbandGroup" => "playerinfos#disband_group"
+      get "groupRequests/:search_groupRequest" => "playerinfos#search_groupRequest"
+      get "groupQuitRequests/:search_groupQuitRequest" => "playerinfos#search_quit_request"
     end
   end
 
