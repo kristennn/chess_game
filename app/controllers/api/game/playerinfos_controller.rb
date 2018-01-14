@@ -90,6 +90,11 @@ class Api::Game::PlayerinfosController < ApiController
   end
 
   def create_group
+    @group_msg = GroupMsg.new( :discription => params[:discription],
+                               :name => params[:name],
+                               :count => params[:count],
+                               :pics => params[:pics]
+                             )
     render :json => {
       :msg => "成功创建圈子",
       :code => 7,
