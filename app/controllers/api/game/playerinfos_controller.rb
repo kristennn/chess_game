@@ -195,17 +195,25 @@ class Api::Game::PlayerinfosController < ApiController
   end
 
   def delete_group_player
-    render :json => {
-      :msg => "已删除圈内成员",
-      :code => 13
-    }
+    @player = TblPlayerinfo.find_by_userid!(params[:userid])
+    @group = GroupMsg.find(params[:groupid])
+    @del_player = TblPlayerinfo.find_by_userid!(params[:deluser])
+    if @del_player.is_player_of?(@group) && @group.player == @player
+       @del_player.quit!(@group)
+       render :json => {
+         :code => 0,
+         :msg => "已将#{@del_player.nickname}移出本圈"
+       }
+    else
+      render :json => { :msg => "无权限或该成员不是圈内成员"}
+    end
   end
 
 
   def disband_group
     @player = TblPlayerinfo.find_by_userid!(params[:userid])
     @group = GroupMsg.find(params[:groupid])
-    if @group.player == @player
+    if @group.player == @player #这里写错了
       @group.destroy
       render :json => {
         :code => 0,
