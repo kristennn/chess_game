@@ -214,10 +214,16 @@ class Api::Game::PlayerinfosController < ApiController
 
 
   def disband_group
-    render :json => {
-      :msg => "已解散本圈子",
-      :code => 15
-    }
+    @player = TblPlayerinfo.find_by_userid!(params[:userid])
+    @group = GroupMsg.find(params[:groupid])
+    if @group.player == @player
+      render :json => {
+        :code => 0,
+        :msg => "已解散本圈子"
+      }
+    else
+      render :json => { :msg => "无权限"}
+    end
   end
 
   def search_groupRequest
