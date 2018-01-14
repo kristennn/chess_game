@@ -97,6 +97,7 @@ class Api::Game::PlayerinfosController < ApiController
                                :pics => params[:pics]
                              )
     if @group_msg.save
+      @player.join!(@group_msg)
       render :json => {
         :msg => "成功创建圈子",
         :code => 0,
@@ -132,17 +133,8 @@ class Api::Game::PlayerinfosController < ApiController
   end
 
   def search_grouplist
-    render :json => {
-      :msg => "已查询到圈子列表",
-      :code => 9,
-      :group => {
-        :id => 1,
-        :description => "这是第一个圈子",
-        :name => "啦啦啦的圈子",
-        :count => 1,
-        :pics => "http://llalalall.com"
-      }
-    }
+    @player = TblPlayerinfo.find_by_userid!(params[:userid])
+    @groups = @player.groups
   end
 
   def join_group
