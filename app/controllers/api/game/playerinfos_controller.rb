@@ -189,20 +189,9 @@ class Api::Game::PlayerinfosController < ApiController
   end
 
   def get_group_player
-    render :json => {
-      :msg => "已查询到本圈子成员",
-      :code => 12,
-      :players => {
-        :uid => 1,
-        :name => "啦啦啦",
-        :gold => 288,
-        :online => true,
-        :sex => 1,
-        :viptype => 1,
-        :headimgurl => "http://llalalall.com",
-        :score => 1234
-      }
-    }
+    @group = GroupMsg.find(params[:groupid])
+    @player = TblPlayerinfo.find_by_userid!(params[:userid])
+    @players = @group.players
   end
 
   def delete_group_player
