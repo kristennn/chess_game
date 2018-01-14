@@ -146,10 +146,35 @@ class Api::Game::PlayerinfosController < ApiController
   end
 
   def join_group
-    render :json => {
-      :msg => "已加入到本圈子",
-      :code => 10
-    }
+    @group_msg = GroupMsg.find(params[:groupid])
+    @player = TblPlayerinfo.find_by_userid!(params[:userid])
+    if !@player.is_player_of?(@group_msg)
+        @player.join!(@group_msg)
+        render :json => {
+          :code => 0,
+          :msg => "已加入到本圈子"
+        }
+    else
+      render :json => {
+        :msg => "您已在此圈子"
+      }
+    end
+  end
+
+  def quit_group
+    @group_msg = GroupMsg.find(params[:groupid])
+    @player = TblPlayerinfo.find_by_userid!(params[:userid])
+    if @player.is_player_of?(@group_msg)
+      @player.quit!(@group_msg)
+      render :json => {
+        :code => 0,
+        :msg => "您已退出此圈子"
+      }
+    else
+      render :json => {
+        :message => "你不在该圈子内，无法退出"
+      }
+    end
   end
 
   def get_groupinfo
@@ -190,12 +215,6 @@ class Api::Game::PlayerinfosController < ApiController
     }
   end
 
-  def quit_group
-    render :json => {
-      :msg => "已退出本圈子",
-      :code => 14
-    }
-  end
 
   def disband_group
     render :json => {
