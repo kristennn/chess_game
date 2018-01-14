@@ -99,6 +99,7 @@ class Api::Game::PlayerinfosController < ApiController
                                :count => params[:count],
                                :pics => params[:pics]
                              )
+    @group_msg.player = @player
     if @group_msg.save
       @player.join!(@group_msg)
       render :json => {

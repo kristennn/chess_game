@@ -5,6 +5,7 @@ class TblPlayerinfo < ApplicationRecord
                                  dependent: :destroy
   has_many :groups, through: :group_relationships, source: :group_msg
 
+  has_many :group_msgs, class_name: "GroupMsg", foreign_key: "userid"
 
   def is_player_of?(group_msg)
     groups.include?(group_msg)
