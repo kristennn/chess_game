@@ -90,22 +90,30 @@ class Api::Game::PlayerinfosController < ApiController
   end
 
   def create_group
+    @player = TblPlayerinfo.find_by_userid!(params[:userid])
     @group_msg = GroupMsg.new( :discription => params[:discription],
                                :name => params[:name],
                                :count => params[:count],
                                :pics => params[:pics]
                              )
-    render :json => {
-      :msg => "成功创建圈子",
-      :code => 7,
-      :group => {
-        :id => 1,
-        :description => "这是第一个圈子",
-        :name => "啦啦啦的圈子",
-        :count => 1,
-        :pics => "http://llalalall.com"
+    if @group_msg.save
+      render :json => {
+        :msg => "成功创建圈子",
+        :code => 0,
+        :group => {
+          :id => @group_msg.id,
+          :discription => @group_msg.discription,
+          :name => @group_msg.name,
+          :count => @group_msg.count,
+          :pics => @group_msg.pics
+        }
       }
-    }
+    else
+      render :json => {
+        :msg => "创建圈子失败",
+        :code => 1
+      }
+    end
   end
 
   def search_group
