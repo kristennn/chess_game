@@ -117,15 +117,16 @@ class Api::Game::PlayerinfosController < ApiController
   end
 
   def search_group
+    @group_msg = GroupMsg.find(params[:groupid])
     render :json => {
+      :code => 0,
       :msg => "成功搜索到圈子",
-      :code => 8,
       :group => {
-        :id => 1,
-        :description => "这是第一个圈子",
-        :name => "啦啦啦的圈子",
-        :count => 1,
-        :pics => "http://llalalall.com"
+        :id => @group_msg.id,
+        :discription => @group_msg.discription,
+        :name => @group_msg.name,
+        :count => @group_msg.count,
+        :pics => @group_msg.pics
       }
     }
   end
