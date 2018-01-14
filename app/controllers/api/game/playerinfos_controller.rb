@@ -89,6 +89,9 @@ class Api::Game::PlayerinfosController < ApiController
     }
   end
 
+
+############################################ 圈子模块 ##########################################
+
   def create_group
     @player = TblPlayerinfo.find_by_userid!(params[:userid])
     @group_msg = GroupMsg.new( :discription => params[:discription],
