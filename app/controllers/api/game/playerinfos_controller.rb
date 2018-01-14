@@ -213,7 +213,7 @@ class Api::Game::PlayerinfosController < ApiController
   def disband_group
     @player = TblPlayerinfo.find_by_userid!(params[:userid])
     @group = GroupMsg.find(params[:groupid])
-    if @group.player == @player #这里写错了
+    if @group.player == @player 
       @group.destroy
       render :json => {
         :code => 0,
