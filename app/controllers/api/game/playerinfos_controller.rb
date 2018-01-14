@@ -217,6 +217,7 @@ class Api::Game::PlayerinfosController < ApiController
     @player = TblPlayerinfo.find_by_userid!(params[:userid])
     @group = GroupMsg.find(params[:groupid])
     if @group.player == @player
+      @group.destroy
       render :json => {
         :code => 0,
         :msg => "已解散本圈子"
