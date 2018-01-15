@@ -7,6 +7,30 @@ class TblPlayerinfo < ApplicationRecord
 
   has_many :group_msgs, class_name: "GroupMsg", foreign_key: "userid"
 
+  #-------------------------------------好友模块-----------------------------------------------#
+  has_many :active_relationships,  class_name:   "PlayerRelationship",
+                                   foreign_key:  "follower_id",
+                                   dependent:    :destroy
+  has_many :passive_relationships, class_name:   "PlayerRelationship",
+                                   foreign_key:  "followed_id",
+                                   dependent:    :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers,  through: :passive_relationships,source: :follower
+
+  def following?(other_user)
+    following.include?(other_user)
+  end
+
+  def follow(other_user)
+    following << other_user
+  end
+
+  def unfollow(other_user)
+    following.delete(other_user)
+  end
+ #---------------------------------------结束---------------------------------------------------#
+
+
   def is_player_of?(group_msg)
     groups.include?(group_msg)
   end
