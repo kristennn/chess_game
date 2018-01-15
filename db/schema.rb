@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115020937) do
+ActiveRecord::Schema.define(version: 20180115072333) do
 
   create_table "callboards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "post"
@@ -57,6 +57,19 @@ ActiveRecord::Schema.define(version: 20180115020937) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["phone", "token"], name: "index_phone_tokens_on_phone_and_token"
+  end
+
+  create_table "player_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "uid"
+    t.string "name"
+    t.integer "gold"
+    t.boolean "online", default: false
+    t.integer "sex", default: 0
+    t.integer "viptype"
+    t.string "headimgurl"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tbl_account", primary_key: "userid", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", comment: "用户账号表" do |t|
