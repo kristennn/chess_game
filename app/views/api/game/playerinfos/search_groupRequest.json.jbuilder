@@ -1,6 +1,6 @@
-if @player.is_player_of?(@group)
-  json.code  0
-  json.msg  "已查询到圈内成员"
+if @player == @group.player
+  json.code 0
+  json.msg "已查询到圈内申请记录"
   json.players do
     json.array! @players do |player|
       json.uid         player.userid
@@ -13,6 +13,7 @@ if @player.is_player_of?(@group)
       json.score       player.diamond
     end
   end
+
 else
-  json.msg "您不是本圈子成员，无法查看圈内信息"
+  json.msg "您不是群主，无法查看申请记录"
 end
