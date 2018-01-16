@@ -31,7 +31,7 @@ class Api::Game::FriendsController < ApiController
     end
   end
 
-  def add_player
+  def add_player #通过id加好友，好友关系是双向的
     @player = TblPlayerinfo.find_by_userid!(params[:userid])
     @player1 = TblPlayerinfo.find_by_userid!(params[:toid])
     @friend_request = FriendRequest.new( :userid => params[:userid],
@@ -51,7 +51,7 @@ class Api::Game::FriendsController < ApiController
 
   end
 
-  def search_request
+  def search_request #与add_player方法配合使用
     @requests = FriendRequest.where(:friend_id => params[:userid])
     result = []
     @requests.each do |request|
@@ -59,25 +59,9 @@ class Api::Game::FriendsController < ApiController
       result += a
     end
     @players = result
-    render :json => {
-      :msg => "结果如下",
-      :code => 3,
-      :players => @players.map {|player|
-        {
-          :uid => player.userid,
-          :name => player.nickname,
-          :gold => 288,
-          :online => true,
-          :sex => 1,
-          :viptype => 1,
-          :headimgurl => "http://llalalall.com",
-          :score => 1234
-          }
-      }
-    }
   end
 
-  def deal_request
+  def deal_request #与add_player方法配合使用
     @dealer = TblPlayerinfo.find_by_userid!(params[:userid])
     @player = TblPlayerinfo.find_by_userid!(params[:toid])
     @request = FriendRequest.where("friend_requests.userid =? AND friend_requests.friend_id =?", params[:toid], params[:userid]).first
