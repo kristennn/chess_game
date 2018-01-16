@@ -44,17 +44,17 @@ class Api::Game::PlayerinfosController < ApiController
     @friend_request = FriendRequest.new( :userid => params[:userid],
                                          :friend_id => params[:toid]
                                        )
-    @player_relationship = PlayerRelationship.new(
-                                                   :follower_id => params[:toid],
-                                                   :followed_id => params[:userid]
-                                                 )
+    # @player_relationship = PlayerRelationship.new(
+    #                                                :follower_id => params[:toid],
+    #                                                :followed_id => params[:userid]
+    #                                              )
     if !@player.following?(@player1)
        @friend_request.save!
-       @player_relationship.save!
+       # @player_relationship.save!
        @player.follow!(@player1)
        render :json => {
          :code => 0,
-         :msg => "添加好友成功"
+         :msg => "成功发出好友申请"
        }
      elsif @player.following?(@player1)
        render :json => { :msg => "你们已是好友，无法重复添加"}
@@ -73,8 +73,8 @@ class Api::Game::PlayerinfosController < ApiController
     end
     @players = result
     render :json => {
-      :msg => "已搜索到请求列表",
-      :code => 3
+      :msg => "结果如下",
+      :code => 3,
       :players => @players.map {|player|
         {
           :uid => player.userid,
