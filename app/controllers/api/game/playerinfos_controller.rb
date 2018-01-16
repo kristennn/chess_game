@@ -2,7 +2,7 @@ class Api::Game::PlayerinfosController < ApiController
 
   def search_player
     render :json => {
-      :players => {
+      :players => [{
         :uid => 1,
         :name => "啦啦啦",
         :gold => 288,
@@ -13,6 +13,16 @@ class Api::Game::PlayerinfosController < ApiController
         :score => 1234,
         :diamond => 2000
       },
+      {:uid => 2,
+      :name => "啦啦啦",
+      :gold => 288,
+      :online => true,
+      :sex => 1,
+      :viptype => 1,
+      :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
+      :score => 1234,
+      :diamond => 2000
+    }],
       :msg => "已搜索到好友",
       :code => 0
     }
@@ -34,7 +44,7 @@ class Api::Game::PlayerinfosController < ApiController
 
   def search_request
     render :json => {
-      :players => {
+      :players => [{
         :uid => 1,
         :name => "啦啦啦",
         :gold => 288,
@@ -45,6 +55,16 @@ class Api::Game::PlayerinfosController < ApiController
         :score => 1234,
         :diamond => 2000
       },
+      {:uid => 2,
+      :name => "啦啦啦",
+      :gold => 288,
+      :online => true,
+      :sex => 1,
+      :viptype => 1,
+      :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
+      :score => 1234,
+      :diamond => 2000
+    }],
       :msg => "已搜索到请求列表",
       :code => 0
     }
@@ -76,7 +96,7 @@ class Api::Game::PlayerinfosController < ApiController
 
   def get_phone_list
     render :json => {
-      :players => {
+      :players => [{
         :uid => 1,
         :name => "啦啦啦",
         :gold => 288,
@@ -87,6 +107,16 @@ class Api::Game::PlayerinfosController < ApiController
         :score => 1234,
         :diamond => 2000
       },
+      {:uid => 2,
+      :name => "啦啦啦",
+      :gold => 288,
+      :online => true,
+      :sex => 1,
+      :viptype => 1,
+      :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
+      :score => 1234,
+      :diamond => 2000
+    }],
       :msg => "已搜索到通讯录好友",
       :code => 0
     }
@@ -159,7 +189,7 @@ class Api::Game::PlayerinfosController < ApiController
     render :json => {
       :msg => "已查询到本圈子成员",
       :code => 0,
-      :players => {
+      :players => [{
         :uid => 1,
         :name => "啦啦啦",
         :gold => 288,
@@ -169,7 +199,17 @@ class Api::Game::PlayerinfosController < ApiController
         :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
         :score => 1234,
         :diamond => 2000
-      }
+      },
+      {:uid => 2,
+      :name => "啦啦啦",
+      :gold => 288,
+      :online => true,
+      :sex => 1,
+      :viptype => 1,
+      :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
+      :score => 1234,
+      :diamond => 2000
+    }],
     }
   end
 
@@ -198,7 +238,7 @@ class Api::Game::PlayerinfosController < ApiController
     render :json => {
       :message => "已查询到圈子申请列表",
       :code => 0,
-      :players => {
+      :players => [{
         :uid => 1,
         :name => "啦啦啦",
         :gold => 288,
@@ -209,6 +249,16 @@ class Api::Game::PlayerinfosController < ApiController
         :score => 1234,
         :diamond => 2000
       },
+      {:uid => 2,
+      :name => "啦啦啦",
+      :gold => 288,
+      :online => true,
+      :sex => 1,
+      :viptype => 1,
+      :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
+      :score => 1234,
+      :diamond => 2000
+    }],
     }
   end
 
@@ -216,7 +266,7 @@ class Api::Game::PlayerinfosController < ApiController
     render :json => {
       :message => "已查询到圈子的退圈记录",
       :code => 0,
-      :players => {
+      :players => [{
         :uid => 1,
         :name => "啦啦啦",
         :gold => 288,
@@ -225,8 +275,18 @@ class Api::Game::PlayerinfosController < ApiController
         :viptype => 1,
         :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
         :score => 1234,
-        :diamond: 2000
-      }
+        :diamond => 2000
+      },
+      {:uid => 2,
+      :name => "啦啦啦",
+      :gold => 288,
+      :online => true,
+      :sex => 1,
+      :viptype => 1,
+      :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
+      :score => 1234,
+      :diamond => 2000
+    }],
     }
   end
 
