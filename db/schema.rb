@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115072333) do
+ActiveRecord::Schema.define(version: 20180116010530) do
 
   create_table "callboards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "post"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 20180115072333) do
     t.index ["phone", "token"], name: "index_phone_tokens_on_phone_and_token"
   end
 
+  create_table "player_relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_player_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_player_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_player_relationships_on_follower_id"
+  end
+
   create_table "player_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "uid"
     t.string "name"
@@ -70,6 +80,7 @@ ActiveRecord::Schema.define(version: 20180115072333) do
     t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "diamond", default: 2000
   end
 
   create_table "tbl_account", primary_key: "userid", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", comment: "用户账号表" do |t|
