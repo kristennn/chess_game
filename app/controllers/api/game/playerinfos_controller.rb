@@ -9,19 +9,16 @@ class Api::Game::PlayerinfosController < ApiController
                                                :search_quit_request] #查询退圈记录
 
   def search_player
+    @player = TblPlayerinfo.find_by_userid!(params[:userid])
+    @following = @player.following
     render :json => {
-      :players => {
-        :uid => 1,
-        :name => "啦啦啦",
-        :gold => 288,
-        :online => true,
-        :sex => 1,
-        :viptype => 1,
-        :headimgurl => "http://llalalall.com",
-        :score => 1234
-      },
+      :code => 0,
       :msg => "已搜索到好友",
-      :code => 0
+      :players => @following.map{ |following|
+        {
+          :uid => following.userid
+          }
+      }
     }
   end
 
@@ -33,10 +30,25 @@ class Api::Game::PlayerinfosController < ApiController
   end
 
   def add_player
-    render :json => {
-      :msg => "添加好友成功",
-      :code => 2
-    }
+    @player = TblPlayerinfo.find_by_userid!(params[:userid])
+    @player1 = TblPlayerinfo.find_by_userid!(params[:toid])
+    @player_relationship = PlayerRelationship.new(
+                                                   :follower_id => params[:toid],
+                                                   :followed_id => params[:userid]
+                                                 )
+    if !@player.following?(@player1)
+       @player_relationship.save!
+       @player.follow!(@player1)
+       render :json => {
+         :code => 0,
+         :msg => "添加好友成功"
+       }
+     elsif @player.following?(@player1)
+       render :json => { :msg => "你们已是好友，无法重复添加"}
+     elsif
+       render :json => { :msg => "此用户不存在！"}
+    end
+
   end
 
   def search_request
