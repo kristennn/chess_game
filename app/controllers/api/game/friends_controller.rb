@@ -3,7 +3,7 @@ class Api::Game::FriendsController < ApiController
 #------------------------------- 好友模块 ------------------------------------#
   def search_player
     @player = TblPlayerinfo.find_by_userid!(params[:userid])
-    @followers = @player.followers
+    @followers = @player.following
     render :json => {
       :code => 0,
       :msg => "已搜索到好友",
@@ -86,12 +86,20 @@ class Api::Game::FriendsController < ApiController
     end
   end
 
-  def add_target_player
+  def add_target_player #配对加好友
     @player = TblPlayerinfo.find_by_userid!(params[:userid])
-    @target = TblPlayerinfo.find_by_userid!(params[:targetPlayers])
+    targets = params[:targetPlayers]
+    targets = targets[1..-2]
+    targets = targets.split(",")
+    targets.each do |target|
+      gamer = TblPlayerinfo.find_by_userid!(target)
+      if !@player.following?(gamer)
+        @player.follow!(gamer)
+      end
+    end
     render :json => {
-      :msg => "配对成功，已添加该好友",
-      :code => 5
+      :code => 0,
+      :msg => "恭喜你，配对成功！"
     }
   end
 
