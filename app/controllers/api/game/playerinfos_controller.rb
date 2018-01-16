@@ -9,7 +9,7 @@ class Api::Game::PlayerinfosController < ApiController
         :online => true,
         :sex => 1,
         :viptype => 1,
-        :headimgurl => "http://llalalall.com",
+        :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
         :score => 1234
       },
       :msg => "已搜索到好友",
@@ -40,11 +40,12 @@ class Api::Game::PlayerinfosController < ApiController
         :online => true,
         :sex => 1,
         :viptype => 1,
-        :headimgurl => "http://llalalall.com",
-        :score => 1234
+        :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
+        :score => 1234,
+        :diamond => 2000
       },
       :msg => "已搜索到请求列表",
-      :code => 3
+      :code => 0
     }
   end
 
@@ -81,7 +82,7 @@ class Api::Game::PlayerinfosController < ApiController
         :online => true,
         :sex => 1,
         :viptype => 1,
-        :headimgurl => "http://llalalall.com",
+        :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
         :score => 1234
       },
       :msg => "已搜索到通讯录好友",
@@ -98,7 +99,7 @@ class Api::Game::PlayerinfosController < ApiController
         :description => "这是第一个圈子",
         :name => "啦啦啦的圈子",
         :count => 1,
-        :pics => "http://llalalall.com"
+        :pics => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg"
       }
     }
   end
@@ -112,7 +113,7 @@ class Api::Game::PlayerinfosController < ApiController
         :description => "这是第一个圈子",
         :name => "啦啦啦的圈子",
         :count => 1,
-        :pics => "http://llalalall.com"
+        :pics => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg"
       }
     }
   end
@@ -126,7 +127,7 @@ class Api::Game::PlayerinfosController < ApiController
         :description => "这是第一个圈子",
         :name => "啦啦啦的圈子",
         :count => 1,
-        :pics => "http://llalalall.com"
+        :pics => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg"
       }
     }
   end
@@ -147,7 +148,7 @@ class Api::Game::PlayerinfosController < ApiController
         :description => "这是第一个圈子",
         :name => "啦啦啦的圈子",
         :count => 1,
-        :pics => "http://llalalall.com"
+        :pics => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg"
       }
     }
   end
@@ -163,7 +164,7 @@ class Api::Game::PlayerinfosController < ApiController
         :online => true,
         :sex => 1,
         :viptype => 1,
-        :headimgurl => "http://llalalall.com",
+        :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
         :score => 1234
       }
     }
@@ -201,7 +202,7 @@ class Api::Game::PlayerinfosController < ApiController
         :online => true,
         :sex => 1,
         :viptype => 1,
-        :headimgurl => "http://llalalall.com",
+        :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
         :score => 1234
       },
     }
@@ -218,7 +219,7 @@ class Api::Game::PlayerinfosController < ApiController
         :online => true,
         :sex => 1,
         :viptype => 1,
-        :headimgurl => "http://llalalall.com",
+        :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
         :score => 1234
       }
     }
