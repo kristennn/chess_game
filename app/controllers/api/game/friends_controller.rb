@@ -103,20 +103,26 @@ class Api::Game::FriendsController < ApiController
     }
   end
 
-  def get_phone_list
+  def get_phone_list #通讯录搜索好友
+    @player = TblPlayerinfo.find_by_userid!(params[:userid])
+    phone_numbers = params[:phoneNumber]
+    phone_numbers = phone_numbers[1..-2]
+    phone_numbers = phone_numbers.split(",")
+    result = []
+    phone_numbers.each do |phone|
+      gamer = TblPlayerinfo.where( :phonenumber => phone)
+      result += gamer
+    end
+    @players = result
     render :json => {
-      :players => {
-        :uid => 1,
-        :name => "啦啦啦",
-        :gold => 288,
-        :online => true,
-        :sex => 1,
-        :viptype => 1,
-        :headimgurl => "http://llalalall.com",
-        :score => 1234
-      },
+      :code => 0,
       :msg => "已搜索到通讯录好友",
-      :code => 6
+      :players => @players.map{ |player|
+        {
+          :uid => player.userid,
+          :name => player.nickname
+        }
+      }
     }
   end
 
