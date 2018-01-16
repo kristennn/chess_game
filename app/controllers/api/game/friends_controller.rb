@@ -117,7 +117,7 @@ class Api::Game::FriendsController < ApiController
     render :json => {
       :code => 0,
       :msg => "已搜索到通讯录好友",
-      :players => @players.map{ |player|
+      :playerMsg => @players.map{ |player|
         {
           :uid => player.userid,
           :name => player.nickname
