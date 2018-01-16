@@ -10,7 +10,8 @@ class Api::Game::PlayerinfosController < ApiController
         :sex => 1,
         :viptype => 1,
         :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-        :score => 1234
+        :score => 1234,
+        :diamond => 2000
       },
       :msg => "已搜索到好友",
       :code => 0
@@ -54,12 +55,12 @@ class Api::Game::PlayerinfosController < ApiController
     if @agree
       render :json => {
         :msg => "已同意好友申请",
-        :code => 4
+        :code => 0
       }
     else
       render :json => {
         :msg => "已拒绝好友申请",
-        :code => 4
+        :code => 1
       }
     end
   end
@@ -69,7 +70,7 @@ class Api::Game::PlayerinfosController < ApiController
     @target = TblPlayerinfo.find_by_userid!(params[:targetPlayers])
     render :json => {
       :msg => "配对成功，已添加该好友",
-      :code => 5
+      :code => 0
     }
   end
 
@@ -83,10 +84,11 @@ class Api::Game::PlayerinfosController < ApiController
         :sex => 1,
         :viptype => 1,
         :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-        :score => 1234
+        :score => 1234,
+        :diamond => 2000
       },
       :msg => "已搜索到通讯录好友",
-      :code => 6
+      :code => 0
     }
   end
 
@@ -156,7 +158,7 @@ class Api::Game::PlayerinfosController < ApiController
   def get_group_player
     render :json => {
       :msg => "已查询到本圈子成员",
-      :code => 12,
+      :code => 0,
       :players => {
         :uid => 1,
         :name => "啦啦啦",
@@ -165,7 +167,8 @@ class Api::Game::PlayerinfosController < ApiController
         :sex => 1,
         :viptype => 1,
         :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-        :score => 1234
+        :score => 1234,
+        :diamond => 2000
       }
     }
   end
@@ -173,28 +176,28 @@ class Api::Game::PlayerinfosController < ApiController
   def delete_group_player
     render :json => {
       :msg => "已删除圈内成员",
-      :code => 13
+      :code => 0
     }
   end
 
   def quit_group
     render :json => {
       :msg => "已退出本圈子",
-      :code => 14
+      :code => 0
     }
   end
 
   def disband_group
     render :json => {
       :msg => "已解散本圈子",
-      :code => 15
+      :code => 0
     }
   end
 
   def search_groupRequest
     render :json => {
       :message => "已查询到圈子申请列表",
-      :code => 16,
+      :code => 0,
       :players => {
         :uid => 1,
         :name => "啦啦啦",
@@ -203,7 +206,8 @@ class Api::Game::PlayerinfosController < ApiController
         :sex => 1,
         :viptype => 1,
         :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-        :score => 1234
+        :score => 1234,
+        :diamond => 2000
       },
     }
   end
@@ -211,7 +215,7 @@ class Api::Game::PlayerinfosController < ApiController
   def search_quit_request
     render :json => {
       :message => "已查询到圈子的退圈记录",
-      :code => 17,
+      :code => 0,
       :players => {
         :uid => 1,
         :name => "啦啦啦",
@@ -220,7 +224,8 @@ class Api::Game::PlayerinfosController < ApiController
         :sex => 1,
         :viptype => 1,
         :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-        :score => 1234
+        :score => 1234,
+        :diamond: 2000
       }
     }
   end
