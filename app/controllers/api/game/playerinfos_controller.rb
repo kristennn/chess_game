@@ -23,10 +23,19 @@ class Api::Game::PlayerinfosController < ApiController
   end
 
   def destroy_player
-    render :json => {
-      :msg => "删除好友成功",
-      :code => 1
-    }
+    @player = TblPlayerinfo.find_by_userid!(params[:userid])
+    @friend = TblPlayerinfo.find_by_userid!(params[:toid])
+    @player_relationship = PlayerRelationship.find_by_follower_id!(params[:toid])
+    if @player.following?(@friend)
+      @player_relationship.destroy
+      @player.unfollow!(@friend)
+      render :json => {
+        :code => 0,
+        :msg => "已删除，你们已不再是好友"
+      }
+    else
+      render :json => { :msg => "你们不是好友无法删除"}
+    end
   end
 
   def add_player
