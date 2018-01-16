@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180116070939) do
+ActiveRecord::Schema.define(version: 20180116110240) do
 
   create_table "callboards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "post"
@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(version: 20180116070939) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_agree", default: false
+    t.index ["friend_id"], name: "index_friend_requests_on_friend_id"
+    t.index ["userid", "friend_id"], name: "index_friend_requests_on_userid_and_friend_id", unique: true
+    t.index ["userid"], name: "index_friend_requests_on_userid"
   end
 
   create_table "friendships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

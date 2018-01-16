@@ -10,13 +10,13 @@ class Api::Game::PlayerinfosController < ApiController
 
   def search_player
     @player = TblPlayerinfo.find_by_userid!(params[:userid])
-    @following = @player.following
+    @followers = @player.following
     render :json => {
       :code => 0,
       :msg => "已搜索到好友",
-      :players => @following.map{ |following|
+      :players => @followers.map{ |follower|
         {
-          :uid => following.userid
+          :uid => follower.userid
           }
       }
     }
@@ -44,14 +44,8 @@ class Api::Game::PlayerinfosController < ApiController
     @friend_request = FriendRequest.new( :userid => params[:userid],
                                          :friend_id => params[:toid]
                                        )
-    # @player_relationship = PlayerRelationship.new(
-    #                                                :follower_id => params[:toid],
-    #                                                :followed_id => params[:userid]
-    #                                              )
     if !@player.following?(@player1)
        @friend_request.save!
-       # @player_relationship.save!
-       @player.follow!(@player1)
        render :json => {
          :code => 0,
          :msg => "成功发出好友申请"
@@ -91,16 +85,26 @@ class Api::Game::PlayerinfosController < ApiController
   end
 
   def deal_request
-    @agree = params[:agree]
-    if @agree
+    @dealer = TblPlayerinfo.find_by_userid!(params[:userid])
+    @player = TblPlayerinfo.find_by_userid!(params[:toid])
+    @request = FriendRequest.where("friend_requests.userid =? AND friend_requests.friend_id =?", params[:toid], params[:userid]).first
+    @player_relationship = PlayerRelationship.new( :follower_id => params[:toid],
+                                                   :followed_id => params[:userid]
+                                                 )
+    @agree = params[:agree] #params里出来的是字符串
+    if @agree == "true" && @request.present?
+       @request.destroy
+       @dealer.follow!(@player)
+       @player_relationship.save!
       render :json => {
         :msg => "已同意好友申请",
-        :code => 4
+        :code => 0
       }
-    else
+    elsif @request.present?
+      @request.destroy
       render :json => {
         :msg => "已拒绝好友申请",
-        :code => 4
+        :code => 1
       }
     end
   end
