@@ -41,11 +41,15 @@ class Api::Game::PlayerinfosController < ApiController
   def add_player
     @player = TblPlayerinfo.find_by_userid!(params[:userid])
     @player1 = TblPlayerinfo.find_by_userid!(params[:toid])
+    @friend_request = FriendRequest.new( :userid => params[:userid],
+                                         :friend_id => params[:toid]
+                                       )
     @player_relationship = PlayerRelationship.new(
                                                    :follower_id => params[:toid],
                                                    :followed_id => params[:userid]
                                                  )
     if !@player.following?(@player1)
+       @friend_request.save!
        @player_relationship.save!
        @player.follow!(@player1)
        render :json => {
@@ -61,19 +65,28 @@ class Api::Game::PlayerinfosController < ApiController
   end
 
   def search_request
+    @requests = FriendRequest.where(:friend_id => params[:userid])
+    result = []
+    @requests.each do |request|
+      a = TblPlayerinfo.where(:userid => request.userid)
+      result += a
+    end
+    @players = result
     render :json => {
-      :players => {
-        :uid => 1,
-        :name => "啦啦啦",
-        :gold => 288,
-        :online => true,
-        :sex => 1,
-        :viptype => 1,
-        :headimgurl => "http://llalalall.com",
-        :score => 1234
-      },
       :msg => "已搜索到请求列表",
       :code => 3
+      :players => @players.map {|player|
+        {
+          :uid => player.userid,
+          :name => player.nickname,
+          :gold => 288,
+          :online => true,
+          :sex => 1,
+          :viptype => 1,
+          :headimgurl => "http://llalalall.com",
+          :score => 1234
+          }
+      }
     }
   end
 
