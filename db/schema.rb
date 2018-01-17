@@ -10,13 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180116010530) do
+ActiveRecord::Schema.define(version: 20180117071211) do
 
   create_table "callboards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "post"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
+  end
+
+  create_table "friend_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "userid"
+    t.integer "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "is_agree", default: false
+    t.index ["friend_id"], name: "index_friend_requests_on_friend_id"
+    t.index ["userid", "friend_id"], name: "index_friend_requests_on_userid_and_friend_id", unique: true
+    t.index ["userid"], name: "index_friend_requests_on_userid"
+  end
+
+  create_table "friendships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "userid"
+    t.integer "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "group_msgs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -35,6 +53,8 @@ ActiveRecord::Schema.define(version: 20180116010530) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_join", default: false
+    t.index ["group_msg_id"], name: "index_group_records_on_group_msg_id"
+    t.index ["userid"], name: "index_group_records_on_userid"
   end
 
   create_table "group_relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -137,7 +157,10 @@ ActiveRecord::Schema.define(version: 20180116010530) do
     t.datetime "last_update", default: -> { "CURRENT_TIMESTAMP" }, null: false, comment: "更新时间"
     t.integer "diamond", default: 2000
     t.string "headimg"
+    t.integer "phonenumber"
+    t.integer "score", default: 0
     t.index ["nickname"], name: "nickname", unique: true
+    t.index ["phonenumber"], name: "index_tbl_playerinfo_on_phonenumber", unique: true
   end
 
   create_table "tbl_room", primary_key: ["table_id", "table_code"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
