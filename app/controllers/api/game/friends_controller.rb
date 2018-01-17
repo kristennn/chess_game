@@ -48,4 +48,8 @@ class Api::Game::FriendsController < ApiController
     @player = TblPlayerinfo.find_by_userid!(params[:userid])
   end
 
+  def search_playerinfo
+    @player = TblPlayerinfo.where( :userid => params[:userid])
+  end
+
 end

@@ -47,6 +47,7 @@ Rails.application.routes.draw do
       post "/:dealwithRequest" =>                         "friends#deal_request"
       post "players/:addTargetPlayer" =>                  "friends#add_target_player"
       get "players/:getPhoneList" =>                      "friends#get_phone_list"
+      get "gamers/:searchGamer" =>                        "friends#search_playerinfo"
       post "/groups/:createGroup" =>                      "playerinfos#create_group"
       get "groups/:searchGroup" =>                        "playerinfos#search_group"
       get "grouplists/:search_grouplist" =>               "playerinfos#search_grouplist"
