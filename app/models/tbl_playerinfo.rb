@@ -1,5 +1,7 @@
 class TblPlayerinfo < ApplicationRecord
   self.table_name = 'tbl_playerinfo'
+  has_one :account, class_name: "TblAccount", foreign_key: "userid"
+  #------------------------------------ 圈子模块 --------------------------------#
   has_many :group_relationships, class_name: "GroupRelationship",
                                  foreign_key: "userid",
                                  dependent: :destroy
@@ -7,7 +9,21 @@ class TblPlayerinfo < ApplicationRecord
 
   has_many :group_msgs, class_name: "GroupMsg", foreign_key: "userid"
 
-  #-------------------------------------好友模块-----------------------------------------------#
+    def is_player_of?(group_msg)
+      groups.include?(group_msg)
+    end
+
+    def join!(group_msg)
+      groups << group_msg
+    end
+
+    def quit!(group_msg)
+      groups.delete(group_msg)
+    end
+
+  #-------------------------------------结束 -----------------------------------#
+
+  #-------------------------------------好友模块---------------------------------#
   has_many :active_relationships,  class_name:   "PlayerRelationship",
                                    foreign_key:  "follower_id",
                                    dependent:    :destroy
@@ -30,19 +46,6 @@ class TblPlayerinfo < ApplicationRecord
   def unfollow!(other_user)
     following.delete(other_user)
   end
- #---------------------------------------结束---------------------------------------------------#
-
-
-  def is_player_of?(group_msg)
-    groups.include?(group_msg)
-  end
-
-  def join!(group_msg)
-    groups << group_msg
-  end
-
-  def quit!(group_msg)
-    groups.delete(group_msg)
-  end
+ #---------------------------------------结束-----------------------------------#
 
 end

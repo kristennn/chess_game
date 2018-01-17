@@ -7,8 +7,9 @@ json.players do
     json.gold        player.gold
     json.online      true
     json.sex         player.sex
-    json.viptype     player.honor
+    json.viptype     player.account.vip_type
     json.headingurl  player.headimg
-    json.score       player.diamond
+    json.score       player.score
+    json.diamond     player.diamond
   end
 end
