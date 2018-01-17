@@ -12,46 +12,16 @@ class Api::Game::PlayerinfosController < ApiController
 
   def create_group
     @player = TblPlayerinfo.find_by_userid!(params[:userid])
-    @group_msg = GroupMsg.new( :discription => params[:discription],
-                               :name => params[:name],
-                               :count => params[:count],
-                               :pics => params[:pics]
+    @group = GroupMsg.new( :name => params[:name],
+                           :discription => params[:discription],
+                           :count => params[:count],
+                           :pics => params[:pics]
                              )
-    @group_msg.player = @player
-    if @group_msg.save
-      @player.join!(@group_msg)
-      render :json => {
-        :msg => "成功创建圈子",
-        :code => 0,
-        :group => {
-          :id => @group_msg.id,
-          :discription => @group_msg.discription,
-          :name => @group_msg.name,
-          :count => @group_msg.count,
-          :pics => @group_msg.pics
-        }
-      }
-    else
-      render :json => {
-        :msg => "创建圈子失败",
-        :code => 1
-      }
-    end
+    @group.player = @player
   end
 
   def search_group
-    @group_msg = GroupMsg.find(params[:groupid])
-    render :json => {
-      :code => 0,
-      :msg => "成功搜索到圈子",
-      :group => {
-        :id => @group_msg.id,
-        :discription => @group_msg.discription,
-        :name => @group_msg.name,
-        :count => @group_msg.count,
-        :pics => @group_msg.pics
-      }
-    }
+    @group = GroupMsg.find(params[:groupid])
   end
 
   def search_grouplist
@@ -64,17 +34,6 @@ class Api::Game::PlayerinfosController < ApiController
                                :userid => params[:userid],
                                :is_join => true
                              )
-    if !@player.is_player_of?(@group) && @record.save
-        @player.join!(@group)
-        render :json => {
-          :code => 0,
-          :msg => "已加入到本圈子"
-        }
-    else
-      render :json => {
-        :msg => "您已在此圈子"
-      }
-    end
   end
 
   def quit_group
@@ -96,17 +55,6 @@ class Api::Game::PlayerinfosController < ApiController
 
   def get_groupinfo
     @group = GroupMsg.find(params[:groupid])
-      render :json => {
-        :code => 0,
-        :msg => "已找到您要查询的圈子",
-        :group => {
-          :id => @group.id,
-          :discription => @group.discription,
-          :name => @group.name,
-          :count => @group.count,
-          :pics => @group.pics
-        }
-      }
   end
 
   def get_group_player
@@ -115,15 +63,6 @@ class Api::Game::PlayerinfosController < ApiController
 
   def delete_group_player
     @del_player = TblPlayerinfo.find_by_userid!(params[:deluser])
-    if @del_player.is_player_of?(@group) && @group.player == @player
-       @del_player.quit!(@group)
-       render :json => {
-         :code => 0,
-         :msg => "已将#{@del_player.nickname}移出本圈"
-       }
-    else
-      render :json => { :msg => "无权限或该成员不是圈内成员"}
-    end
   end
 
 
