@@ -12,7 +12,14 @@ json.code 0
 json.msg "已搜索到通讯录好友"
 json.playerMsg do
   json.array! @players do |player|
-    json.uid player.useriid
-    json.name player.nickname
+    json.uid         player.userid
+    json.name        player.nickname
+    json.gold        player.gold
+    json.online      true
+    json.sex         player.sex
+    json.viptype     player.honor
+    json.headingurl  player.headimg
+    json.score       player.diamond
+    json.diamond     player.diamond
   end
 end
