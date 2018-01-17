@@ -1,3 +1,8 @@
+result = []
+@records.each do |record|
+  result += TblPlayerinfo.where( :userid => record.userid )
+end
+@players = result
 if @player == @group.player
   json.code 0
   json.msg "已查询到退圈记录"
@@ -15,5 +20,5 @@ if @player == @group.player
   end
 
 else
-  json.msg "您不是群主，无法查看申请记录"
+  json.msg "无权限"
 end

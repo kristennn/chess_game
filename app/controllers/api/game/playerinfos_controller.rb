@@ -40,17 +40,6 @@ class Api::Game::PlayerinfosController < ApiController
     @record = GroupRecord.new( :group_msg_id => params[:groupid],
                                :userid => params[:userid]
                              )
-    if @player.is_player_of?(@group) && @record.save
-      @player.quit!(@group)
-      render :json => {
-        :code => 0,
-        :msg => "您已退出此圈子"
-      }
-    else
-      render :json => {
-        :message => "你不在该圈子内，无法退出"
-      }
-    end
   end
 
   def get_groupinfo
@@ -80,34 +69,10 @@ class Api::Game::PlayerinfosController < ApiController
 
   def search_groupRequest
     @records = @group.group_records.where(:is_join => true)
-    if @group.player == @player
-      render :json => {
-        :players => @records.map{ |record|
-          {
-            :userid => record.userid,
-            :group_msg_id => record.group_msg_id
-          }
-        }
-      }
-    else
-      render :json => { :msg => "无权限查看"}
-    end
   end
 
   def search_quit_request
     @records = @group.group_records.where( :is_join => false)
-    if @group.player == @player
-      render :json => {
-        :players => @records.map{ |record|
-          {
-            :userid => record.userid,
-            :group_msg_id => record.group_msg_id
-          }
-        }
-      }
-    else
-      render :json => { :msg => "无权限查看"}
-    end
   end
 
   private
