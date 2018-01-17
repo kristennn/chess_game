@@ -50,8 +50,8 @@ class Api::Game::PlayerinfosController < ApiController
       :group => {
         :id => @group.id,
         :discription => @group.discription,
-        :name => @group.name
-        :count => @group.count
+        :name => @group.name,
+        :count => @group.count,
         :pics => @group.pics
       }
     }
