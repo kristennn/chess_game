@@ -75,6 +75,14 @@ class Api::Game::PlayerinfosController < ApiController
     @records = @group.group_records.where( :is_join => false)
   end
 
+  def deal_group_request
+    @player = TblPlayerinfo.find_by_userid!(params[:userid])
+    @gamer = TblPlayerinfo.find_by_userid!(params[:toid])
+    @group = GroupMsg.find(params[:groupid])
+    @record = GroupRecord.where("group_records.userid =? AND group_records.group_msg_id =? AND group_records.is_join =?", params[:toid], params[:groupid], true).first
+    @agree = params[:agree]
+  end
+
   private
 
    def find_group_and_player

@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20180116132837) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_join", default: false
+    t.index ["group_msg_id"], name: "index_group_records_on_group_msg_id"
+    t.index ["userid"], name: "index_group_records_on_userid"
   end
 
   create_table "group_relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
