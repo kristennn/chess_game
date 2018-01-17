@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180116132837) do
+ActiveRecord::Schema.define(version: 20180117071211) do
 
   create_table "callboards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "post"
@@ -158,6 +158,7 @@ ActiveRecord::Schema.define(version: 20180116132837) do
     t.integer "diamond", default: 2000
     t.string "headimg"
     t.integer "phonenumber"
+    t.integer "score", default: 0
     t.index ["nickname"], name: "nickname", unique: true
     t.index ["phonenumber"], name: "index_tbl_playerinfo_on_phonenumber", unique: true
   end
