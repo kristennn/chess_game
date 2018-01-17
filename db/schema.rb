@@ -10,13 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180108110420) do
+ActiveRecord::Schema.define(version: 20180116010530) do
 
   create_table "callboards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "post"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
+  end
+
+  create_table "group_msgs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "discription"
+    t.string "name"
+    t.integer "count"
+    t.string "pics"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "userid"
+  end
+
+  create_table "group_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "group_msg_id"
+    t.integer "userid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "is_join", default: false
+  end
+
+  create_table "group_relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "group_msg_id"
+    t.integer "userid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "marquees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -32,6 +57,30 @@ ActiveRecord::Schema.define(version: 20180108110420) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["phone", "token"], name: "index_phone_tokens_on_phone_and_token"
+  end
+
+  create_table "player_relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_player_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_player_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_player_relationships_on_follower_id"
+  end
+
+  create_table "player_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "uid"
+    t.string "name"
+    t.integer "gold"
+    t.boolean "online", default: false
+    t.integer "sex", default: 0
+    t.integer "viptype"
+    t.string "headimgurl"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "diamond", default: 2000
   end
 
   create_table "tbl_account", primary_key: "userid", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", comment: "用户账号表" do |t|

@@ -1,293 +1,181 @@
 class Api::Game::PlayerinfosController < ApiController
 
-  def search_player
-    render :json => {
-      :players => [{
-        :uid => 1,
-        :name => "啦啦啦",
-        :gold => 288,
-        :online => true,
-        :sex => 1,
-        :viptype => 1,
-        :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-        :score => 1234,
-        :diamond => 2000
-      },
-      {:uid => 2,
-      :name => "啦啦啦",
-      :gold => 288,
-      :online => true,
-      :sex => 1,
-      :viptype => 1,
-      :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-      :score => 1234,
-      :diamond => 2000
-    }],
-      :msg => "已搜索到好友",
-      :code => 0
-    }
-  end
+  before_action :find_group_and_player, only: [:join_group,          #加入圈子
+                                               :quit_group,          #退出圈子
+                                               :get_group_player,    #查看圈内成员列表
+                                               :delete_group_player, #删除圈内成员
+                                               :disband_group,       #解散圈子
+                                               :search_groupRequest, #查询圈子申请列表
+                                               :search_quit_request] #查询退圈记录
 
-  def destroy_player
-    render :json => {
-      :msg => "删除好友成功",
-      :code => 1
-    }
-  end
+############################################ 圈子模块 ##########################################
 
-  def add_player
-    render :json => {
-      :msg => "添加好友成功",
-      :code => 2
-    }
-  end
-
-  def search_request
-    render :json => {
-      :players => [{
-        :uid => 1,
-        :name => "啦啦啦",
-        :gold => 288,
-        :online => true,
-        :sex => 1,
-        :viptype => 1,
-        :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-        :score => 1234,
-        :diamond => 2000
-      },
-      {:uid => 2,
-      :name => "啦啦啦",
-      :gold => 288,
-      :online => true,
-      :sex => 1,
-      :viptype => 1,
-      :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-      :score => 1234,
-      :diamond => 2000
-    }],
-      :msg => "已搜索到请求列表",
-      :code => 0
-    }
-  end
-
-  def deal_request
-    @agree = params[:agree]
-    if @agree
+  def create_group
+    @player = TblPlayerinfo.find_by_userid!(params[:userid])
+    @group_msg = GroupMsg.new( :discription => params[:discription],
+                               :name => params[:name],
+                               :count => params[:count],
+                               :pics => params[:pics]
+                             )
+    @group_msg.player = @player
+    if @group_msg.save
+      @player.join!(@group_msg)
       render :json => {
-        :msg => "已同意好友申请",
-        :code => 0
+        :msg => "成功创建圈子",
+        :code => 0,
+        :group => {
+          :id => @group_msg.id,
+          :discription => @group_msg.discription,
+          :name => @group_msg.name,
+          :count => @group_msg.count,
+          :pics => @group_msg.pics
+        }
       }
     else
       render :json => {
-        :msg => "已拒绝好友申请",
+        :msg => "创建圈子失败",
         :code => 1
       }
     end
   end
 
-  def add_target_player
-    @player = TblPlayerinfo.find_by_userid!(params[:userid])
-    @target = TblPlayerinfo.find_by_userid!(params[:targetPlayers])
-    render :json => {
-      :msg => "配对成功，已添加该好友",
-      :code => 0
-    }
-  end
-
-  def get_phone_list
-    render :json => {
-      :players => [{
-        :uid => 1,
-        :name => "啦啦啦",
-        :gold => 288,
-        :online => true,
-        :sex => 1,
-        :viptype => 1,
-        :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-        :score => 1234,
-        :diamond => 2000
-      },
-      {:uid => 2,
-      :name => "啦啦啦",
-      :gold => 288,
-      :online => true,
-      :sex => 1,
-      :viptype => 1,
-      :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-      :score => 1234,
-      :diamond => 2000
-    }],
-      :msg => "已搜索到通讯录好友",
-      :code => 0
-    }
-  end
-
-  def create_group
-    render :json => {
-      :msg => "成功创建圈子",
-      :code => 7,
-      :group => {
-        :id => 1,
-        :description => "这是第一个圈子",
-        :name => "啦啦啦的圈子",
-        :count => 1,
-        :pics => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg"
-      }
-    }
-  end
-
   def search_group
+    @group_msg = GroupMsg.find(params[:groupid])
     render :json => {
+      :code => 0,
       :msg => "成功搜索到圈子",
-      :code => 8,
       :group => {
-        :id => 1,
-        :description => "这是第一个圈子",
-        :name => "啦啦啦的圈子",
-        :count => 1,
-        :pics => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg"
+        :id => @group_msg.id,
+        :discription => @group_msg.discription,
+        :name => @group_msg.name,
+        :count => @group_msg.count,
+        :pics => @group_msg.pics
       }
     }
   end
 
   def search_grouplist
-    render :json => {
-      :msg => "已查询到圈子列表",
-      :code => 9,
-      :group => {
-        :id => 1,
-        :description => "这是第一个圈子",
-        :name => "啦啦啦的圈子",
-        :count => 1,
-        :pics => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg"
-      }
-    }
+    @player = TblPlayerinfo.find_by_userid!(params[:userid])
+    @groups = @player.groups
   end
 
   def join_group
-    render :json => {
-      :msg => "已加入到本圈子",
-      :code => 10
-    }
-  end
-
-  def get_groupinfo
-    render :json => {
-      :msg => "已找到您要查询的圈子",
-      :code => 11,
-      :group => {
-        :id => 1,
-        :description => "这是第一个圈子",
-        :name => "啦啦啦的圈子",
-        :count => 1,
-        :pics => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg"
+    @record = GroupRecord.new( :group_msg_id => params[:groupid],
+                               :userid => params[:userid],
+                               :is_join => true
+                             )
+    if !@player.is_player_of?(@group) && @record.save
+        @player.join!(@group)
+        render :json => {
+          :code => 0,
+          :msg => "已加入到本圈子"
+        }
+    else
+      render :json => {
+        :msg => "您已在此圈子"
       }
-    }
-  end
-
-  def get_group_player
-    render :json => {
-      :msg => "已查询到本圈子成员",
-      :code => 0,
-      :players => [{
-        :uid => 1,
-        :name => "啦啦啦",
-        :gold => 288,
-        :online => true,
-        :sex => 1,
-        :viptype => 1,
-        :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-        :score => 1234,
-        :diamond => 2000
-      },
-      {:uid => 2,
-      :name => "啦啦啦",
-      :gold => 288,
-      :online => true,
-      :sex => 1,
-      :viptype => 1,
-      :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-      :score => 1234,
-      :diamond => 2000
-    }],
-    }
-  end
-
-  def delete_group_player
-    render :json => {
-      :msg => "已删除圈内成员",
-      :code => 0
-    }
+    end
   end
 
   def quit_group
-    render :json => {
-      :msg => "已退出本圈子",
-      :code => 0
-    }
+    @record = GroupRecord.new( :group_msg_id => params[:groupid],
+                               :userid => params[:userid]
+                             )
+    if @player.is_player_of?(@group) && @record.save
+      @player.quit!(@group)
+      render :json => {
+        :code => 0,
+        :msg => "您已退出此圈子"
+      }
+    else
+      render :json => {
+        :message => "你不在该圈子内，无法退出"
+      }
+    end
   end
 
+  def get_groupinfo
+    @group = GroupMsg.find(params[:groupid])
+      render :json => {
+        :code => 0,
+        :msg => "已找到您要查询的圈子",
+        :group => {
+          :id => @group.id,
+          :discription => @group.discription,
+          :name => @group.name,
+          :count => @group.count,
+          :pics => @group.pics
+        }
+      }
+  end
+
+  def get_group_player
+    @players = @group.players
+  end
+
+  def delete_group_player
+    @del_player = TblPlayerinfo.find_by_userid!(params[:deluser])
+    if @del_player.is_player_of?(@group) && @group.player == @player
+       @del_player.quit!(@group)
+       render :json => {
+         :code => 0,
+         :msg => "已将#{@del_player.nickname}移出本圈"
+       }
+    else
+      render :json => { :msg => "无权限或该成员不是圈内成员"}
+    end
+  end
+
+
   def disband_group
-    render :json => {
-      :msg => "已解散本圈子",
-      :code => 0
-    }
+    if @group.player == @player
+      @group.destroy
+      render :json => {
+        :code => 0,
+        :msg => "已解散本圈子"
+      }
+    else
+      render :json => { :msg => "无权限"}
+    end
   end
 
   def search_groupRequest
-    render :json => {
-      :message => "已查询到圈子申请列表",
-      :code => 0,
-      :players => [{
-        :uid => 1,
-        :name => "啦啦啦",
-        :gold => 288,
-        :online => true,
-        :sex => 1,
-        :viptype => 1,
-        :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-        :score => 1234,
-        :diamond => 2000
-      },
-      {:uid => 2,
-      :name => "啦啦啦",
-      :gold => 288,
-      :online => true,
-      :sex => 1,
-      :viptype => 1,
-      :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-      :score => 1234,
-      :diamond => 2000
-    }],
-    }
+    @records = @group.group_records.where(:is_join => true)
+    if @group.player == @player
+      render :json => {
+        :players => @records.map{ |record|
+          {
+            :userid => record.userid,
+            :group_msg_id => record.group_msg_id
+          }
+        }
+      }
+    else
+      render :json => { :msg => "无权限查看"}
+    end
   end
 
   def search_quit_request
-    render :json => {
-      :message => "已查询到圈子的退圈记录",
-      :code => 0,
-      :players => [{
-        :uid => 1,
-        :name => "啦啦啦",
-        :gold => 288,
-        :online => true,
-        :sex => 1,
-        :viptype => 1,
-        :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-        :score => 1234,
-        :diamond => 2000
-      },
-      {:uid => 2,
-      :name => "啦啦啦",
-      :gold => 288,
-      :online => true,
-      :sex => 1,
-      :viptype => 1,
-      :headimgurl => "https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/562c11dfa9ec8a132d6bb732f003918fa1ecc0eb.jpg",
-      :score => 1234,
-      :diamond => 2000
-    }],
-    }
+    @records = @group.group_records.where( :is_join => false)
+    if @group.player == @player
+      render :json => {
+        :players => @records.map{ |record|
+          {
+            :userid => record.userid,
+            :group_msg_id => record.group_msg_id
+          }
+        }
+      }
+    else
+      render :json => { :msg => "无权限查看"}
+    end
   end
+
+  private
+
+   def find_group_and_player
+     @group = GroupMsg.find(params[:groupid])
+     @player = TblPlayerinfo.find_by_userid!(params[:userid])
+   end
 
 end
