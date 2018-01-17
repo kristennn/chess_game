@@ -44,6 +44,17 @@ class Api::Game::PlayerinfosController < ApiController
 
   def get_groupinfo
     @group = GroupMsg.find(params[:groupid])
+    render :json => {
+      :code => 0,
+      :msg => "搜索结果如下"
+      :group => {
+        :id => @group.id,
+        :discription => @group.discription,
+        :name => @group.name
+        :count => @group.count
+        :pics => @group.pics
+      }
+    }
   end
 
   def get_group_player
