@@ -2,8 +2,7 @@ class Api::Game::FriendsController < ApiController
 
 #------------------------------- 好友模块 ------------------------------------#
   def search_player
-    @player = TblPlayerinfo.find_by_userid!(params[:userid])
-    @following = @player.following
+    @player = TblPlayerinfo.where( :userid => params[:userid])
   end
 
   def destroy_player
