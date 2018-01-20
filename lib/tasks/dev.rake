@@ -22,4 +22,12 @@ namespace :dev do
      end
 
   end
+
+  task :update_diamond => :environment do
+    puts "Fetch city data..."
+    response = RestClient.get "http://47.100.117.210:8691/update_data", :params => { :name => $diamond }
+    data = JSON.parse(response.body)
+
+  end
+
 end

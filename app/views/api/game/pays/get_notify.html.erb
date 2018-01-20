@@ -3,12 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>支付接口</title>
-    <script type="text/javascript">
-      httpGet(ctx + "http://47.100.117.210:8691/update_data?diamond=@diamond&uid=@uid");
 
-    </script>
   </head>
   <body>
-
+    <script type="text/javascript">
+    function request() {
+         var xhr =  new XMLHttpRequest;
+         xhr.open('GET', "http://47.100.117.210:8691/update_data?name=@diamond&uid=@uid");
+         xhr.send();
+     }
+    </script>
   </body>
 </html>
