@@ -3,14 +3,18 @@ class Api::Game::PaysController < ApiController
     @diamond = params[:reserved1]
     @uid = params[:reserved2]
 
-    require "net/http"
-    url = URI.parse('http://47.100.117.210:8691/update_data?name=diamond&num=' +@diamond+ '&uid=' +@uid)
-    res = Net::HTTP.start(url.host, url.port)
+    require 'open-uri'
 
+    uri = 'http://47.100.117.210:8691/update_data?name=diamond&num='+@diamond+'&uid='+@uid
+      html_response = nil
+      open(uri) do |http|
+        html_response = http.read
+      end
+      puts html_response
 
-    render :json => {
-      :message => "ok"
-    }
+      render :json => {
+        :message => "ok"
+      }
   end
 
   def pay_callback
@@ -18,5 +22,4 @@ class Api::Game::PaysController < ApiController
       :message => "支付成功"
     }
   end
-
 end
