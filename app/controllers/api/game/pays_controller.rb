@@ -1,7 +1,12 @@
 class Api::Game::PaysController < ApiController
   def get_notify
     render :json => {
-      :message => "ok"
+      :message => "ok",
+      :memberid   => params[:memberid],
+      :orderid    => params[:orderid],
+      :amount     => params[:amount],
+      :datetime   => params[:datetime],
+      :returncode => params[:returncode]
     }
   end
 
