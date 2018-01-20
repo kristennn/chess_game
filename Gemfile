@@ -41,7 +41,6 @@ gem 'ransack'
 gem 'bcrypt'
 gem 'font-awesome-rails'
 gem 'awesome_rails_console'
-gem 'rest-client'
 
 group :development, :test do
   gem 'pry'
