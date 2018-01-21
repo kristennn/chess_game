@@ -1,13 +1,24 @@
 class Api::Game::UsersController < ApiController
   def bind_user
-    @tbl_account = TblAccount.find_by_userid!(params[:uid])
-    if @tbl_account.saler.present?
-      render :json => { :message => "绑定失败，该用户已绑定"}
-    else
-      a = params[:invitation_code]
-      @tbl_account.update(:saler => a )
+    @tbl_account = TblAccount.find_by_userid(params[:uid])
+    if @tbl_account.blank?
       render :json => {
-        :message => "绑定成功",
+         :code => 1,
+         :message => "用户不存在"
+       }
+    elsif @tbl_account.saler.present?
+      render :json => {
+        :code => 2,
+        :message => "绑定失败，该用户已绑定"
+      }
+    elsif @tbl_account.saler.blank?
+      @tbl_account.update(:saler => params[:invitation_code])
+      render :json => {
+        :code => 0,
+        :msg => "绑定成功",
+        :time => params[:time],
+        :apiurl => "/api/game/users/setUserBind",
+        :ApiHash => "5aee5c0f5bb8aecbe781e5f4ec3f827e",
         :data => @tbl_account.saler
       }
     end
@@ -31,6 +42,6 @@ class Api::Game::UsersController < ApiController
     }
   end
 
-  
+
 
 end
