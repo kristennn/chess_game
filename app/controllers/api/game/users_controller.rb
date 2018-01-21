@@ -17,7 +17,7 @@ class Api::Game::UsersController < ApiController
         :code => 0,
         :msg => "绑定成功",
         :time => params[:time],
-        :apiurl => "/api/game/users/setUserBind",
+        :apiurl => "/api/game/users/setUserBind.html",
         :ApiHash => "5aee5c0f5bb8aecbe781e5f4ec3f827e",
         :data => @tbl_account.saler
       }
@@ -31,7 +31,7 @@ class Api::Game::UsersController < ApiController
         :code => 0,
         :msg => "ok",
         :time => params[:time],
-        :apiurl => "/api/game/users/getUserBindInfo",
+        :apiurl => "/api/game/users/getUserBindInfo.html",
         :ApiHash => "4b50512c9c732419a0d992ab9cd202bc",
         :data => @tbl_account.saler
       }
@@ -49,13 +49,7 @@ class Api::Game::UsersController < ApiController
   end
 
   def share_activity
-    @tbl_playerinfo = TblPlayerinfo.find_by_userid!(params[:uid])
-    b = @tbl_playerinfo.diamond + 10
-    @tbl_playerinfo.update(:diamond => b )
-    render :json => {
-      :message => "ok",
-      :data => @tbl_playerinfo.diamond
-    }
+    @tbl_playerinfo = TblPlayerinfo.find_by_userid(params[:uid])
   end
 
 
