@@ -5,7 +5,7 @@ if @player.present?
   json.apiurl "/api/game/callboards/getOneSystemNews.html"
   json.ApiHash "4b50512c9c732419a0d992ab9cd202bc"
   json.data ""
-  json.date do
+  json.gonggao_list do
     json.array! @callboards do |callboard|
       json.content callboard.post
     end
