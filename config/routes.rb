@@ -38,7 +38,7 @@ Rails.application.routes.draw do
       get "/users/:getUserBindInfo" =>                    "users#get_bind"
       patch "/users/:shareActivity" =>                    "users#share_activity"
       post "/callboards/:getOneSystemNews" =>             "callboards#get_news"
-      post "/marquees/:getPaomatiao" =>                   "marquees#get_paomatiao"
+      get "/marquees/:getPaomatiao" =>                   "marquees#get_paomatiao"
 
       get "/playerinfos/:searchPlayer" =>                 "friends#search_player"
       delete "/playerinfos/:deletePlayer" =>              "friends#destroy_player"
