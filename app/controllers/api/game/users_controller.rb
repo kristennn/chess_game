@@ -25,11 +25,27 @@ class Api::Game::UsersController < ApiController
   end
 
   def get_bind
-    @tbl_account = TblAccount.find_by_userid!(params[:uid])
-    render :json => {
-      :message => "ok",
-      :data => @tbl_account.saler
-    }
+    @tbl_account = TblAccount.find_by_userid(params[:uid])
+    if @tbl_account.present? && @tbl_account.saler.present?
+      render :json => {
+        :code => 0,
+        :msg => "ok",
+        :time => params[:time],
+        :apiurl => "/api/game/users/getUserBindInfo",
+        :ApiHash => "4b50512c9c732419a0d992ab9cd202bc",
+        :data => @tbl_account.saler
+      }
+    elsif @tbl_account.blank?
+       render :json => {
+         :code => 1,
+         :msg  => "玩家不存在"
+       }
+    elsif @tbl_account.present? && @tbl_account.saler.blank?
+       render :json => {
+         :code => 2,
+         :msg => "您还未绑定代理商"
+       }
+    end
   end
 
   def share_activity
