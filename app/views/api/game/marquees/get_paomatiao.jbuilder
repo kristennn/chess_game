@@ -7,15 +7,7 @@ if @tbl_account.present?
   json.data ""
   json.paomatiao_list do
     json.array! @marquees do |marquee|
-      json.id          marquee.id
-      json.pack_id     0
-      json.title       0
       json.content     marquee.post
-      json.start_time  0
-      json.end_time    0
-      json.interval    0
-      json.dateline    0
-      json.admin_id    0
     end
   end
 else

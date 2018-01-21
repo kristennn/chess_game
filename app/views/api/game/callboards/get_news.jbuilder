@@ -7,7 +7,6 @@ if @player.present?
   json.data ""
   json.date do
     json.array! @callboards do |callboard|
-      json.id callboard.id
       json.content callboard.post
     end
   end
