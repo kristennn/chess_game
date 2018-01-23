@@ -15,9 +15,10 @@ class Api::Game::FriendsController < ApiController
     @player = TblPlayerinfo.find_by_userid!(params[:userid])
     @player1 = TblPlayerinfo.find_by_userid!(params[:toid])
     @friend_request = FriendRequest.new( :userid => params[:userid],
-                                         :friend_id => params[:toid]
-                                       )
+                                           :friend_id => params[:toid]
+                                         )
   end
+
 
   def search_request #与add_player方法配合使用
     @requests = FriendRequest.where(:friend_id => params[:userid])
