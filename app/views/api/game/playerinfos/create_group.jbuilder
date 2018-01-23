@@ -8,6 +8,7 @@ if @group.save
     json.name         @group.name
     json.count        @group.count
     json.pics         @group.pics
+    json.role         "owner"
   end
 else
   json.msg "圈子创建失败"

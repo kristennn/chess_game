@@ -22,6 +22,7 @@ class Api::Game::PlayerinfosController < ApiController
 
   def search_group
     @group = GroupMsg.where( :id => params[:groupid])
+    @user = TblPlayerinfo.find_by_userid!(params[:userid])
   end
 
   def search_grouplist
