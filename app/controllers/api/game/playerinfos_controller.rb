@@ -85,6 +85,11 @@ class Api::Game::PlayerinfosController < ApiController
     @agree = params[:agree]
   end
 
+  def search_all_groups #查看所有圈子信息
+    @groups = GroupMsg.all
+    @user = TblPlayerinfo.find_by_userid(params[:userid])
+  end
+
   private
 
    def find_group_and_player

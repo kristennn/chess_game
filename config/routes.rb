@@ -60,6 +60,7 @@ Rails.application.routes.draw do
       get "groupRequests/:search_groupRequest" =>         "playerinfos#search_groupRequest"
       get "groupQuitRequests/:search_groupQuitRequest" => "playerinfos#search_quit_request"
       post "groupRequests/:dealwithRequest" =>            "playerinfos#deal_group_request"
+      get "allGroups/:searchGroups" =>                    "playerinfos#search_all_groups"
       #第一个项目的支付接口
       get "pay/:pay_notify" => "pays#get_notify"
       post "pay/:pay_callback" => "pays#pay_callback"
