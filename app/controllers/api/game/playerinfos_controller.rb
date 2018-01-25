@@ -1,8 +1,8 @@
+
 class Api::Game::PlayerinfosController < ApiController
 
   before_action :find_group_and_player, only: [:join_group,          #加入圈子
                                                :quit_group,          #退出圈子
-                                               :get_group_player,    #查看圈内成员列表
                                                :delete_group_player, #删除圈内成员
                                                :disband_group,       #解散圈子
                                                :search_groupRequest, #查询圈子申请列表
@@ -49,7 +49,8 @@ class Api::Game::PlayerinfosController < ApiController
   end
 
   def get_group_player
-    @players = @group.players
+    @group = GroupMsg.where( :id => params[:groupid])
+    @player = TblPlayerinfo.find_by_userid(params[:userid])
   end
 
   def delete_group_player
@@ -83,11 +84,6 @@ class Api::Game::PlayerinfosController < ApiController
     @group = GroupMsg.find(params[:groupid])
     @record = GroupRecord.where("group_records.userid =? AND group_records.group_msg_id =? AND group_records.is_join =?", params[:toid], params[:groupid], true).first
     @agree = params[:agree]
-  end
-
-  def search_all_groups #查看所有圈子信息
-    @groups = GroupMsg.all
-    @user = TblPlayerinfo.find_by_userid(params[:userid])
   end
 
   private
