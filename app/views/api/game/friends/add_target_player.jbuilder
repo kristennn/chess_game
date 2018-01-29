@@ -1,6 +1,5 @@
 targets = params[:targetPlayers]
-targets = targets[1..-2]
-targets = targets.split(",")
+targets = targets[1..-2].split(",")
 targets.each do |target|
   gamer = TblPlayerinfo.find_by_userid!(target)
   if !@player.following?(gamer)

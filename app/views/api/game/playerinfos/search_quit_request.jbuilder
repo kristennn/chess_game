@@ -17,9 +17,10 @@ if @player == @group.player
       json.headingurl  player.headimg
       json.score       player.score
       json.diamond     player.diamond
-      json.quit_time   player.quit_records.last.created_at.strftime("%Y/%m/%d  %H:%M:%S")
+      json.quit_time   (player.quit_records.last.created_at + 28800).strftime("%Y/%m/%d  %H:%M:%S")
     end
   end
+
 else
   json.msg "无权限"
 end
