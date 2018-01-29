@@ -51,7 +51,7 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  username: jonathan
-  database: zdgame1
-  password: 15540162996ZAG
-  host: 172.19.109.75
+  username: majiangdb_game
+  database: majiangdb_game
+  password: k0QMJrPJDcGJw2Tm
+  host: 120.78.223.115
