@@ -3,6 +3,7 @@ if @user.present?
   json.msg "所有圈子列表"
   json.groups do
     json.array! @groups do |group|
+      record = GroupRecord.where("group_records.userid =? AND group_records.group_msg_id =? AND group_records.is_join =?", params[:userid], group.id, true)
         json.id           group.id
         json.discription  group.discription
         json.name         group.name
@@ -15,6 +16,9 @@ if @user.present?
           json.role "joined"
         elsif @user != group.player
           json.role "unjoined"
+        end
+        if record.present?
+          json.role "submited"
         end
     end
   end

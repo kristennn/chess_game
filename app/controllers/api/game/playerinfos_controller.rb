@@ -33,6 +33,7 @@ class Api::Game::PlayerinfosController < ApiController
                                :userid => params[:userid],
                                :is_join => true
                              )
+    @submit_record = GroupRecord.where("group_records.group_msg_id =? AND group_records.userid =? AND group_records.is_join =?", params[:groupid], params[:userid], true)
   end
 
   def quit_group
