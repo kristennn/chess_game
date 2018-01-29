@@ -8,6 +8,7 @@ if @group.present? && @player.present?
     json.name         @group.name
     json.count        @group.count
     json.pics         @group.pics
+    json.numpeople    @group.players.count
     if @player == @group.player
       json.role  "owner"
     elsif @player != @group.player && @player.is_player_of?(@group)
