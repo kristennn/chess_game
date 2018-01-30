@@ -41,6 +41,8 @@ gem 'ransack'
 gem 'bcrypt'
 gem 'font-awesome-rails'
 gem 'awesome_rails_console'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'pry'
