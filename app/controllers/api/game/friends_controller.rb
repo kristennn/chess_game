@@ -51,4 +51,8 @@ class Api::Game::FriendsController < ApiController
     @player = TblPlayerinfo.where( :userid => params[:userid])
   end
 
+  def upload_heading
+    @player = TblPlayerinfo.find_by_userid(params[:userid])
+  end
+
 end

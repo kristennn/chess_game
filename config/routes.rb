@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       get "/callboards/:getOneSystemNews" =>             "callboards#get_news"
       get "/marquees/:getPaomatiao" =>                   "marquees#get_paomatiao"
 
+      post "/playermsgs/:uploadheadingurl"  =>            "friends#upload_heading"
       get "/playerinfos/:searchPlayer" =>                 "friends#search_player"
       post "/playerFriends/:deletePlayer" =>              "friends#destroy_player"
       post "/playerinfos/:addPlayer" =>                   "friends#add_player"
