@@ -17,9 +17,10 @@ if @player.present?
         json.online      true
         json.sex         player.sex
         json.viptype     player.account.vip_type
-        json.headingurl  player.headimg
+        json.headimgurl  player.headimg
         json.score       player.score
         json.diamond     player.diamond
+        json.location    render_location(player)
       end
     end
   else

@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180117071211) do
+ActiveRecord::Schema.define(version: 20180209091816) do
 
   create_table "callboards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "post"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
+  end
+
+  create_table "face_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "userid"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friend_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -45,6 +52,8 @@ ActiveRecord::Schema.define(version: 20180117071211) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "userid"
+    t.string "pics2"
+    t.string "pics3"
   end
 
   create_table "group_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -66,6 +75,11 @@ ActiveRecord::Schema.define(version: 20180117071211) do
 
   create_table "marquees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "post"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pays", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -103,6 +117,12 @@ ActiveRecord::Schema.define(version: 20180117071211) do
     t.integer "diamond", default: 2000
   end
 
+  create_table "quit_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "userid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tbl_account", primary_key: "userid", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", comment: "用户账号表" do |t|
     t.string "account", default: "", null: false, comment: "昵称"
     t.string "pwd", default: "", null: false, comment: "密码"
@@ -125,15 +145,15 @@ ActiveRecord::Schema.define(version: 20180117071211) do
 
   create_table "tbl_order", force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
     t.bigint "userid", default: 0, null: false, comment: "用户ID"
-    t.string "goods_id", limit: 32, default: "", null: false, comment: "商品ID"
-    t.string "channel", limit: 8, default: "", null: false, comment: "支付渠道。alipay，支付宝；weixin，微信；apple，苹果"
+    t.string "goods_id", limit: 32, default: "", comment: "商品ID"
+    t.string "channel", limit: 8, default: "", comment: "支付渠道。alipay，支付宝；weixin，微信；apple，苹果"
     t.string "order_id", default: "", null: false, comment: "第三方订单号"
     t.integer "money", default: 0, null: false, comment: "实际支付人民币"
-    t.integer "state", default: 1, null: false, comment: "状态。1，下单；2，支付成功；3，发送金币完成；4，失效；"
-    t.datetime "create_time", default: -> { "CURRENT_TIMESTAMP" }, null: false, comment: "创建订单时间"
-    t.datetime "invalid_time", default: -> { "CURRENT_TIMESTAMP" }, null: false, comment: "失效时间"
-    t.datetime "pay_time", null: false, comment: "支付成功时间"
-    t.datetime "complete_time", null: false, comment: "完成时间"
+    t.integer "state", default: 1, comment: "状态。1，下单；2，支付成功；3，发送金币完成；4，失效；"
+    t.datetime "create_time", default: -> { "CURRENT_TIMESTAMP" }, comment: "创建订单时间"
+    t.datetime "invalid_time", default: -> { "CURRENT_TIMESTAMP" }, comment: "失效时间"
+    t.datetime "pay_time", comment: "支付成功时间"
+    t.datetime "complete_time", comment: "完成时间"
     t.index ["channel"], name: "index_channel"
     t.index ["create_time"], name: "index_create_time"
     t.index ["userid"], name: "userid", comment: "用户ID"
@@ -159,6 +179,8 @@ ActiveRecord::Schema.define(version: 20180117071211) do
     t.string "headimg"
     t.integer "phonenumber"
     t.integer "score", default: 0
+    t.string "headimgxf"
+    t.string "location"
     t.index ["nickname"], name: "nickname", unique: true
     t.index ["phonenumber"], name: "index_tbl_playerinfo_on_phonenumber", unique: true
   end

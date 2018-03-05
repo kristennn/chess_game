@@ -6,12 +6,13 @@ if @player.present?
     json.uid         @gamer.userid
     json.name        @gamer.nickname
     json.gold        @gamer.gold
-    json.online      true
+    json.online      render_online_status(@gamer)
     json.sex         @gamer.sex
     json.viptype     @gamer.account.vip_type
-    json.headingurl  @gamer.headimg
+    json.headimgurl  @gamer.headimg
     json.score       @gamer.score
     json.diamond     @gamer.diamond
+    json.location    render_location(@gamer)
   end
 else
   json.code 1

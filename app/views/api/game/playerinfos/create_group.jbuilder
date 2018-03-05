@@ -8,6 +8,8 @@ if @group.save
     json.name         @group.name
     json.count        @group.count
     json.pics         @group.pics
+    json.pics2        @group.pics2
+    json.pics3        @group.pics3
     json.role         "owner"
   end
 else

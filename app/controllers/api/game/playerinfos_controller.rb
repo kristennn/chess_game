@@ -13,7 +13,9 @@ class Api::Game::PlayerinfosController < ApiController
     @group = GroupMsg.new( :name => params[:name],
                            :discription => params[:discription],
                            :count => params[:count],
-                           :pics => params[:pics]
+                           :pics => params[:img1],
+                           :pics2 => params[:img2],
+                           :pics3 => params[:img3]
                              )
     @group.player = @player
   end
@@ -90,6 +92,16 @@ class Api::Game::PlayerinfosController < ApiController
   def search_all_groups
     @user = TblPlayerinfo.find_by_userid(params[:userid])
     @groups = GroupMsg.all
+  end
+
+  def alter_group
+    @group = GroupMsg.find(params[:groupid])
+    @player = TblPlayerinfo.find_by_userid(params[:userid])
+  end
+
+  def upload_img
+    @group = GroupMsg.find(params[:groupid])
+    @user = TblPlayerinfo.find_by(:userid => params[:userid])
   end
 
   private
