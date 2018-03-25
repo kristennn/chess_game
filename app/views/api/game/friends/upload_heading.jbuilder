@@ -8,11 +8,11 @@ if @player.update(:headimgxf => params[:image])
     json.gold        @player.gold
     json.online      true
     json.sex         @player.sex
-    json.viptype     @player.account.vip_type
-    json.headimgurl  @player.headimg
+    # json.viptype     @player.account.vip_type
+    json.headimgurl  @player.headimgxf
     json.score       @player.score
     json.diamond     @player.diamond
-    json.location    render_location(player)
+    json.location    render_location(@player)
   end
 else
   json.code 1

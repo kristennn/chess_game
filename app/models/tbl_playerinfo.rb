@@ -1,5 +1,6 @@
 class TblPlayerinfo < ApplicationRecord
   mount_uploader :headimg, ImageUploader
+  mount_uploader :headimgxf, ImageUploader
   self.table_name = 'tbl_playerinfo'
   has_one :account, class_name: "TblAccount", foreign_key: "userid"
   #------------------------------------ 圈子模块 --------------------------------#
