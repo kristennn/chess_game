@@ -1,5 +1,7 @@
+upload_ip = "120.78.223.115:8011"
+
 if @player.update(:headimgxf => params[:image])
-  @player.update( :headimg => "120.78.223.115:8011" + @player.headimgxf.to_s )
+  @player.update( :headimg => upload_ip + @player.headimgxf.to_s )
   json.code 0
   json.msg  "上传成功"
   json.playerMsg do
