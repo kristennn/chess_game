@@ -1,5 +1,5 @@
 if @player.update(:headimgxf => params[:image])
-  @player.update( :headimg =>  "1"+@player.headimgxf)
+  @player.update( :headimg => "120.78.223.115:8011" + @player.headimgxf.to_s )
   json.code 0
   json.msg  "上传成功"
   json.playerMsg do
@@ -8,7 +8,7 @@ if @player.update(:headimgxf => params[:image])
     json.gold        @player.gold
     json.online      true
     json.sex         @player.sex
-    # json.viptype     @player.account.vip_type
+    json.viptype     @player.account.vip_type
     json.headimgurl  @player.headimg
     json.score       @player.score
     json.diamond     @player.diamond
