@@ -1,5 +1,5 @@
 if @player.update(:headimgxf => params[:image])
-  @player.update( :headimg => "47.100.60.84" + @player.headimgxf.to_s )
+  @player.update( :headimg => "120.78.223.115:8011" + @player.headimgxf.to_s )
   json.code 0
   json.msg  "上传成功"
   json.playerMsg do
